@@ -12,6 +12,7 @@ export const PROFILE = {
     whatsapp: { label: '+62 852-3441-5861', href: 'https://wa.me/6285234415861' },
     email: { label: 'ihidayatullah57@gmail.com', href: 'mailto:ihidayatullah57@gmail.com' },
     github: { label: 'tiarh', href: 'https://github.com/tiarh' },
+    linkedin: { label: 'linkedin.com/in/ikhtiarh', href: 'https://www.linkedin.com/in/ikhtiarh' },
   },
 } as const;
 
