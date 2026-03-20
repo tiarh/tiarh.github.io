@@ -29,6 +29,7 @@ import { CERTIFICATES } from '../../data/certificates';
                   </div>
                   {c.date && <div class="text-sm text-slate-500">{c.date}</div>}
                 </div>
+                {c.credentialId && <div class="mt-3 text-sm text-slate-400">Credential ID: <span class="text-slate-200">{c.credentialId}</span></div>}
                 {c.url && (
                   <div class="mt-3">
                     <a class="text-cyan-400 hover:text-cyan-300" href={c.url} target="_blank" rel="noreferrer">Lihat</a>

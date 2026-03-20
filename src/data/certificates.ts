@@ -2,16 +2,21 @@ export type Certificate = {
   title: string;
   issuer: string;
   date?: string;
+  credentialId?: string;
   url?: string;
 };
 
-// NOTE: Isi detail sertifikatnya nanti (dari LinkedIn / file sertifikat).
 export const CERTIFICATES: Certificate[] = [
-  // contoh:
-  // {
-  //   title: 'Fundamentals of DevOps',
-  //   issuer: 'Dicoding Indonesia',
-  //   date: 'Sep 2023',
-  //   url: 'https://www.linkedin.com/...'
-  // },
+  {
+    title: 'Pemasangan Jaringan Komputer — UPT BLK Surabaya',
+    issuer: 'UPT Balai Latihan Kerja Surabaya',
+    date: 'Okt 2025',
+    credentialId: '25005.09.035.02.2025',
+  },
+  {
+    title: 'Network Penetration Testing',
+    issuer: 'Cyber Academy Indonesia',
+    date: 'Agu 2024',
+    credentialId: 'NTPT0109243207',
+  },
 ] as const;
