@@ -5,6 +5,7 @@ export type Project = {
   tags: string[];
   description: string;
   highlights: string[];
+  metrics?: string[];
   links?: {
     repo?: string;
     demo?: string;
@@ -70,6 +71,7 @@ export const PROJECTS: Project[] = [
     description:
       'Auto-generate report per area (DOWN/UP non‑isolir) + last active, output gambar siap kirim ke WA/Telegram.',
     highlights: ['Exclude ISOLIR rows', 'Sampling to catch flapping downs', 'HTML → Image report', 'Cron refresh'],
+    metrics: ['Manual reporting ~10 menit → via chat (on-demand)', 'Coverage: 28 monitoring areas', 'Ops scale: 20+ devices managed'], 
     links: { repo: 'https://github.com/tiarh' },
     caseStudy: {
       problem:
@@ -89,6 +91,7 @@ export const PROJECTS: Project[] = [
     description:
       'Bot WA khusus 1 grup untuk monitoring per area + chat ops. Ada allowlist, anti-loop, dan command monitoring AREA.',
     highlights: ['Hard allowlist group', 'Monitoring via areas.json', 'Anti-spam + timeouts', 'Scoped ops commands'],
+    metrics: ['Guardrails: allowlist 1 grup + cooldown', 'Faster triage: `monitoring <area>`', 'Coverage: 28 monitoring areas'], 
     links: { repo: 'https://github.com/tiarh' },
     caseStudy: {
       problem:
