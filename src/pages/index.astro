@@ -47,6 +47,9 @@ const featured = PROJECTS.slice(0, 4);
               <a href="/blog" class="rounded-xl border border-slate-700 px-6 py-3 text-sm font-semibold hover:border-slate-500 hover:bg-slate-800/50 transition-all">
                 Baca blog
               </a>
+              <a href="/files/Ikhtiar_Hidayatullah_CV.pdf" class="rounded-xl border border-slate-700 px-6 py-3 text-sm font-semibold hover:border-slate-500 hover:bg-slate-800/50 transition-all" target="_blank" rel="noreferrer">
+                Download CV
+              </a>
               <a href={PROFILE.contacts.github.href} class="rounded-xl border border-slate-700 px-6 py-3 text-sm font-semibold hover:border-slate-500 hover:bg-slate-800/50 transition-all" target="_blank" rel="noreferrer">
                 GitHub
               </a>
@@ -221,6 +224,8 @@ const featured = PROJECTS.slice(0, 4);
           <span>© {new Date().getFullYear()} {PROFILE.name}</span>
           <div class="flex items-center gap-4">
             <a href={PROFILE.contacts.linkedin.href} class="hover:text-cyan-400" target="_blank" rel="noreferrer">LinkedIn</a>
+            <span class="text-slate-700">•</span>
+            <a href="/files/Ikhtiar_Hidayatullah_CV.pdf" class="hover:text-cyan-400" target="_blank" rel="noreferrer">CV</a>
             <span class="text-slate-700">•</span>
             <a href="/rss.xml" class="hover:text-cyan-400">RSS</a>
             <span class="text-slate-700">•</span>
