@@ -73,12 +73,12 @@ export const PROJECTS: Project[] = [
     links: { repo: 'https://github.com/tiarh' },
     caseStudy: {
       problem:
-        'NOC butuh snapshot cepat (DOWN/UP non-isolir) per area. Manual screenshot dashboard memakan waktu dan rawan miss saat flapping.',
+        'NOC butuh snapshot cepat (DOWN/UP non‑isolir) per area untuk respons gangguan. Sebelumnya manual: buka dashboard, filter area, screenshot, kirim ke grup. Proses ini lambat dan sering miss saat link flapping.',
       solution:
-        'Pipeline Playwright: login dashboard → scrape table → render HTML report → screenshot PNG → kirim otomatis ke WA/Telegram.',
+        'Membangun pipeline otomatis: Playwright login → scrape tabel per area → normalisasi (exclude ISOLIR) → render HTML → screenshot PNG → kirim ke WhatsApp/Telegram. Ditambah command chat `monitoring <area>` untuk on-demand, dan jadwal cron untuk report berkala.',
       outcome:
-        'Waktu bikin laporan turun drastis, dan report bisa di-trigger lewat chat (monitoring AREA).',
-      stack: ['Python', 'Playwright', 'HTML template', 'Cron/systemd', 'WhatsApp/Telegram'],
+        'Laporan per area jadi konsisten dan bisa dibuat dalam hitungan detik. Tim NOC dapat snapshot yang repeatable untuk triage, dan komunikasi ke grup jadi lebih rapi (format sama, cepat dibaca).',
+      stack: ['Python', 'Playwright', 'HTML/CSS template', 'Cron/systemd', 'WhatsApp/Telegram'],
     },
   },
   {
@@ -92,12 +92,12 @@ export const PROJECTS: Project[] = [
     links: { repo: 'https://github.com/tiarh' },
     caseStudy: {
       problem:
-        'Channel operasional ramai. Butuh bot yang aman: tidak spam, hanya respon di grup tertentu, dan bisa jalan 24/7.',
+        'Operasional NOC via chat sering noisy: request monitoring berulang, format tidak konsisten, dan risiko bot “ngaco” kalau bisa merespon semua grup. Dibutuhkan automation yang aman dan terkontrol.',
       solution:
-        'Bot dengan hard allowlist group + cooldown, serta command parser untuk monitoring area dan respon template.',
+        'Membuat WhatsApp bot yang scoped: hard allowlist hanya 1 grup, command router (`monitoring <area>`), cooldown/timeout untuk cegah spam, serta handler yang menghasilkan report PNG dari pipeline monitoring. Fokus pada guardrails dan reliability (jalan 24/7).',
       outcome:
-        'Alur kerja NOC lebih rapi: request monitoring tinggal ketik, tidak perlu login dashboard manual.',
-      stack: ['Node.js', 'whatsapp-web.js', 'OpenClaw', 'Playwright reports'],
+        'Request monitoring jadi satu baris perintah dan hasilnya rapih. Bot tidak mengganggu chat di luar grup yang diizinkan, dan workflow tim lebih cepat karena tidak perlu manual screenshot/dashboard.',
+      stack: ['Node.js', 'OpenClaw', 'WhatsApp integration', 'Guardrails (allowlist/cooldown)', 'Playwright reports'],
     },
   },
 ];
