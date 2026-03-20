@@ -18,6 +18,7 @@ if (!project) throw new Error('Project not found');
   title={`${project.title} — Projects`}
   description={project.description}
   canonical={`https://tiarh.github.io/projects/${project.slug}`}
+  ogImage={`/og/project-${project.slug}.png`}
 >
   <main class="relative min-h-screen">
     <div class="fixed inset-0 bg-grid opacity-40 pointer-events-none"></div>
