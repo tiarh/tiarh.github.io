@@ -77,7 +77,7 @@ export const PROJECTS: Project[] = [
       solution:
         'Membangun pipeline otomatis: Playwright login → scrape tabel per area → normalisasi (exclude ISOLIR) → render HTML → screenshot PNG → kirim ke WhatsApp/Telegram. Ditambah command chat `monitoring <area>` untuk on-demand, dan jadwal cron untuk report berkala.',
       outcome:
-        'Laporan per area jadi konsisten dan bisa dibuat dalam hitungan detik. Tim NOC dapat snapshot yang repeatable untuk triage, dan komunikasi ke grup jadi lebih rapi (format sama, cepat dibaca).',
+        'Sebelumnya butuh ~10 menit (buka laptop → filter → screenshot → kirim). Sekarang cukup trigger lewat chat, report jadi cepat dan konsisten. Tim NOC dapat snapshot yang repeatable untuk triage, dan komunikasi ke grup jadi lebih rapi (format sama, cepat dibaca).',
       stack: ['Python', 'Playwright', 'HTML/CSS template', 'Cron/systemd', 'WhatsApp/Telegram'],
     },
   },
