@@ -1,471 +1,210 @@
 ---
-const PROFILE = {
-  name: "Ikhtiar Hidayatullah",
-  role: "Network Engineer",
-  tagline: "ISP NOC • MikroTik • Routing • Monitoring Automation",
-  location: "Indonesia",
-  contacts: {
-    telegram: { label: "@lumayancuk", href: "https://t.me/lumayancuk" },
-    whatsapp: { label: "+62 852-3441-5861", href: "https://wa.me/6285234415861" },
-    email: { label: "ihidayatullah57@gmail.com", href: "mailto:ihidayatullah57@gmail.com" },
-    github: { label: "tiarh", href: "https://github.com/tiarh" },
-  },
-};
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import { PROFILE } from '../data/profile';
+import { STATS } from '../data/stats';
+import { EXPERIENCE } from '../data/experience';
+import { TOOLS } from '../data/tools';
+import { PROJECTS } from '../data/projects';
 
-const STATS = [
-  { value: "5+", label: "Years Experience" },
-  { value: "50+", label: "Network Devices Managed" },
-  { value: "28", label: "Monitoring Areas" },
-  { value: "99.9%", label: "Network Uptime" },
-];
-
-const EXPERIENCE = [
-  {
-    role: "Network Operations Center (NOC)",
-    company: "Skynet ISP",
-    period: "2022 - Present",
-    description: "Manage ISP infrastructure, PPPoE deployment, monitoring automation, and incident response for 28+ coverage areas.",
-    highlights: ["Deploy & maintain 50+ MikroTik routers", "Build monitoring automation with Playwright", "Reduce incident response time by 60%"],
-  },
-  {
-    role: "Network Engineer",
-    company: "ISP Infrastructure Projects",
-    period: "2020 - 2022",
-    description: "Designed and implemented network infrastructure for ISPs including PPPoE servers, QoS policies, and multi-WAN setups.",
-    highlights: ["PCQ-based bandwidth management", "Dual-WAN failover implementations", "OSPF routing deployments"],
-  },
-];
-
-const PROJECTS = [
-  {
-    title: "ISP PPPoE Platform (MikroTik)",
-    status: "Case study",
-    tags: ["MikroTik", "PPPoE", "PCQ", "QoS"],
-    description:
-      "Desain PPPoE server + profile bandwidth (PCQ), queue/limits, dan SOP deployment. Fokus stabil, aman, dan mudah dioperasikan.",
-    highlights: [
-      "PPPoE profiles & rate limits (PCQ)",
-      "Queue parent strategy + basic anti-abuse",
-      "Sanitized config snippets + test checklist",
-    ],
-    github: "#",
-    demo: null,
-  },
-  {
-    title: "Dual-WAN Failover & Load Balancing",
-    status: "Case study",
-    tags: ["Routing", "Failover", "PCC", "MikroTik"],
-    description:
-      "Implementasi multi-WAN dengan health-check, recursive routing untuk failover, dan PCC untuk distribusi trafik.",
-    highlights: [
-      "Recursive route failover + health check",
-      "PCC policy routing",
-      "Before/after + test scenarios",
-    ],
-    github: "#",
-    demo: null,
-  },
-  {
-    title: "Monitoring Automation (Skynet)",
-    status: "Production",
-    tags: ["Playwright", "Reporting", "NOC", "Automation"],
-    description:
-      "Auto-generate report per area (DOWN/UP non‑isolir) + last active, output gambar siap kirim ke WA/Telegram.",
-    highlights: [
-      "Exclude ISOLIR rows",
-      "Sampling to catch flapping downs",
-      "HTML → Image report",
-      "Cron job tiap 15 menit",
-    ],
-    github: "https://github.com/tiarh",
-    demo: null,
-  },
-  {
-    title: "WhatsApp Ops Bot",
-    status: "Production",
-    tags: ["WhatsApp", "OpenClaw", "Node.js", "Automation"],
-    description:
-      "Bot WA khusus 1 grup untuk monitoring per area + chat ops. Ada allowlist, anti-loop, dan command monitoring AREA.",
-    highlights: [
-      "Hard allowlist group",
-      "Monitoring via areas.json",
-      "Anti-spam + timeouts",
-      "Auto-retry dengan exponential backoff",
-    ],
-    github: "https://github.com/tiarh",
-    demo: null,
-  },
-];
-
-const BLOG_POSTS = [
-  {
-    title: "Optimasi PPPoE dengan PCQ di MikroTik",
-    excerpt: "Cara mengatur bandwidth management yang fair untuk pelanggan ISP menggunakan PCQ queues.",
-    date: "2026-03-15",
-    readTime: "5 min",
-    tags: ["MikroTik", "PPPoE", "QoS"],
-  },
-  {
-    title: "Setup Dual-WAN Failover dengan Recursive Routing",
-    excerpt: "Implementasi failover otomatis antara dua koneksi internet menggunakan recursive routing.",
-    date: "2026-02-20",
-    readTime: "8 min",
-    tags: ["Routing", "Failover", "MikroTik"],
-  },
-  {
-    title: "Monitoring Automation dengan Playwright",
-    excerpt: "Generate laporan monitoring otomatis dari web dashboard dan kirim ke WhatsApp/Telegram.",
-    date: "2026-01-10",
-    readTime: "6 min",
-    tags: ["Automation", "Playwright", "Python"],
-  },
-];
-
-const SKILLS = [
-  { name: "MikroTik", level: "Expert", category: "Networking" },
-  { name: "PPPoE/PCQ", level: "Expert", category: "Networking" },
-  { name: "Routing (OSPF)", level: "Advanced", category: "Networking" },
-  { name: "Failover/Load Balance", level: "Advanced", category: "Networking" },
-  { name: "Python", level: "Advanced", category: "Automation" },
-  { name: "Playwright", level: "Intermediate", category: "Automation" },
-  { name: "Node.js", level: "Intermediate", category: "Automation" },
-  { name: "Linux/Systemd", level: "Advanced", category: "System" },
-  { name: "Nginx", level: "Intermediate", category: "System" },
-];
-
-const TOOLS = [
-  { name: "MikroTik RouterOS", icon: "🌐" },
-  { name: "Python", icon: "🐍" },
-  { name: "Node.js", icon: "🟢" },
-  { name: "Linux", icon: "🐧" },
-  { name: "Git", icon: "📦" },
-  { name: "Nginx", icon: "🚀" },
-  { name: "Playwright", icon: "🎭" },
-  { name: "Docker", icon: "🐳" },
-];
+const featured = PROJECTS.slice(0, 4);
 ---
 
-<html lang="id" data-theme="dark">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{PROFILE.name} — {PROFILE.role}</title>
-    <meta name="description" content={`${PROFILE.name} — ${PROFILE.role}. ${PROFILE.tagline}.`} />
-    <meta name="keywords" content="Network Engineer, ISP, NOC, MikroTik, PPPoE, Routing, Indonesia" />
-    <meta name="author" content={PROFILE.name} />
-    <meta property="og:title" content={`${PROFILE.name} — ${PROFILE.role}`} />
-    <meta property="og:description" content={PROFILE.tagline} />
-    <meta property="og:type" content="website" />
-    <meta name="color-scheme" content="dark light" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  </head>
-  <body class="bg-slate-950 text-slate-100 antialiased">
-    <script is:inline>
-      // Theme toggle logic
-      const theme = localStorage.getItem('theme') || 'dark';
-      document.documentElement.setAttribute('data-theme', theme);
-      if (theme === 'dark') {
-        document.body.classList.add('bg-slate-950', 'text-slate-100');
-      } else {
-        document.body.classList.add('bg-white', 'text-slate-900');
-      }
-    </script>
+<BaseLayout>
+  <main class="relative min-h-screen">
+    <div class="fixed inset-0 bg-grid opacity-40 pointer-events-none"></div>
+    <div
+      class="fixed -top-40 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full blur-3xl opacity-35 pointer-events-none"
+      style="background: conic-gradient(from 180deg, #22d3ee, #60a5fa, #a78bfa, #22d3ee);"
+    ></div>
 
-    <main class="relative min-h-screen">
-      <!-- Animated Background -->
-      <div class="fixed inset-0 bg-grid opacity-40 pointer-events-none"></div>
-      <div class="fixed -top-40 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full blur-3xl opacity-35 pointer-events-none" 
-           style="background: conic-gradient(from 180deg, #22d3ee, #60a5fa, #a78bfa, #22d3ee);"></div>
+    <div class="relative mx-auto max-w-5xl px-6 py-12">
+      <SiteHeader />
 
-      <div class="relative mx-auto max-w-5xl px-6 py-12">
-        <!-- Header -->
-        <header class="flex items-center justify-between gap-6 sticky top-0 z-50 py-4 backdrop-blur-lg rounded-2xl border border-slate-800/50 bg-slate-950/80 px-6">
-          <a href="#" class="font-semibold tracking-tight text-lg">{PROFILE.name}</a>
-          <nav class="hidden md:flex gap-6 text-sm">
-            <a class="hover:text-cyan-400 transition-colors" href="#about">About</a>
-            <a class="hover:text-cyan-400 transition-colors" href="#experience">Experience</a>
-            <a class="hover:text-cyan-400 transition-colors" href="#projects">Projects</a>
-            <a class="hover:text-cyan-400 transition-colors" href="#blog">Blog</a>
-            <a class="hover:text-cyan-400 transition-colors" href="#contact">Contact</a>
-          </nav>
-          <button id="theme-toggle" class="p-2 rounded-xl border border-slate-700 hover:border-slate-500 transition-colors" aria-label="Toggle theme">
-            <span class="dark-icon">🌙</span>
-            <span class="light-icon hidden">☀️</span>
-          </button>
-        </header>
-
-        <!-- Hero -->
-        <section id="about" class="mt-20">
-          <div class="grid gap-12 lg:grid-cols-[1fr_280px] lg:items-center">
-            <div class="space-y-6">
-              <div class="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-1.5 text-sm text-cyan-400">
-                <span class="relative flex h-2 w-2">
-                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
-                  <span class="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
-                </span>
-                Available for freelance
-              </div>
-              <h1 class="text-5xl font-bold tracking-tight lg:text-6xl">
-                {PROFILE.role}
-                <span class="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">
-                  {PROFILE.tagline}
-                </span>
-              </h1>
-              <p class="max-w-2xl text-lg text-slate-300 leading-relaxed">
-                Saya fokus di operasi ISP/NOC: routing, PPPoE, bandwidth management, monitoring, dan otomatisasi.
-                Tujuan saya: jaringan stabil, troubleshooting cepat, dan tooling yang bisa dipakai tim.
-              </p>
-              <div class="flex flex-wrap gap-4">
-                <a href="#projects" class="group relative inline-flex items-center gap-2 rounded-xl bg-cyan-500 px-6 py-3 text-sm font-semibold text-slate-950 hover:bg-cyan-400 transition-all">
-                  Lihat projects
-                  <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                </a>
-                <a href={PROFILE.contacts.github.href} class="rounded-xl border border-slate-700 px-6 py-3 text-sm font-semibold hover:border-slate-500 hover:bg-slate-800/50 transition-all" target="_blank" rel="noreferrer">
-                  GitHub Profile
-                </a>
-              </div>
-            </div>
-
-            <div class="floaty mx-auto lg:mx-0">
-              <div class="relative grid h-64 w-64 place-items-center rounded-3xl border border-slate-700 bg-slate-900/40 shadow-2xl overflow-hidden">
-                <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/20 via-blue-500/10 to-purple-500/20"></div>
-                <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%2394a3b8\' fill-opacity=\'0.1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-30"></div>
-                <div class="relative text-center">
-                  <div class="grid h-28 w-28 place-items-center rounded-2xl bg-slate-950/60 ring-1 ring-slate-700 backdrop-blur-sm mx-auto">
-                    <span class="text-4xl font-bold tracking-tight bg-gradient-to-br from-cyan-400 to-purple-500 bg-clip-text text-transparent">IH</span>
-                  </div>
-                  <p class="mt-4 text-center text-sm text-slate-400">Network Engineer</p>
-                  <p class="text-xs text-slate-500">{PROFILE.location}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Stats -->
-        <section class="mt-20">
-          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {STATS.map((stat) => (
-              <div class="rounded-2xl border border-slate-800 bg-slate-900/30 p-6 text-center hover:border-slate-700 transition-all hover:bg-slate-800/30">
-                <div class="text-3xl font-bold text-cyan-400">{stat.value}</div>
-                <div class="mt-1 text-sm text-slate-400">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <!-- Experience -->
-        <section id="experience" class="mt-20">
-          <h2 class="text-3xl font-bold mb-8">Experience</h2>
+      <!-- Hero -->
+      <section id="about" class="mt-16">
+        <div class="grid gap-12 lg:grid-cols-[1fr_280px] lg:items-center">
           <div class="space-y-6">
-            {EXPERIENCE.map((exp, i) => (
-              <div class="relative pl-8 border-l-2 border-slate-800 hover:border-cyan-500/50 transition-colors">
-                <div class="absolute -left-[9px] top-0 h-4 w-4 rounded-full bg-slate-800 border-2 border-cyan-500"></div>
-                <div class="rounded-2xl border border-slate-800 bg-slate-900/30 p-6 hover:border-slate-700 transition-all">
-                  <div class="flex flex-wrap items-start justify-between gap-4">
-                    <div>
-                      <h3 class="text-xl font-semibold">{exp.role}</h3>
-                      <p class="text-cyan-400">{exp.company}</p>
-                    </div>
-                    <span class="text-sm text-slate-500 bg-slate-800/50 px-3 py-1 rounded-full">{exp.period}</span>
-                  </div>
-                  <p class="mt-3 text-slate-300">{exp.description}</p>
-                  <ul class="mt-4 flex flex-wrap gap-2">
-                    {exp.highlights.map((h) => (
-                      <li class="text-xs bg-slate-800/70 text-slate-300 px-3 py-1.5 rounded-full">{h}</li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <!-- Tools -->
-        <section class="mt-20">
-          <h2 class="text-3xl font-bold mb-8">Tools & Technologies</h2>
-          <div class="grid grid-cols-4 md:grid-cols-8 gap-4">
-            {TOOLS.map((tool) => (
-              <div class="group rounded-2xl border border-slate-800 bg-slate-900/30 p-4 text-center hover:border-cyan-500/50 hover:bg-slate-800/50 transition-all cursor-default" title={tool.name}>
-                <div class="text-3xl mb-2 group-hover:scale-110 transition-transform">{tool.icon}</div>
-                <div class="text-xs text-slate-400">{tool.name}</div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <!-- Projects -->
-        <section id="projects" class="mt-20">
-          <div class="flex items-end justify-between gap-6 mb-8">
-            <div>
-              <h2 class="text-3xl font-bold">Projects</h2>
-              <p class="mt-2 text-slate-400">Kumpulan case study & automation yang relevan untuk NOC/ISP.</p>
+            <div class="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-1.5 text-sm text-cyan-400">
+              <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
+              </span>
+              {PROFILE.availability}
+            </div>
+            <h1 class="text-5xl font-bold tracking-tight lg:text-6xl">
+              {PROFILE.role}
+              <span class="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">
+                {PROFILE.tagline}
+              </span>
+            </h1>
+            <p class="max-w-2xl text-lg text-slate-300 leading-relaxed">{PROFILE.headline}</p>
+            <div class="flex flex-wrap gap-4">
+              <a href="/projects" class="group relative inline-flex items-center gap-2 rounded-xl bg-cyan-500 px-6 py-3 text-sm font-semibold text-slate-950 hover:bg-cyan-400 transition-all">
+                Lihat projects
+                <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+              </a>
+              <a href="/blog" class="rounded-xl border border-slate-700 px-6 py-3 text-sm font-semibold hover:border-slate-500 hover:bg-slate-800/50 transition-all">
+                Baca blog
+              </a>
+              <a href={PROFILE.contacts.github.href} class="rounded-xl border border-slate-700 px-6 py-3 text-sm font-semibold hover:border-slate-500 hover:bg-slate-800/50 transition-all" target="_blank" rel="noreferrer">
+                GitHub
+              </a>
             </div>
           </div>
-          <div class="grid gap-6 md:grid-cols-2">
-            {PROJECTS.map((p) => (
-              <article class="group rounded-2xl border border-slate-800 bg-slate-900/30 p-6 hover:border-cyan-500/30 hover:bg-slate-800/30 transition-all">
-                <div class="flex items-start justify-between gap-3">
-                  <h3 class="text-xl font-semibold group-hover:text-cyan-400 transition-colors">{p.title}</h3>
-                  <span class="rounded-full border border-slate-700 px-3 py-1 text-xs text-slate-300">{p.status}</span>
+
+          <div class="floaty mx-auto lg:mx-0">
+            <div class="relative grid h-64 w-64 place-items-center rounded-3xl border border-slate-700 bg-slate-900/40 shadow-2xl overflow-hidden">
+              <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/20 via-blue-500/10 to-purple-500/20"></div>
+              <div class="relative text-center">
+                <div class="grid h-28 w-28 place-items-center rounded-2xl bg-slate-950/60 ring-1 ring-slate-700 backdrop-blur-sm mx-auto">
+                  <span class="text-4xl font-bold tracking-tight bg-gradient-to-br from-cyan-400 to-purple-500 bg-clip-text text-transparent">{PROFILE.initials}</span>
                 </div>
-                <p class="mt-3 text-slate-300">{p.description}</p>
-                <div class="mt-4 flex flex-wrap gap-2">
-                  {p.tags.map((t) => (
-                    <span class="rounded-full bg-slate-800/70 px-3 py-1 text-xs text-slate-200">{t}</span>
-                  ))}
+                <p class="mt-4 text-center text-sm text-slate-400">{PROFILE.role}</p>
+                <p class="text-xs text-slate-500">{PROFILE.location}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Stats -->
+      <section class="mt-20">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {STATS.map((stat) => (
+            <div class="rounded-2xl border border-slate-800 bg-slate-900/30 p-6 text-center hover:border-slate-700 transition-all hover:bg-slate-800/30">
+              <div class="text-3xl font-bold text-cyan-400">{stat.value}</div>
+              <div class="mt-1 text-sm text-slate-400">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Experience -->
+      <section id="experience" class="mt-20">
+        <h2 class="text-3xl font-bold mb-8">Experience</h2>
+        <div class="space-y-6">
+          {EXPERIENCE.map((exp) => (
+            <div class="relative pl-8 border-l-2 border-slate-800 hover:border-cyan-500/50 transition-colors">
+              <div class="absolute -left-[9px] top-0 h-4 w-4 rounded-full bg-slate-800 border-2 border-cyan-500"></div>
+              <div class="rounded-2xl border border-slate-800 bg-slate-900/30 p-6 hover:border-slate-700 transition-all">
+                <div class="flex flex-wrap items-start justify-between gap-4">
+                  <div>
+                    <h3 class="text-xl font-semibold">{exp.role}</h3>
+                    <p class="text-cyan-400">{exp.company}</p>
+                  </div>
+                  <span class="text-sm text-slate-500 bg-slate-800/50 px-3 py-1 rounded-full">{exp.period}</span>
                 </div>
-                <ul class="mt-4 space-y-2">
-                  {p.highlights.map((h) => (
-                    <li class="flex items-center gap-2 text-sm text-slate-400">
-                      <svg class="w-4 h-4 text-cyan-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                      {h}
-                    </li>
+                <p class="mt-3 text-slate-300">{exp.description}</p>
+                <ul class="mt-4 flex flex-wrap gap-2">
+                  {exp.highlights.map((h) => (
+                    <li class="text-xs bg-slate-800/70 text-slate-300 px-3 py-1.5 rounded-full">{h}</li>
                   ))}
                 </ul>
-                <div class="mt-6 flex gap-3">
-                  <a href={p.github} class="text-sm text-cyan-400 hover:text-cyan-300 flex items-center gap-1" target="_blank" rel="noreferrer">
-                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                    Source Code
-                  </a>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <!-- Blog -->
-        <section id="blog" class="mt-20">
-          <h2 class="text-3xl font-bold mb-8">Latest Articles</h2>
-          <div class="grid gap-6 md:grid-cols-3">
-            {BLOG_POSTS.map((post) => (
-              <article class="group rounded-2xl border border-slate-800 bg-slate-900/30 p-6 hover:border-slate-700 transition-all cursor-pointer">
-                <div class="flex items-center gap-2 text-xs text-slate-500 mb-3">
-                  <time>{post.date}</time>
-                  <span>•</span>
-                  <span>{post.readTime} read</span>
-                </div>
-                <h3 class="text-lg font-semibold group-hover:text-cyan-400 transition-colors mb-2">{post.title}</h3>
-                <p class="text-sm text-slate-400 mb-4 line-clamp-2">{post.excerpt}</p>
-                <div class="flex flex-wrap gap-2">
-                  {post.tags.map((t) => (
-                    <span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded">{t}</span>
-                  ))}
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <!-- Contact -->
-        <section id="contact" class="mt-20">
-          <div class="rounded-3xl border border-slate-800 bg-slate-900/30 p-8 md:p-12">
-            <div class="grid gap-8 md:grid-cols-2 items-center">
-              <div>
-                <h2 class="text-3xl font-bold mb-4">Let's work together</h2>
-                <p class="text-slate-400 mb-6">Buka untuk proyek konsultasi network infrastructure, automation, atau ISP operations.</p>
-                <a href={`mailto:${PROFILE.contacts.email.label}`} class="inline-flex items-center gap-2 rounded-xl bg-cyan-500 px-6 py-3 text-sm font-semibold text-slate-950 hover:bg-cyan-400 transition-all">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                  Send Email
-                </a>
-              </div>
-              <div class="grid gap-4">
-                <a class="flex items-center gap-4 rounded-xl border border-slate-800 bg-slate-950/50 p-4 hover:border-slate-700 transition-all" href={PROFILE.contacts.telegram.href} target="_blank" rel="noreferrer">
-                  <span class="text-2xl">💬</span>
-                  <div>
-                    <div class="text-sm text-slate-500">Telegram</div>
-                    <div class="font-semibold">{PROFILE.contacts.telegram.label}</div>
-                  </div>
-                </a>
-                <a class="flex items-center gap-4 rounded-xl border border-slate-800 bg-slate-950/50 p-4 hover:border-slate-700 transition-all" href={PROFILE.contacts.whatsapp.href} target="_blank" rel="noreferrer">
-                  <span class="text-2xl">📱</span>
-                  <div>
-                    <div class="text-sm text-slate-500">WhatsApp</div>
-                    <div class="font-semibold">{PROFILE.contacts.whatsapp.label}</div>
-                  </div>
-                </a>
               </div>
             </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Tools -->
+      <section class="mt-20">
+        <h2 class="text-3xl font-bold mb-8">Tools & Technologies</h2>
+        <div class="grid grid-cols-4 md:grid-cols-8 gap-4">
+          {TOOLS.map((tool) => (
+            <div class="group rounded-2xl border border-slate-800 bg-slate-900/30 p-4 text-center hover:border-cyan-500/50 hover:bg-slate-800/50 transition-all cursor-default" title={tool.name}>
+              <div class="text-3xl mb-2 group-hover:scale-110 transition-transform">{tool.icon}</div>
+              <div class="text-xs text-slate-400">{tool.name}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Featured Projects -->
+      <section class="mt-20">
+        <div class="flex items-end justify-between gap-6 mb-8">
+          <div>
+            <h2 class="text-3xl font-bold">Featured Projects</h2>
+            <p class="mt-2 text-slate-400">Pilihan case study & automation.</p>
           </div>
-        </section>
+          <a href="/projects" class="text-sm text-cyan-400 hover:text-cyan-300">Lihat semua →</a>
+        </div>
 
-        <footer class="mt-20 border-t border-slate-800 py-8">
-          <div class="flex flex-wrap items-center justify-between gap-4">
-            <span class="text-slate-500">© {new Date().getFullYear()} {PROFILE.name}. All rights reserved.</span>
-            <span class="text-slate-600 text-sm">Built with Astro + Tailwind CSS</span>
+        <div class="grid gap-6 md:grid-cols-2">
+          {featured.map((p) => (
+            <a href={`/projects/${p.slug}`} class="group rounded-2xl border border-slate-800 bg-slate-900/30 p-6 hover:border-cyan-500/30 hover:bg-slate-800/30 transition-all">
+              <div class="flex items-start justify-between gap-3">
+                <h3 class="text-xl font-semibold group-hover:text-cyan-400 transition-colors">{p.title}</h3>
+                <span class="rounded-full border border-slate-700 px-3 py-1 text-xs text-slate-300">{p.status}</span>
+              </div>
+              <p class="mt-3 text-slate-300">{p.description}</p>
+              <div class="mt-4 flex flex-wrap gap-2">
+                {p.tags.map((t) => (
+                  <span class="rounded-full bg-slate-800/70 px-3 py-1 text-xs text-slate-200">{t}</span>
+                ))}
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" class="mt-20">
+        <div class="rounded-3xl border border-slate-800 bg-slate-900/30 p-8 md:p-12">
+          <div class="grid gap-8 md:grid-cols-2 items-center">
+            <div>
+              <h2 class="text-3xl font-bold mb-4">Let’s work together</h2>
+              <p class="text-slate-400 mb-6">Buka untuk proyek konsultasi network infrastructure, automation, atau ISP operations.</p>
+              <a href={PROFILE.contacts.email.href} class="inline-flex items-center gap-2 rounded-xl bg-cyan-500 px-6 py-3 text-sm font-semibold text-slate-950 hover:bg-cyan-400 transition-all">
+                Send Email
+              </a>
+            </div>
+            <div class="grid gap-4">
+              <a class="flex items-center gap-4 rounded-xl border border-slate-800 bg-slate-950/50 p-4 hover:border-slate-700 transition-all" href={PROFILE.contacts.telegram.href} target="_blank" rel="noreferrer">
+                <span class="text-2xl">💬</span>
+                <div>
+                  <div class="text-sm text-slate-500">Telegram</div>
+                  <div class="font-semibold">{PROFILE.contacts.telegram.label}</div>
+                </div>
+              </a>
+              <a class="flex items-center gap-4 rounded-xl border border-slate-800 bg-slate-950/50 p-4 hover:border-slate-700 transition-all" href={PROFILE.contacts.whatsapp.href} target="_blank" rel="noreferrer">
+                <span class="text-2xl">📱</span>
+                <div>
+                  <div class="text-sm text-slate-500">WhatsApp</div>
+                  <div class="font-semibold">{PROFILE.contacts.whatsapp.label}</div>
+                </div>
+              </a>
+            </div>
           </div>
-        </footer>
-      </div>
-    </main>
+        </div>
+      </section>
 
-    <style is:global>
-      @import "../styles/global.css";
-      
-      html {
-        scroll-behavior: smooth;
-      }
-      
-      .bg-grid {
-        background-image: radial-gradient(rgba(148, 163, 184, 0.25) 1px, transparent 0);
-        background-size: 32px 32px;
-        background-position: -8px -8px;
-        mask-image: radial-gradient(circle at 50% 0%, black 30%, transparent 70%);
-      }
-      
-      @media (prefers-reduced-motion: reduce) {
-        .floaty { animation: none !important; }
-        html { scroll-behavior: auto; }
-      }
-      
-      .floaty {
-        animation: floaty 8s ease-in-out infinite;
-      }
-      
-      @keyframes floaty {
-        0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-12px); }
-      }
-      
-      .line-clamp-2 {
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-      }
-    </style>
+      <footer class="mt-20 border-t border-slate-800 py-8 text-sm text-slate-500">
+        <div class="flex flex-wrap items-center justify-between gap-4">
+          <span>© {new Date().getFullYear()} {PROFILE.name}</span>
+          <div class="flex items-center gap-4">
+            <a href="/rss.xml" class="hover:text-cyan-400">RSS</a>
+            <span class="text-slate-700">•</span>
+            <span class="text-slate-600">Built with Astro + Tailwind</span>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </main>
 
-    <script is:inline>
-      // Theme toggle
-      const toggle = document.getElementById('theme-toggle');
-      const darkIcon = toggle.querySelector('.dark-icon');
-      const lightIcon = toggle.querySelector('.light-icon');
-      
-      function updateTheme() {
-        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-        if (isDark) {
-          document.body.classList.remove('bg-white', 'text-slate-900');
-          document.body.classList.add('bg-slate-950', 'text-slate-100');
-          darkIcon.classList.remove('hidden');
-          lightIcon.classList.add('hidden');
-        } else {
-          document.body.classList.remove('bg-slate-950', 'text-slate-100');
-          document.body.classList.add('bg-white', 'text-slate-900');
-          darkIcon.classList.add('hidden');
-          lightIcon.classList.remove('hidden');
-        }
-      }
-      
-      toggle.addEventListener('click', () => {
-        const current = document.documentElement.getAttribute('data-theme');
-        const next = current === 'dark' ? 'light' : 'dark';
-        document.documentElement.setAttribute('data-theme', next);
-        localStorage.setItem('theme', next);
-        updateTheme();
-      });
-      
-      updateTheme();
-    </script>
-  </body>
-</html>
+  <style is:global>
+    html { scroll-behavior: smooth; }
+    .bg-grid {
+      background-image: radial-gradient(rgba(148, 163, 184, 0.25) 1px, transparent 0);
+      background-size: 32px 32px;
+      background-position: -8px -8px;
+      mask-image: radial-gradient(circle at 50% 0%, black 30%, transparent 70%);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .floaty { animation: none !important; }
+      html { scroll-behavior: auto; }
+    }
+    .floaty { animation: floaty 8s ease-in-out infinite; }
+    @keyframes floaty { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+  </style>
+</BaseLayout>

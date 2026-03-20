@@ -1,0 +1,87 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import { PROJECTS } from '../../data/projects';
+
+export const prerender = true;
+
+export function getStaticPaths() {
+  return PROJECTS.map((p) => ({ params: { slug: p.slug } }));
+}
+
+const { slug } = Astro.params;
+const project = PROJECTS.find((p) => p.slug === slug);
+if (!project) throw new Error('Project not found');
+---
+
+<BaseLayout
+  title={`${project.title} — Projects`}
+  description={project.description}
+  canonical={`https://tiarh.github.io/projects/${project.slug}`}
+>
+  <main class="relative min-h-screen">
+    <div class="fixed inset-0 bg-grid opacity-40 pointer-events-none"></div>
+    <div class="relative mx-auto max-w-4xl px-6 py-12">
+      <SiteHeader />
+
+      <article class="mt-12">
+        <a href="/projects" class="text-sm text-slate-400 hover:text-cyan-400">← Projects</a>
+
+        <h1 class="mt-4 text-4xl font-bold">{project.title}</h1>
+        <p class="mt-2 text-slate-400">{project.status} • {project.tags.join(' • ')}</p>
+        <p class="mt-6 text-slate-200/90">{project.description}</p>
+
+        <section class="mt-10 grid gap-6">
+          <div class="rounded-2xl border border-slate-800 bg-slate-900/30 p-6">
+            <h2 class="text-xl font-semibold">Problem</h2>
+            <p class="mt-2 text-slate-300">{project.caseStudy.problem}</p>
+          </div>
+          <div class="rounded-2xl border border-slate-800 bg-slate-900/30 p-6">
+            <h2 class="text-xl font-semibold">Solution</h2>
+            <p class="mt-2 text-slate-300">{project.caseStudy.solution}</p>
+          </div>
+          <div class="rounded-2xl border border-slate-800 bg-slate-900/30 p-6">
+            <h2 class="text-xl font-semibold">Outcome</h2>
+            <p class="mt-2 text-slate-300">{project.caseStudy.outcome}</p>
+          </div>
+        </section>
+
+        <section class="mt-10">
+          <h2 class="text-2xl font-semibold">Highlights</h2>
+          <ul class="mt-4 space-y-2">
+            {project.highlights.map((h) => (
+              <li class="flex items-center gap-2 text-slate-300">
+                <span class="text-cyan-400">✓</span>
+                {h}
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section class="mt-10">
+          <h2 class="text-2xl font-semibold">Stack</h2>
+          <div class="mt-4 flex flex-wrap gap-2">
+            {project.caseStudy.stack.map((s) => (
+              <span class="rounded-full bg-slate-800/70 px-3 py-1 text-sm text-slate-200">{s}</span>
+            ))}
+          </div>
+        </section>
+
+        {project.links?.repo && (
+          <section class="mt-10">
+            <h2 class="text-2xl font-semibold">Links</h2>
+            <div class="mt-4">
+              <a class="text-cyan-400 hover:text-cyan-300" href={project.links.repo} target="_blank" rel="noreferrer">
+                Source / Repo
+              </a>
+            </div>
+          </section>
+        )}
+      </article>
+
+      <footer class="mt-20 border-t border-slate-800 py-8 text-sm text-slate-500">
+        <a href="/" class="hover:text-cyan-400">Home</a>
+      </footer>
+    </div>
+  </main>
+</BaseLayout>

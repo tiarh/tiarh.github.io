@@ -1,0 +1,47 @@
+---
+import '../styles/global.css';
+import { PROFILE } from '../data/profile';
+
+const {
+  title = `${PROFILE.name} — ${PROFILE.role}`,
+  description = `${PROFILE.name} — ${PROFILE.role}. ${PROFILE.tagline}.`,
+  canonical = 'https://tiarh.github.io/',
+  ogImage = '/og.png',
+} = Astro.props;
+---
+
+<html lang="id" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content={ogImage} />
+
+    <meta name="color-scheme" content="dark light" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-slate-950 text-slate-100 antialiased">
+    <slot />
+
+    <script is:inline>
+      const theme = localStorage.getItem('theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', theme);
+      const isDark = theme === 'dark';
+      document.body.classList.toggle('bg-slate-950', isDark);
+      document.body.classList.toggle('text-slate-100', isDark);
+      document.body.classList.toggle('bg-white', !isDark);
+      document.body.classList.toggle('text-slate-900', !isDark);
+    </script>
+  </body>
+</html>
