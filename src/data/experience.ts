@@ -10,7 +10,7 @@ export const EXPERIENCE: ExperienceItem[] = [
   {
     role: 'Network Operations Center (NOC)',
     company: 'Skynet ISP',
-    period: '2022 — sekarang',
+    period: '2025 — sekarang',
     description:
       'Handle operasional ISP: monitoring, incident triage, routing/PPPoE, serta otomasi laporan dan tooling internal.',
     highlights: ['PPPoE ops + provisioning', 'Monitoring automation', 'Incident response'],
