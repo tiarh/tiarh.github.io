@@ -4,27 +4,42 @@ import SiteHeader from "../components/SiteHeader.astro";
 import experience from "../data/experience.ts";
 
 const tools = [
-  { name: "MikroTik", icon: "router", color: "#293239" },
-  { name: "Linux", icon: "terminal", color: "#FCC624" },
-  { name: "Python", icon: "code", color: "#3776AB" },
-  { name: "Nginx", icon: "server", color: "#009639" },
-  { name: "Docker", icon: "container", color: "#2496ED" },
-  { name: "Prometheus", icon: "chart", color: "#E6522C" },
-  { name: "PostgreSQL", icon: "database", color: "#4169E1" },
-  { name: "Git", icon: "git", color: "#F05032" },
+  { name: "MikroTik", emoji: "🔧" },
+  { name: "Linux", emoji: "🐧" },
+  { name: "Python", emoji: "🐍" },
+  { name: "Nginx", emoji: "⚡" },
+  { name: "Docker", emoji: "🐳" },
+  { name: "Grafana", emoji: "📊" },
+  { name: "PostgreSQL", emoji: "🐘" },
+  { name: "Git", emoji: "🔀" },
 ];
 
 const skills = {
   "Networking": ["MikroTik RouterOS", "PPPoE", "VLAN", "Routing (RIP/OSPF/BGP)", "Load Balancing", "QoS/PCQ", "Network Monitoring"],
   "Systems": ["Linux Server", "Nginx", "Docker", "Systemd", "Cron", "SSH Hardening"],
   "Development": ["Python", "Bash Scripting", "PHP", "MySQL/PostgreSQL", "Playwright Automation"],
-  "Tools": ["Git", "Prometheus", "Grafana", "Docker Compose", "vim/nano"]
+  "Tools": ["Git", "Prometheus", "Grafana", "Docker Compose", "vim/nano"],
 };
+
+const skillLevels = [
+  { name: "Network Administration", level: 90 },
+  { name: "Linux Server Admin", level: 85 },
+  { name: "MikroTik RouterOS", level: 88 },
+  { name: "Python / Bash", level: 75 },
+  { name: "Monitoring & Automation", level: 82 },
+  { name: "IT Support", level: 90 },
+];
 
 const certs = [
   { name: "Beginner's Guide to Computer Networking", org: "Dicoding Indonesia", date: "Okt 2023" },
   { name: "Fundamentals of DevOps", org: "Dicoding Indonesia", date: "Sep 2023" },
   { name: "Network Penetration Testing", org: "Cyber Academy Indonesia", date: "Jul 2024" },
+];
+
+const stats = [
+  { value: 3, suffix: "+", label: "Years Experience", decimals: 0 },
+  { value: 3, suffix: "", label: "Certifications", decimals: 0 },
+  { value: 3.70, suffix: "", label: "GPA / 4.00", decimals: 2 },
 ];
 ---
 
@@ -33,101 +48,82 @@ const certs = [
   <div class="orb orb-2"></div>
   <div class="orb orb-3"></div>
   <div class="grid-bg"></div>
+  <div class="cursor-glow" id="cursorGlow"></div>
+  <div id="particles"></div>
 
   <SiteHeader />
 
   <main class="relative z-10 max-w-5xl mx-auto px-6 pb-24">
-    
-    <!-- Hero -->
-    <section class="min-h-[80vh] flex items-center justify-center text-center pt-24 pb-16">
+
+    <!-- HERO -->
+    <section class="min-h-[85vh] flex items-center justify-center text-center pt-24 pb-16">
       <div class="max-w-3xl">
-        <div class="mb-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-sm">
+        <div class="mb-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-sm float-badge">
           <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
           Available for opportunities
         </div>
-        
-        <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+
+        <h1 class="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">
           <span class="gradient-text">Ikhtiar</span><br />
           <span class="text-white">Hidayatullah</span>
         </h1>
-        
-        <p class="text-xl md:text-2xl text-slate-400 mb-4">
-          Network Engineer & NOC Specialist
-        </p>
-        
-        <p class="text-base text-slate-500 max-w-xl mx-auto mb-10">
-          Fresh Graduate in Informatic Engineering with hands-on ISP/NOC experience. 
+
+        <div class="h-10 flex items-center justify-center mb-6">
+          <span class="text-xl md:text-2xl text-slate-400">
+            <span id="typewriter"></span><span class="typewriter-cursor text-sky-400">|</span>
+          </span>
+        </div>
+
+        <p class="text-base text-slate-500 max-w-xl mx-auto mb-10 reveal">
+          Fresh Graduate in Informatic Engineering with hands-on ISP/NOC experience.
           Specializing in MikroTik, network monitoring automation, and Linux server administration.
         </p>
 
-        <div class="flex flex-wrap gap-4 justify-center">
-          <a href="/files/Ikhtiar_Hidayatullah_CV.pdf" download
-             class="btn-primary px-8 py-3 rounded-xl text-sm font-medium">
-            📄 Download CV
-          </a>
-          <a href="https://github.com/tiarh" target="_blank"
-             class="btn-secondary px-8 py-3 rounded-xl text-sm font-medium">
-            GitHub
-          </a>
-          <a href="https://linkedin.com/in/ikhtiarh" target="_blank"
-             class="btn-secondary px-8 py-3 rounded-xl text-sm font-medium">
-            LinkedIn
-          </a>
+        <div class="flex flex-wrap gap-4 justify-center reveal" style="transition-delay:0.2s">
+          <a href="/files/Ikhtiar_Hidayatullah_CV.pdf" download class="btn-primary px-8 py-3 rounded-xl text-sm font-medium magnetic">📄 Download CV</a>
+          <a href="https://github.com/tiarh" target="_blank" rel="noopener" class="btn-secondary px-8 py-3 rounded-xl text-sm font-medium magnetic">GitHub</a>
+          <a href="https://linkedin.com/in/ikhtiarh" target="_blank" rel="noopener" class="btn-secondary px-8 py-3 rounded-xl text-sm font-medium magnetic">LinkedIn</a>
         </div>
 
-        <!-- Quick stats -->
-        <div class="grid grid-cols-3 gap-4 mt-16 max-w-lg mx-auto">
-          {[
-            { value: "3+", label: "Years Experience" },
-            { value: "ISP", label: "NOC Background" },
-            { value: "3.70", label: "GPA" }
-          ].map(stat => (
-            <div class="glass-card rounded-xl p-4 stats-card">
-              <div class="text-2xl font-bold gradient-text">{stat.value}</div>
-              <div class="text-xs text-slate-500 mt-1">{stat.label}</div>
+        <div class="grid grid-cols-3 gap-4 mt-16 max-w-lg mx-auto reveal" style="transition-delay:0.4s">
+          {stats.map(stat => (
+            <div class="glass-card rounded-xl p-5 stats-card text-center">
+              <div class="text-3xl font-bold gradient-text">
+                <span class="counter" data-target={stat.value} data-decimals={stat.decimals} data-suffix={stat.suffix}>0</span>
+              </div>
+              <div class="text-xs text-slate-500 mt-2">{stat.label}</div>
             </div>
           ))}
         </div>
       </div>
     </section>
 
-    <!-- Experience -->
+    <!-- EXPERIENCE -->
     <section id="experience" class="py-20">
-      <h2 class="section-title text-2xl font-bold text-white mb-12">Experience</h2>
-      
+      <h2 class="section-title text-2xl font-bold text-white mb-12 reveal">Experience</h2>
       <div class="relative pl-8">
         <div class="timeline-line"></div>
-        
         {experience.map((exp, i) => (
-          <div class="relative mb-12 stagger-item" style={`animation-delay: ${i * 0.15}s`}>
+          <div class="relative mb-12 stagger-item" data-delay={i * 150}>
             <div class="timeline-dot"></div>
-            
             <div class="glass-card rounded-2xl p-6 md:p-8 border-glow">
               <div class="flex flex-wrap items-start justify-between gap-4 mb-4">
                 <div>
                   <h3 class="text-lg font-bold text-white">{exp.title}</h3>
                   <p class="text-sky-400 font-medium">{exp.company}</p>
                 </div>
-                <span class="text-sm text-slate-500 bg-slate-800/50 px-3 py-1 rounded-full">
-                  {exp.period}
-                </span>
+                <span class="text-sm text-slate-500 bg-slate-800/50 px-3 py-1 rounded-full whitespace-nowrap">{exp.period}</span>
               </div>
-              
               <p class="text-slate-400 text-sm mb-4">{exp.description}</p>
-              
               <ul class="space-y-2 mb-5">
                 {exp.highlights.map(h => (
                   <li class="flex items-start gap-2 text-sm text-slate-300">
-                    <span class="text-sky-400 mt-1">▸</span>
-                    {h}
+                    <span class="text-sky-400 mt-0.5">▸</span>{h}
                   </li>
                 ))}
               </ul>
-              
               <div class="flex flex-wrap gap-2">
-                {exp.tags.map(tag => (
-                  <span class="tag">{tag}</span>
-                ))}
+                {exp.tags.map(tag => (<span class="tag">{tag}</span>))}
               </div>
             </div>
           </div>
@@ -135,35 +131,45 @@ const certs = [
       </div>
     </section>
 
-    <!-- Skills -->
+    <!-- SKILLS -->
     <section id="skills" class="py-20">
-      <h2 class="section-title text-2xl font-bold text-white mb-12">Skills</h2>
-      
+      <h2 class="section-title text-2xl font-bold text-white mb-12 reveal">Skills</h2>
+      <div class="glass-card rounded-2xl p-8 mb-8 reveal">
+        <h3 class="text-lg font-semibold text-sky-400 mb-6">Proficiency</h3>
+        <div class="space-y-5">
+          {skillLevels.map(skill => (
+            <div>
+              <div class="flex justify-between text-sm mb-2">
+                <span class="text-slate-300">{skill.name}</span>
+                <span class="text-sky-400 font-medium">{skill.level}%</span>
+              </div>
+              <div class="skill-bar-bg">
+                <div class="skill-bar-fill" data-width={skill.level}></div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
       <div class="grid md:grid-cols-2 gap-6">
         {Object.entries(skills).map(([category, items]) => (
-          <div class="glass-card rounded-2xl p-6">
+          <div class="glass-card rounded-2xl p-6 reveal">
             <h3 class="text-lg font-semibold text-sky-400 mb-4">{category}</h3>
             <div class="flex flex-wrap gap-2">
-              {items.map(item => (
-                <span class="tag">{item}</span>
-              ))}
+              {items.map(item => (<span class="tag">{item}</span>))}
             </div>
           </div>
         ))}
       </div>
     </section>
 
-    <!-- Tools -->
+    <!-- TOOLS -->
     <section id="tools" class="py-20">
-      <h2 class="section-title text-2xl font-bold text-white mb-12">Tools & Technologies</h2>
-      
-      <div class="glass-card rounded-2xl p-8">
+      <h2 class="section-title text-2xl font-bold text-white mb-12 reveal">Tools & Technologies</h2>
+      <div class="glass-card rounded-2xl p-8 reveal">
         <div class="grid grid-cols-4 md:grid-cols-8 gap-6">
           {tools.map((tool, i) => (
-            <div class="tool-icon text-center stagger-item" style={`animation-delay: ${i * 0.08}s`}>
-              <div class="w-14 h-14 mx-auto mb-2 rounded-xl bg-slate-800/50 border border-slate-700/50 flex items-center justify-center text-2xl">
-                {tool.name[0]}
-              </div>
+            <div class="tool-icon text-center stagger-item" data-delay={i * 80}>
+              <div class="tool-box w-14 h-14 mx-auto mb-2 rounded-xl bg-slate-800/50 border border-slate-700/50 flex items-center justify-center text-2xl transition-all duration-300">{tool.emoji}</div>
               <span class="text-xs text-slate-400">{tool.name}</span>
             </div>
           ))}
@@ -171,17 +177,14 @@ const certs = [
       </div>
     </section>
 
-    <!-- Certifications -->
+    <!-- CERTIFICATIONS -->
     <section id="certifications" class="py-20">
-      <h2 class="section-title text-2xl font-bold text-white mb-12">Certifications</h2>
-      
+      <h2 class="section-title text-2xl font-bold text-white mb-12 reveal">Certifications</h2>
       <div class="space-y-4">
         {certs.map((cert, i) => (
-          <div class="glass-card rounded-xl p-5 flex flex-wrap items-center justify-between gap-4 stagger-item" style={`animation-delay: ${i * 0.1}s`}>
+          <div class="glass-card rounded-xl p-5 flex flex-wrap items-center justify-between gap-4 stagger-item" data-delay={i * 100}>
             <div class="flex items-center gap-4">
-              <div class="w-10 h-10 rounded-lg bg-sky-500/10 border border-sky-500/20 flex items-center justify-center">
-                <span class="text-sky-400 text-lg">📜</span>
-              </div>
+              <div class="w-12 h-12 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-xl">📜</div>
               <div>
                 <h4 class="font-medium text-white">{cert.name}</h4>
                 <p class="text-sm text-slate-500">{cert.org}</p>
@@ -193,48 +196,36 @@ const certs = [
       </div>
     </section>
 
-    <!-- Education -->
+    <!-- EDUCATION -->
     <section id="education" class="py-20">
-      <h2 class="section-title text-2xl font-bold text-white mb-12">Education</h2>
-      
-      <div class="glass-card rounded-2xl p-8">
+      <h2 class="section-title text-2xl font-bold text-white mb-12 reveal">Education</h2>
+      <div class="glass-card rounded-2xl p-8 reveal">
         <div class="flex flex-wrap items-start justify-between gap-4 mb-4">
           <div>
             <h3 class="text-xl font-bold text-white">Universitas Trunojoyo Madura</h3>
             <p class="text-sky-400">Bangkalan, Jawa Timur</p>
           </div>
-          <span class="text-sm text-slate-500 bg-slate-800/50 px-3 py-1 rounded-full">
-            Jul 2020 — Okt 2025
-          </span>
+          <span class="text-sm text-slate-500 bg-slate-800/50 px-3 py-1 rounded-full">Jul 2020 — Okt 2025</span>
         </div>
-        
-        <p class="text-slate-300 mb-2">
-          <span class="font-semibold text-white">Fresh Graduate</span> — Informatic Engineering
-        </p>
+        <p class="text-slate-300 mb-2"><span class="font-semibold text-white">Fresh Graduate</span> — Informatic Engineering</p>
         <p class="text-sky-400 font-medium">IPK: 3.70 / 4.00</p>
-        
-        <p class="text-sm text-slate-400 mt-4">
-          Fokus di jaringan komputer dan administrasi Linux. Aktif di organisasi kampus 
-          KOELIT Linux Community. Mempunyai pengalaman dalam proyek optimasi Linux server 
-          serta network security.
-        </p>
+        <p class="text-sm text-slate-400 mt-4">Fokus di jaringan komputer dan administrasi Linux. Aktif di organisasi kampus KOELIT Linux Community. Mempunyai pengalaman dalam proyek optimasi Linux server serta network security.</p>
       </div>
     </section>
 
-    <!-- Contact -->
+    <!-- CONTACT -->
     <section id="contact" class="py-20">
-      <h2 class="section-title text-2xl font-bold text-white mb-12">Get In Touch</h2>
-      
+      <h2 class="section-title text-2xl font-bold text-white mb-12 reveal">Get In Touch</h2>
       <div class="grid md:grid-cols-3 gap-4">
         {[
           { icon: "📧", label: "Email", value: "ihidayatullah57@gmail.com", href: "mailto:ihidayatullah57@gmail.com" },
           { icon: "📱", label: "Phone", value: "085234415861", href: "tel:085234415861" },
           { icon: "📍", label: "Location", value: "Pamekasan, Jawa Timur", href: null },
         ].map(item => (
-          <a href={item.href || "#"} 
-             class={`contact-card glass-card rounded-xl p-5 ${item.href ? 'cursor-pointer' : 'cursor-default'}`}
+          <a href={item.href || "#"}
+             class={`contact-card glass-card rounded-xl p-6 text-center reveal ${item.href ? 'cursor-pointer' : 'cursor-default'}`}
              {...(item.href ? { target: "_blank", rel: "noopener" } : {})}>
-            <div class="text-2xl mb-2">{item.icon}</div>
+            <div class="text-3xl mb-3">{item.icon}</div>
             <div class="text-xs text-slate-500 uppercase tracking-wider mb-1">{item.label}</div>
             <div class="text-sm text-white font-medium">{item.value}</div>
           </a>
@@ -244,10 +235,98 @@ const certs = [
 
   </main>
 
-  <!-- Footer -->
   <footer class="relative z-10 border-t border-slate-800/50 py-8 text-center">
-    <p class="text-sm text-slate-600">
-      © 2025 Ikhtiar Hidayatullah. Built with Astro + Tailwind CSS.
-    </p>
+    <p class="text-sm text-slate-600">© 2025 Ikhtiar Hidayatullah. Built with Astro + Tailwind CSS.</p>
   </footer>
-</BaseLayout>
+
+  <script>
+    // Cursor glow
+    const glow = document.getElementById('cursorGlow');
+    if (glow && window.matchMedia('(min-width: 769px)').matches) {
+      document.addEventListener('mousemove', e => { glow.style.left = e.clientX + 'px'; glow.style.top = e.clientY + 'px'; });
+    }
+
+    // Particles
+    (function() {
+      const c = document.getElementById('particles'); if (!c) return;
+      for (let i = 0; i < 30; i++) {
+        const p = document.createElement('div'); p.className = 'particle';
+        p.style.left = Math.random() * 100 + 'vw';
+        p.style.animationDuration = (8 + Math.random() * 15) + 's';
+        p.style.animationDelay = Math.random() * 10 + 's';
+        const s = (1 + Math.random() * 3) + 'px'; p.style.width = s; p.style.height = s;
+        p.style.opacity = 0.2 + Math.random() * 0.5;
+        c.appendChild(p);
+      }
+    })();
+
+    // Typewriter
+    (function() {
+      const el = document.getElementById('typewriter'); if (!el) return;
+      const phrases = ['Network Engineer & NOC Specialist','MikroTik RouterOS Expert','Linux Server Administrator','Monitoring & Automation','IT Infrastructure Enthusiast'];
+      let pi = 0, ci = 0, del = false;
+      function tick() {
+        const cur = phrases[pi];
+        if (!del) { el.textContent = cur.substring(0, ci + 1); ci++; if (ci === cur.length) { del = true; setTimeout(tick, 2000); return; } setTimeout(tick, 60 + Math.random() * 40); }
+        else { el.textContent = cur.substring(0, ci - 1); ci--; if (ci === 0) { del = false; pi = (pi + 1) % phrases.length; setTimeout(tick, 400); return; } setTimeout(tick, 30); }
+      }
+      tick();
+    })();
+
+    // Scroll reveal
+    (function() {
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('revealed'); e.target.querySelectorAll('.section-title').forEach(t => t.classList.add('revealed')); } });
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+      document.querySelectorAll('.reveal, .section-title').forEach(el => obs.observe(el));
+    })();
+
+    // Stagger items
+    (function() {
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), parseInt(e.target.dataset.delay || '0')); });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.stagger-item').forEach(el => obs.observe(el));
+    })();
+
+    // Counter animation
+    (function() {
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (!e.isIntersecting) return;
+          const el = e.target, target = parseFloat(el.dataset.target), dec = parseInt(el.dataset.decimals || '0'), suffix = el.dataset.suffix || '';
+          const duration = 1500, start = performance.now();
+          function update(now) {
+            const p = Math.min((now - start) / duration, 1);
+            const ease = 1 - Math.pow(1 - p, 3);
+            el.textContent = (target * ease).toFixed(dec) + suffix;
+            if (p < 1) requestAnimationFrame(update);
+          }
+          requestAnimationFrame(update);
+          obs.unobserve(el);
+        });
+      }, { threshold: 0.5 });
+      document.querySelectorAll('.counter').forEach(el => obs.observe(el));
+    })();
+
+    // Skill bar fill on scroll
+    (function() {
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.style.width = e.target.dataset.width + '%'; obs.unobserve(e.target); } });
+      }, { threshold: 0.3 });
+      document.querySelectorAll('.skill-bar-fill').forEach(el => obs.observe(el));
+    })();
+
+    // Magnetic hover on buttons
+    (function() {
+      document.querySelectorAll('.magnetic').forEach(el => {
+        el.addEventListener('mousemove', e => {
+          const r = el.getBoundingClientRect();
+          const x = e.clientX - r.left - r.width / 2;
+          const y = e.clientY - r.top - r.height / 2;
+          el.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+        });
+        el.addEventListener('mouseleave', () => { el.style.transform = ''; });
+      });
+    })();
+  </script>
