@@ -1,50 +1,86 @@
 ---
-import { PROFILE } from '../data/profile';
+const navItems = [
+  { label: "Experience", href: "#experience" },
+  { label: "Skills", href: "#skills" },
+  { label: "Tools", href: "#tools" },
+  { label: "Certifications", href: "#certifications" },
+  { label: "Education", href: "#education" },
+  { label: "Contact", href: "#contact" },
+];
 ---
 
-<header class="flex items-center justify-between gap-6 sticky top-0 z-50 py-4 backdrop-blur-lg rounded-2xl border border-slate-800/50 bg-slate-950/80 px-6">
-  <a href="/" class="font-semibold tracking-tight text-lg">{PROFILE.name}</a>
-  <nav class="hidden md:flex gap-6 text-sm">
-    <a class="hover:text-cyan-400 transition-colors" href="/#about">About</a>
-    <a class="hover:text-cyan-400 transition-colors" href="/#experience">Experience</a>
-    <a class="hover:text-cyan-400 transition-colors" href="/projects">Projects</a>
-    <a class="hover:text-cyan-400 transition-colors" href="/blog">Blog</a>
-    <a class="hover:text-cyan-400 transition-colors" href="/certificates">Certificates</a>
-    <a class="hover:text-cyan-400 transition-colors" href="/#contact">Contact</a>
-  </nav>
-  <button id="theme-toggle" class="p-2 rounded-xl border border-slate-700 hover:border-slate-500 transition-colors" aria-label="Toggle theme">
-    <span class="dark-icon">🌙</span>
-    <span class="light-icon hidden">☀️</span>
-  </button>
+<header class="fixed top-0 left-0 right-0 z-50 border-b border-slate-800/50 bg-[#0a0e1a]/80 backdrop-blur-xl">
+  <div class="max-w-5xl mx-auto px-6">
+    <nav class="flex items-center justify-between h-16">
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-2 group">
+        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-sky-400 to-indigo-500 flex items-center justify-center text-white font-bold text-sm">
+          IH
+        </div>
+        <span class="font-semibold text-white group-hover:text-sky-400 transition-colors hidden sm:block">
+          Ikhtiar
+        </span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <div class="hidden md:flex items-center gap-1">
+        {navItems.map(item => (
+          <a
+            href={item.href}
+            class="px-4 py-2 text-sm text-slate-400 hover:text-white transition-colors rounded-lg hover:bg-slate-800/50"
+          >
+            {item.label}
+          </a>
+        ))}
+      </div>
+
+      <!-- CTA + Mobile Menu -->
+      <div class="flex items-center gap-3">
+        <a
+          href="/files/Ikhtiar_Hidayatullah_CV.pdf"
+          download
+          class="hidden sm:inline-flex items-center gap-2 px-4 py-2 text-sm font-medium bg-sky-500 hover:bg-sky-400 text-slate-900 rounded-lg transition-all hover:shadow-lg hover:shadow-sky-500/25"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+          Resume
+        </a>
+
+        <!-- Mobile menu button -->
+        <button
+          id="mobile-menu-btn"
+          class="md:hidden p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800/50 transition-colors"
+          aria-label="Toggle menu"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Nav -->
+    <div id="mobile-menu" class="hidden md:hidden pb-4">
+      <div class="flex flex-col gap-1">
+        {navItems.map(item => (
+          <a
+            href={item.href}
+            class="px-4 py-3 text-sm text-slate-400 hover:text-white hover:bg-slate-800/50 rounded-lg transition-colors"
+          >
+            {item.label}
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
 </header>
 
-<script is:inline>
-  const toggle = document.getElementById('theme-toggle');
-  const darkIcon = toggle?.querySelector('.dark-icon');
-  const lightIcon = toggle?.querySelector('.light-icon');
-
-  function updateTheme() {
-    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    if (isDark) {
-      document.body.classList.remove('bg-white', 'text-slate-900');
-      document.body.classList.add('bg-slate-950', 'text-slate-100');
-      darkIcon?.classList.remove('hidden');
-      lightIcon?.classList.add('hidden');
-    } else {
-      document.body.classList.remove('bg-slate-950', 'text-slate-100');
-      document.body.classList.add('bg-white', 'text-slate-900');
-      darkIcon?.classList.add('hidden');
-      lightIcon?.classList.remove('hidden');
-    }
-  }
-
-  toggle?.addEventListener('click', () => {
-    const current = document.documentElement.getAttribute('data-theme');
-    const next = current === 'dark' ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', next);
-    localStorage.setItem('theme', next);
-    updateTheme();
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  
+  btn?.addEventListener('click', () => {
+    menu?.classList.toggle('hidden');
   });
-
-  updateTheme();
 </script>

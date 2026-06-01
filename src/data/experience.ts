@@ -1,26 +1,48 @@
-export type ExperienceItem = {
-  role: string;
-  company: string;
-  period: string;
-  description: string;
-  highlights: string[];
-};
-
-export const EXPERIENCE: ExperienceItem[] = [
+const experience = [
   {
-    role: 'Network Operations Center (NOC)',
-    company: 'Skynet ISP',
-    period: '2025 — sekarang',
-    description:
-      'Handle operasional ISP: monitoring, incident triage, routing/PPPoE, serta otomasi laporan dan tooling internal.',
-    highlights: ['PPPoE ops + provisioning', 'Monitoring automation', 'Incident response'],
+    title: "Network Operations Center (NOC)",
+    company: "Skynet ISP",
+    period: "2025 — Sekarang",
+    location: "Pamekasan, Jawa Timur",
+    description: "Handle operasional ISP: monitoring, incident triage, routing/PPPoE, serta otomasi laporan dan tooling internal.",
+    highlights: [
+      "PPPoE operations & provisioning",
+      "Monitoring automation",
+      "Incident response & triage",
+      "Routing & network troubleshooting"
+    ],
+    tags: ["MikroTik", "PPPoE", "Monitoring", "NOC", "Linux"]
   },
   {
-    role: 'Network Engineer (Projects)',
-    company: 'ISP Infrastructure',
-    period: '2020 — 2022',
-    description:
-      'Desain dan implementasi infrastruktur jaringan: failover, load balancing, QoS, serta dokumentasi dan SOP.',
-    highlights: ['Dual-WAN failover', 'QoS/PCQ', 'Documentation & handover'],
+    title: "Tech Team Academy",
+    company: "PT. ARAI RUBBER SEAL INDONESIA",
+    period: "Feb 2024 — Jun 2024",
+    location: "Gresik, Jawa Timur",
+    description: "IT support dan network installation untuk lingkungan manufaktur.",
+    highlights: [
+      "Assembled & replacement PC units",
+      "CCTV installation & configuration",
+      "Network printer setup & troubleshooting",
+      "LAN cabling & crimping",
+      "ERP backend development: MySQL + C#"
+    ],
+    tags: ["IT Support", "CCTV", "Networking", "MySQL", "ERP"]
   },
+  {
+    title: "Computer Network Installation Training",
+    company: "UPT BLK Surabaya",
+    period: "Okt 2025 — Nov 2025",
+    location: "Surabaya, Jawa Timur",
+    description: "Pelatihan installasi dan konfigurasi jaringan komputer.",
+    highlights: [
+      "Subnetting & VLSM calculation",
+      "Switch, Router, Hub, Access Point configuration",
+      "VLAN creation & management",
+      "Routing: RIP, OSPF, EIGRP, BGP, Static",
+      "LAN/WiFi troubleshooting"
+    ],
+    tags: ["Cisco", "Routing", "VLAN", "Subnetting", "Network Security"]
+  }
 ];
+
+export default experience;
