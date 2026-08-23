@@ -1,10 +1,27 @@
 ---
+import "@fontsource-variable/space-grotesk";
+import "@fontsource/jetbrains-mono/400.css";
+import "@fontsource/jetbrains-mono/500.css";
+import "@phosphor-icons/web/regular";
+import "../styles/global.css";
+
 interface Props {
   title: string;
   description?: string;
+  canonical?: string;
+  ogImage?: string;
 }
 
-const { title, description = "Network Engineer & NOC Specialist. Spesialisasi MikroTik, monitoring automation, dan Linux server administration." } = Astro.props;
+const {
+  title,
+  description = "Network Engineer & NOC Specialist. Spesialisasi MikroTik, monitoring automation, dan Linux server administration.",
+  canonical,
+  ogImage = "/og/home.png",
+} = Astro.props;
+
+const site = "https://tiarh.github.io";
+const ogURL = new URL(ogImage, site).href;
+const canonicalURL = canonical ? new URL(canonical, site).href : undefined;
 ---
 
 <!doctype html>
@@ -13,21 +30,17 @@ const { title, description = "Network Engineer & NOC Specialist. Spesialisasi Mi
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <meta name="theme-color" content="#0b0c0e" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogURL} />
+    <meta property="og:type" content="website" />
+    {canonicalURL && <link rel="canonical" href={canonicalURL} />}
     <title>{title}</title>
-    
-    <!-- Favicon -->
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   </head>
-  <body class="antialiased">
+  <body>
     <slot />
   </body>
 </html>
-
-<style is:global>
-  @import "../styles/global.css";
-</style>

@@ -13,34 +13,59 @@ const posts = Object.entries(modules)
 ---
 
 <BaseLayout title="Blog — Ikhtiar Hidayatullah" canonical="https://tiarh.github.io/blog" ogImage="/og/blog.png">
-  <main class="relative min-h-screen">
-    <div class="fixed inset-0 bg-grid opacity-40 pointer-events-none"></div>
-    <div class="relative mx-auto max-w-4xl px-6 py-12">
-      <SiteHeader />
+  <SiteHeader />
 
-      <section class="mt-12">
-        <h1 class="text-4xl font-bold">Blog</h1>
-        <p class="mt-2 text-slate-400">Catatan teknis (PPPoE, MikroTik, routing, automation).</p>
+  <main class="wrap min-h-screen pb-24 pt-28 md:pt-32">
+    <h1 class="display text-4xl md:text-5xl">Notes</h1>
+    <p class="mt-4 max-w-[52ch] leading-relaxed text-muted">
+      Catatan teknis — PPPoE, MikroTik, routing, automation.
+    </p>
 
-        <div class="mt-8 grid gap-4">
-          {posts.map((post) => (
-            <a href={`/blog/${post.slug}`} class="rounded-2xl border border-slate-800 bg-slate-900/30 p-6 hover:border-slate-700 transition-all">
-              <div class="text-sm text-slate-500">{new Date(post.frontmatter.pubDate).toLocaleDateString('id-ID')}</div>
-              <h2 class="mt-1 text-xl font-semibold hover:text-cyan-400">{post.frontmatter.title}</h2>
-              <p class="mt-2 text-slate-300">{post.frontmatter.description}</p>
+    {posts.length === 0 ? (
+      <p class="mt-12 text-muted">Belum ada tulisan.</p>
+    ) : (
+      <div class="mt-12 divide-y divide-line border-y border-line">
+        {posts.map((post) => (
+          <a href={`/blog/${post.slug}`} class="reveal group block py-7">
+            <div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+              <h2 class="text-lg font-semibold tracking-tight transition-colors group-hover:text-accent">
+                {post.frontmatter.title}
+              </h2>
+              <span class="font-mono text-xs text-faint">
+                {new Date(post.frontmatter.pubDate).toLocaleDateString('id-ID')}
+              </span>
+            </div>
+            <p class="mt-2 max-w-[64ch] leading-relaxed text-muted">{post.frontmatter.description}</p>
+            {(post.frontmatter.tags ?? []).length > 0 && (
               <div class="mt-3 flex flex-wrap gap-2">
-                {(post.frontmatter.tags ?? []).map((t) => (
-                  <span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded">{t}</span>
-                ))}
+                {post.frontmatter.tags.map((t) => <span class="tag">{t}</span>)}
               </div>
-            </a>
-          ))}
-        </div>
-      </section>
-
-      <footer class="mt-20 border-t border-slate-800 py-8 text-sm text-slate-500">
-        <a href="/" class="hover:text-cyan-400">← Back</a>
-      </footer>
-    </div>
+            )}
+          </a>
+        ))}
+      </div>
+    )}
   </main>
+
+  <footer class="border-t border-line">
+    <div class="wrap flex items-center justify-between py-8 text-sm text-faint">
+      <a href="/" class="transition-colors hover:text-accent"><i class="ph ph-arrow-left mr-1.5" aria-hidden="true"></i>Home</a>
+      <p class="font-mono text-xs">© 2026 Ikhtiar Hidayatullah</p>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("revealed");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
+    );
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+  </script>
 </BaseLayout>

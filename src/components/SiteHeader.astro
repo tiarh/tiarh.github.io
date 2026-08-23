@@ -1,86 +1,78 @@
 ---
 const navItems = [
-  { label: "Experience", href: "#experience" },
-  { label: "Skills", href: "#skills" },
-  { label: "Tools", href: "#tools" },
-  { label: "Certifications", href: "#certifications" },
-  { label: "Education", href: "#education" },
-  { label: "Contact", href: "#contact" },
+  { label: "Work", href: "/#work" },
+  { label: "Experience", href: "/#experience" },
+  { label: "Skills", href: "/#skills" },
+  { label: "Education", href: "/#education" },
+  { label: "Contact", href: "/#contact" },
 ];
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 border-b border-slate-800/50 bg-[#0a0e1a]/80 backdrop-blur-xl">
-  <div class="max-w-5xl mx-auto px-6">
-    <nav class="flex items-center justify-between h-16">
-      <!-- Logo -->
-      <a href="/" class="flex items-center gap-2 group">
-        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-sky-400 to-indigo-500 flex items-center justify-center text-white font-bold text-sm">
-          IH
-        </div>
-        <span class="font-semibold text-white group-hover:text-sky-400 transition-colors hidden sm:block">
-          Ikhtiar
-        </span>
+<header class="fixed top-0 left-0 right-0 z-50 border-b border-line bg-bg/85 backdrop-blur-md">
+  <div class="wrap">
+    <nav class="flex h-16 items-center justify-between gap-6">
+      <a href="/" class="flex items-center gap-2.5 font-semibold tracking-tight text-ink">
+        <span class="flex h-7 w-7 items-center justify-center rounded-full border border-line-strong font-mono text-[11px] font-medium text-accent">IH</span>
+        <span class="hidden sm:block">Ikhtiar H.</span>
       </a>
 
-      <!-- Desktop Nav -->
-      <div class="hidden md:flex items-center gap-1">
-        {navItems.map(item => (
+      <div class="hidden items-center gap-6 md:flex">
+        {navItems.map((item) => (
           <a
             href={item.href}
-            class="px-4 py-2 text-sm text-slate-400 hover:text-white transition-colors rounded-lg hover:bg-slate-800/50"
+            class="text-sm text-muted transition-colors hover:text-ink"
           >
             {item.label}
           </a>
         ))}
       </div>
 
-      <!-- CTA + Mobile Menu -->
-      <div class="flex items-center gap-3">
+      <div class="flex items-center gap-2">
         <a
           href="/files/Ikhtiar_Hidayatullah_CV.pdf"
           download
-          class="hidden sm:inline-flex items-center gap-2 px-4 py-2 text-sm font-medium bg-sky-500 hover:bg-sky-400 text-slate-900 rounded-lg transition-all hover:shadow-lg hover:shadow-sky-500/25"
+          class="btn btn-primary hidden sm:inline-flex"
         >
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-          </svg>
-          Resume
+          <i class="ph ph-download-simple text-base" aria-hidden="true"></i>
+          CV
         </a>
 
-        <!-- Mobile menu button -->
         <button
           id="mobile-menu-btn"
-          class="md:hidden p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800/50 transition-colors"
+          class="rounded-full p-2 text-muted transition-colors hover:text-ink md:hidden"
           aria-label="Toggle menu"
+          aria-expanded="false"
         >
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
+          <i class="ph ph-list text-2xl" aria-hidden="true"></i>
         </button>
       </div>
     </nav>
+  </div>
 
-    <!-- Mobile Nav -->
-    <div id="mobile-menu" class="hidden md:hidden pb-4">
-      <div class="flex flex-col gap-1">
-        {navItems.map(item => (
-          <a
-            href={item.href}
-            class="px-4 py-3 text-sm text-slate-400 hover:text-white hover:bg-slate-800/50 rounded-lg transition-colors"
-          >
-            {item.label}
-          </a>
-        ))}
-      </div>
+  <div id="mobile-menu" class="hidden border-t border-line bg-bg/95 md:hidden">
+    <div class="wrap flex flex-col py-3">
+      {navItems.map((item) => (
+        <a
+          href={item.href}
+          class="border-b border-line py-3 text-sm text-muted transition-colors last:border-0 hover:text-ink"
+        >
+          {item.label}
+        </a>
+      ))}
+      <a href="/files/Ikhtiar_Hidayatullah_CV.pdf" download class="btn btn-primary mt-4 justify-center">
+        <i class="ph ph-download-simple text-base" aria-hidden="true"></i>
+        Download CV
+      </a>
     </div>
   </div>
 </header>
 
 <script>
-  const btn = document.getElementById('mobile-menu-btn');
-  const menu = document.getElementById('mobile-menu');
-  
-  btn?.addEventListener('click', () => {
-    menu?.classList.toggle('hidden');
+  const btn = document.getElementById("mobile-menu-btn");
+  const menu = document.getElementById("mobile-menu");
+
+  btn?.addEventListener("click", () => {
+    const open = menu?.classList.toggle("hidden") === false;
+    btn.setAttribute("aria-expanded", String(open));
   });
 </script>
