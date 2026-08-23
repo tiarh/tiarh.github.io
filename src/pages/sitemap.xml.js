@@ -2,6 +2,7 @@ export async function GET({ site }) {
   const base = (site?.toString() || 'https://tiarh.github.io').replace(/\/$/, '');
   const urls = [
     '/',
+    '/uses',
     '/projects',
     '/projects/pppoe-platform-mikrotik',
     '/projects/dual-wan-failover-pcc',

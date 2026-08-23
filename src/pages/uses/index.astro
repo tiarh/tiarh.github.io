@@ -1,0 +1,99 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+
+const groups = [
+  {
+    title: 'Network operations',
+    tools: [
+      {
+        name: 'MikroTik RouterOS',
+        note: 'The core of my daily work — routing, PPPoE, queues, failover. Configs rehearsed in CHR/VMs first.',
+      },
+      {
+        name: 'GenieACS',
+        note: 'TR-069 CPE management — provisioning and keeping an eye on subscriber devices at scale.',
+      },
+    ],
+  },
+  {
+    title: 'Monitoring',
+    tools: [
+      {
+        name: 'Grafana',
+        note: 'Dashboards for traffic, device health, and the metrics that matter during incidents.',
+      },
+      {
+        name: 'Host monitoring',
+        note: 'Reachability and uptime checks across POP devices — the heartbeat of NOC work.',
+      },
+      {
+        name: 'SNMP polling (OLT)',
+        note: 'Optical levels per PON port — signal attenuation trends that warn before customers call.',
+      },
+    ],
+  },
+  {
+    title: 'Building & coding',
+    tools: [
+      {
+        name: 'VS Code',
+        note: 'Daily driver for Python/Bash tooling, automation scripts, and the e-billing platform.',
+      },
+      {
+        name: 'Skynet e-Billing (internal)',
+        note: 'My own ISP operations platform in development — provisioning to billing in one place.',
+      },
+    ],
+  },
+];
+---
+
+<BaseLayout title="Uses — Ikhtiar Hidayatullah" canonical="https://tiarh.github.io/uses" ogImage="/og/home.png">
+  <SiteHeader />
+
+  <main class="wrap min-h-screen pb-24 pt-28 md:pt-32">
+    <h1 class="display text-4xl md:text-5xl">Uses</h1>
+    <p class="mt-4 max-w-[52ch] leading-relaxed text-muted">
+      The toolkit I reach for daily — on the NOC floor and in my own projects.
+    </p>
+
+    <div class="mt-14 grid gap-10 lg:grid-cols-3">
+      {groups.map((group) => (
+        <div class="reveal border-t border-line-strong pt-6">
+          <h2 class="font-semibold tracking-tight">{group.title}</h2>
+          <ul class="mt-6 space-y-7">
+            {group.tools.map((tool) => (
+              <li>
+                <h3 class="text-sm font-medium">{tool.name}</h3>
+                <p class="mt-1.5 text-sm leading-relaxed text-muted">{tool.note}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </main>
+
+  <footer class="border-t border-line">
+    <div class="wrap flex items-center justify-between py-8 text-sm text-faint">
+      <a href="/" class="transition-colors hover:text-accent"><i class="ph ph-arrow-left mr-1.5" aria-hidden="true"></i>Home</a>
+      <p class="font-mono text-xs">© 2026 Ikhtiar Hidayatullah</p>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("revealed");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
+    );
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+  </script>
+</BaseLayout>

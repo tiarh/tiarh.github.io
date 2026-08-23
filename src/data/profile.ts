@@ -4,7 +4,7 @@ export const PROFILE = {
   tagline: 'ISP NOC • MikroTik • Routing • Monitoring Automation',
   location: 'Indonesia',
   headline:
-    'Saya fokus di operasi ISP/NOC: routing, PPPoE, bandwidth management, monitoring, dan otomatisasi. Tujuan saya: jaringan stabil, troubleshooting cepat, dan tooling yang bisa dipakai tim.',
+    'I focus on ISP/NOC operations: routing, PPPoE, bandwidth management, monitoring, and automation. My goal: stable networks, fast troubleshooting, and tooling the whole team can use.',
   availability: 'Available for freelance',
   initials: 'IH',
   contacts: {

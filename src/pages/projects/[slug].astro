@@ -105,13 +105,13 @@ if (!project) throw new Error('Project not found');
           <h2 class="display mb-6 text-2xl">Links</h2>
           <div class="flex flex-wrap gap-3">
             {project.links?.repo && (
-              <a class="btn btn-secondary" href={project.links.repo} target="_blank" rel="noreferrer">
+              <a class="btn btn-secondary" href={project.links.repo} target="_blank" rel="noopener noreferrer">
                 <i class="ph ph-github-logo text-base" aria-hidden="true"></i>
                 Source / Repo
               </a>
             )}
             {project.links?.demo && (
-              <a class="btn btn-secondary" href={project.links.demo} target="_blank" rel="noreferrer">
+              <a class="btn btn-secondary" href={project.links.demo} target="_blank" rel="noopener noreferrer">
                 <i class="ph ph-globe text-base" aria-hidden="true"></i>
                 Demo
               </a>

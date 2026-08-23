@@ -1,29 +1,29 @@
 ---
-title: "Monitoring Automation dengan Playwright"
-description: "Generate laporan monitoring otomatis dari web dashboard dan kirim ke WhatsApp/Telegram dalam bentuk gambar."
+title: "Monitoring Automation with Playwright"
+description: "Generate monitoring reports automatically from a web dashboard and deliver them to WhatsApp/Telegram as images."
 pubDate: 2026-01-10
 tags: ["Automation", "Playwright", "Python", "NOC"]
 draft: false
 ---
 
-Kalau NOC masih screenshot manual dashboard, itu cepat capek dan rawan miss.
+If your NOC still takes manual dashboard screenshots, it gets tiring fast — and things get missed.
 
-## Target
+## The goal
 
-- 1 command chat: `monitoring AREA`
-- Output: gambar PNG siap kirim
-- Exclude pelanggan isolir
+- One chat command: `monitoring AREA`
+- Output: a PNG ready to send
+- Suspended (isolir) customers excluded
 
 ## Pipeline
 
-1. Login dashboard dengan Playwright
-2. Ambil tabel status
-3. Render HTML yang rapi
-4. Screenshot ke PNG
-5. Kirim ke WA/Telegram
+1. Log into the dashboard with Playwright
+2. Grab the status table
+3. Render clean HTML
+4. Screenshot to PNG
+5. Send to WhatsApp/Telegram
 
-## Benefit
+## Payoff
 
-- Lebih cepat
-- Lebih konsisten
-- Bisa dijadwalkan (cron)
+- Faster
+- Consistent format
+- Schedulable (cron)

@@ -1,26 +1,26 @@
 ---
-title: "Setup Dual-WAN Failover dengan Recursive Routing"
-description: "Implementasi failover otomatis antara dua koneksi internet menggunakan recursive routing dan health-check."
+title: "Dual-WAN Failover with Recursive Routing"
+description: "Automatic failover between two internet links using recursive routing and health checks on MikroTik."
 pubDate: 2026-02-20
 tags: ["Routing", "Failover", "MikroTik"]
 draft: false
 ---
 
-Recursive routing membantu MikroTik memilih gateway berdasarkan reachability target (ping/route-check).
+Recursive routing lets MikroTik pick a gateway based on real reachability (ping/route-check) instead of just link state.
 
-## Kenapa recursive?
+## Why recursive?
 
-- Lebih stabil dibanding netwatch yang “flip-flop”
-- Bisa dibuat prioritas + fallback
+- More stable than netwatch setups that "flip-flop"
+- Supports priority + fallback chains
 
-## Pola umum
+## The common pattern
 
-1. Default route pakai **gateway-check** (check-gateway=ping)
-2. Buat route ke target IP yang “selalu hidup”
-3. Routing table dan distance untuk primary/secondary
+1. Default routes with **gateway-check** (check-gateway=ping)
+2. A route to a target IP that is "always up"
+3. Routing tables + distance for primary/secondary
 
 ## Tips
 
-- Pakai target yang reliable (mis. 1.1.1.1 / 8.8.8.8)
-- Gunakan interval ping yang masuk akal
-- Uji: cabut WAN1, lihat switching
+- Use reliable targets (e.g. 1.1.1.1 / 8.8.8.8)
+- Pick a sensible ping interval
+- Test it: unplug WAN1 and watch the switch-over

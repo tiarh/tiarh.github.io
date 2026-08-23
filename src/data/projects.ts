@@ -25,7 +25,7 @@ export const PROJECTS: Project[] = [
     status: 'Case study',
     tags: ['MikroTik', 'PPPoE', 'PCQ', 'QoS'],
     description:
-      'Desain PPPoE server + profile bandwidth (PCQ), queue/limits, dan SOP deployment. Fokus stabil, aman, dan mudah dioperasikan.',
+      'PPPoE server design + bandwidth profiles (PCQ), queue/limits, and deployment SOP. Focused on stability, safety, and operability.',
     highlights: [
       'PPPoE profiles & rate limits (PCQ)',
       'Queue parent strategy + basic anti-abuse',
@@ -33,11 +33,11 @@ export const PROJECTS: Project[] = [
     ],
     caseStudy: {
       problem:
-        'Operasional PPPoE di ISP kecil-menengah sering “rawan chaos”: profile tidak konsisten, queue numpuk, troubleshooting lama, dan perubahan konfigurasi sulit di-audit.',
+        'PPPoE operations at small/mid-size ISPs often drift into chaos: inconsistent profiles, piled-up queues, slow troubleshooting, and config changes that are hard to audit.',
       solution:
-        'Membuat baseline konfigurasi PPPoE yang repeatable: template, profile PCQ, parent-queue strategy, serta checklist test sebelum rilis.',
+        'Built a repeatable PPPoE configuration baseline: templates, PCQ profiles, parent-queue strategy, plus a pre-release test checklist.',
       outcome:
-        'Deployment lebih cepat, konfigurasi lebih rapi, dan tim punya SOP yang sama untuk provisioning & troubleshooting.',
+        'Faster deployments, cleaner configs, and a shared SOP the team uses for both provisioning and troubleshooting.',
       stack: ['MikroTik RouterOS', 'PPPoE', 'PCQ', 'Queues', 'SOP/Runbook'],
     },
   },
@@ -47,7 +47,7 @@ export const PROJECTS: Project[] = [
     status: 'Case study',
     tags: ['Routing', 'Failover', 'PCC', 'MikroTik'],
     description:
-      'Implementasi multi-WAN dengan health-check, recursive routing untuk failover, dan PCC untuk distribusi trafik.',
+      'Multi-WAN implementation with health checks, recursive routing for failover, and PCC for traffic distribution.',
     highlights: [
       'Recursive route failover + health check',
       'PCC policy routing',
@@ -55,11 +55,11 @@ export const PROJECTS: Project[] = [
     ],
     caseStudy: {
       problem:
-        'Koneksi ISP sering flapping. Tanpa failover yang benar, pelanggan mengalami putus-nyambung dan tiket gangguan membludak.',
+        'ISP uplinks flap. Without proper failover, customers get constant disconnects and trouble tickets pile up.',
       solution:
-        'Menerapkan recursive routing untuk failover + PCC untuk load distribution, lengkap dengan skenario uji.',
+        'Applied recursive routing for failover + PCC for load distribution, complete with test scenarios.',
       outcome:
-        'Switching lebih halus dan insiden downtime total berkurang karena jalur cadangan aktif otomatis.',
+        'Smoother switching and fewer total-outage incidents because the backup path activates automatically.',
       stack: ['MikroTik RouterOS', 'PCC', 'Recursive Routing', 'Netwatch/Healthcheck'],
     },
   },
@@ -69,17 +69,17 @@ export const PROJECTS: Project[] = [
     status: 'Production',
     tags: ['Playwright', 'Reporting', 'NOC', 'Automation'],
     description:
-      'Auto-generate report per area (DOWN/UP non‑isolir) + last active, output gambar siap kirim ke WA/Telegram.',
+      'Auto-generated per-area reports (DOWN/UP excluding isolir) + last active, output as an image ready to send to WA/Telegram.',
     highlights: ['Exclude ISOLIR rows', 'Sampling to catch flapping downs', 'HTML → Image report', 'Cron refresh'],
     metrics: ['Manual reporting ~10 menit → via chat (on-demand)', 'Coverage: 28 monitoring areas', 'Ops scale: 20+ devices managed'], 
     links: { repo: 'https://github.com/tiarh' },
     caseStudy: {
       problem:
-        'NOC butuh snapshot cepat (DOWN/UP non‑isolir) per area untuk respons gangguan. Sebelumnya manual: buka dashboard, filter area, screenshot, kirim ke grup. Proses ini lambat dan sering miss saat link flapping.',
+        'NOC needed fast per-area snapshots (DOWN/UP excluding isolir) for incident response. The old flow was manual: open dashboard, filter area, screenshot, send to group. Slow — and easy to miss while links flap.',
       solution:
-        'Membangun pipeline otomatis: Playwright login → scrape tabel per area → normalisasi (exclude ISOLIR) → render HTML → screenshot PNG → kirim ke WhatsApp/Telegram. Ditambah command chat `monitoring <area>` untuk on-demand, dan jadwal cron untuk report berkala.',
+        'Built an automated pipeline: Playwright login → scrape per-area tables → normalize (exclude ISOLIR) → render HTML → screenshot PNG → deliver to WhatsApp/Telegram. Plus a `monitoring <area>` chat command for on-demand pulls and a cron schedule for periodic reports.',
       outcome:
-        'Sebelumnya butuh ~10 menit (buka laptop → filter → screenshot → kirim). Sekarang cukup trigger lewat chat, report jadi cepat dan konsisten. Tim NOC dapat snapshot yang repeatable untuk triage, dan komunikasi ke grup jadi lebih rapi (format sama, cepat dibaca).',
+        'Previously ~10 minutes (open laptop → filter → screenshot → send). Now a single chat trigger away — fast and consistent. NOC gets repeatable snapshots for triage, and group communication is cleaner (same format, quick to read).',
       stack: ['Python', 'Playwright', 'HTML/CSS template', 'Cron/systemd', 'WhatsApp/Telegram'],
     },
   },
@@ -89,17 +89,17 @@ export const PROJECTS: Project[] = [
     status: 'Production',
     tags: ['WhatsApp', 'OpenClaw', 'Node.js', 'Guardrails'],
     description:
-      'Bot WA khusus 1 grup untuk monitoring per area + chat ops. Ada allowlist, anti-loop, dan command monitoring AREA.',
+      'WhatsApp bot scoped to one group for per-area monitoring + ops chat. Allowlist, anti-loop, and a `monitoring AREA` command.',
     highlights: ['Hard allowlist group', 'Monitoring via areas.json', 'Anti-spam + timeouts', 'Scoped ops commands'],
     metrics: ['Guardrails: allowlist 1 grup + cooldown', 'Faster triage: `monitoring <area>`', 'Coverage: 28 monitoring areas'], 
     links: { repo: 'https://github.com/tiarh' },
     caseStudy: {
       problem:
-        'Operasional NOC via chat sering noisy: request monitoring berulang, format tidak konsisten, dan risiko bot “ngaco” kalau bisa merespon semua grup. Dibutuhkan automation yang aman dan terkontrol.',
+        'NOC coordination over chat gets noisy: repeated monitoring requests, inconsistent formats, and the risk of a bot "going rogue" if it responds to every group. The automation needed to be safe and tightly controlled.',
       solution:
-        'Membuat WhatsApp bot yang scoped: hard allowlist hanya 1 grup, command router (`monitoring <area>`), cooldown/timeout untuk cegah spam, serta handler yang menghasilkan report PNG dari pipeline monitoring. Fokus pada guardrails dan reliability (jalan 24/7).',
+        'Built a scoped WhatsApp bot: hard allowlist for a single group, command router (`monitoring <area>`), cooldown/timeouts to prevent spam, and handlers that produce PNG reports from the monitoring pipeline. Focus on guardrails and reliability (runs 24/7).',
       outcome:
-        'Request monitoring jadi satu baris perintah dan hasilnya rapih. Bot tidak mengganggu chat di luar grup yang diizinkan, dan workflow tim lebih cepat karena tidak perlu manual screenshot/dashboard.',
+        'Monitoring requests became one-line commands with clean results. The bot stays silent outside the allowed group, and the team works faster without manual screenshots/dashboard checks.',
       stack: ['Node.js', 'OpenClaw', 'WhatsApp integration', 'Guardrails (allowlist/cooldown)', 'Playwright reports'],
     },
   },

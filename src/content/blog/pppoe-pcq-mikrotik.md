@@ -1,35 +1,35 @@
 ---
-title: "Optimasi PPPoE dengan PCQ di MikroTik"
-description: "Cara mengatur bandwidth management yang fair untuk pelanggan ISP menggunakan PCQ queues."
+title: "PPPoE Optimization with PCQ on MikroTik"
+description: "How to set up fair bandwidth management for ISP subscribers using PCQ queues."
 pubDate: 2026-03-15
 tags: ["MikroTik", "PPPoE", "QoS", "PCQ"]
 draft: false
 ---
 
-PCQ (Per Connection Queue) itu salah satu cara paling “aman” buat ISP kecil/menengah supaya bandwidth kebagi rata, tanpa perlu bikin queue satu-satu per pelanggan.
+PCQ (Per Connection Queue) is one of the safest ways for small/mid-size ISPs to share bandwidth evenly — without creating a queue for every single subscriber.
 
-## Kapan PCQ cocok?
+## When PCQ fits
 
-- Banyak pelanggan PPPoE dengan profil speed yang sama
-- Pola pemakaian variatif (streaming, browsing, game)
-- Mau fairness tanpa ribet
+- Many PPPoE subscribers on the same speed profile
+- Mixed usage patterns (streaming, browsing, gaming)
+- Fairness without per-subscriber micromanagement
 
-## Prinsip singkat
+## The short version
 
-- **PCQ downloader** membagi bandwidth per-connection/per-client.
-- Biasanya dipasang di **queue tree** atau **simple queue** (tergantung desain).
+- **PCQ downloader** splits bandwidth per connection / per client.
+- Usually attached to a **queue tree** or **simple queue** (depends on the design).
 
-## Checklist implementasi
+## Implementation checklist
 
-1. Tentukan skema: simple queue vs queue tree.
-2. Pastikan mangle/mark traffic rapi kalau pakai queue tree.
-3. Uji skenario: 1 user vs banyak user.
-4. Dokumentasikan profil + limit.
+1. Pick the scheme: simple queue vs queue tree.
+2. Make sure mangle/marked traffic is clean if you use queue tree.
+3. Test scenarios: 1 user vs many users.
+4. Document profiles + limits.
 
-## Catatan
+## Notes
 
-Kalau kamu pakai PCQ tapi masih ada keluhan “lemot”, biasanya masalahnya bukan PCQ, tapi:
-- uplink memang penuh,
+If you run PCQ and still get "slow" complaints, the culprit is usually not PCQ but:
+- a saturated uplink,
 - bufferbloat,
 - DNS,
-- atau radio/last-mile.
+- or radio / last-mile issues.

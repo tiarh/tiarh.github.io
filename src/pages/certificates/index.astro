@@ -10,12 +10,12 @@ import { CERTIFICATES } from '../../data/certificates';
   <main class="wrap min-h-screen pb-24 pt-28 md:pt-32">
     <h1 class="display text-4xl md:text-5xl">Certificates & training</h1>
     <p class="mt-4 max-w-[52ch] leading-relaxed text-muted">
-      Pelatihan dan sertifikasi di bidang jaringan, DevOps, dan security.
+      Training and certifications in networking, DevOps, and security.
     </p>
 
     {CERTIFICATES.length === 0 ? (
       <div class="panel mt-10 p-8 text-muted">
-        Belum ada data sertifikat. Kirim daftar sertifikat (judul + issuer + link) untuk ditambahkan.
+        No certificate data yet.
       </div>
     ) : (
       <div class="mt-12 divide-y divide-line border-y border-line">
@@ -28,8 +28,8 @@ import { CERTIFICATES } from '../../data/certificates';
                 <p class="mt-3 font-mono text-xs text-faint">ID: {c.credentialId}</p>
               )}
               {c.url && (
-                <a class="mt-3 inline-flex items-center gap-1 text-sm font-medium text-accent hover:text-ink" href={c.url} target="_blank" rel="noreferrer">
-                  Lihat kredensial <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
+                <a class="mt-3 inline-flex items-center gap-1 text-sm font-medium text-accent hover:text-ink" href={c.url} target="_blank" rel="noopener noreferrer">
+                  View credential <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
                 </a>
               )}
             </div>

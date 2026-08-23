@@ -4,7 +4,7 @@ const experience = [
     company: "Skynet ISP",
     period: "2025 — Sekarang",
     location: "Pamekasan, Jawa Timur",
-    description: "Handle operasional ISP: monitoring, incident triage, routing/PPPoE, serta otomasi laporan dan tooling internal.",
+    description: "Run day-to-day ISP operations: monitoring, incident triage, routing/PPPoE, plus report automation and internal tooling.",
     highlights: [
       "PPPoE operations & provisioning",
       "Monitoring automation",
@@ -18,7 +18,7 @@ const experience = [
     company: "PT. ARAI RUBBER SEAL INDONESIA",
     period: "Feb 2024 — Jun 2024",
     location: "Gresik, Jawa Timur",
-    description: "IT support dan network installation untuk lingkungan manufaktur.",
+    description: "IT support and network installation in a manufacturing environment.",
     highlights: [
       "Assembled & replacement PC units",
       "CCTV installation & configuration",
@@ -33,7 +33,7 @@ const experience = [
     company: "UPT BLK Surabaya",
     period: "Okt 2025 — Nov 2025",
     location: "Surabaya, Jawa Timur",
-    description: "Pelatihan installasi dan konfigurasi jaringan komputer.",
+    description: "Formal training on computer network installation and configuration.",
     highlights: [
       "Subnetting & VLSM calculation",
       "Switch, Router, Hub, Access Point configuration",

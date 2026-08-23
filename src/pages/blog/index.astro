@@ -18,11 +18,11 @@ const posts = Object.entries(modules)
   <main class="wrap min-h-screen pb-24 pt-28 md:pt-32">
     <h1 class="display text-4xl md:text-5xl">Notes</h1>
     <p class="mt-4 max-w-[52ch] leading-relaxed text-muted">
-      Catatan teknis — PPPoE, MikroTik, routing, automation.
+      Technical notes — PPPoE, MikroTik, routing, automation.
     </p>
 
     {posts.length === 0 ? (
-      <p class="mt-12 text-muted">Belum ada tulisan.</p>
+      <p class="mt-12 text-muted">No posts yet.</p>
     ) : (
       <div class="mt-12 divide-y divide-line border-y border-line">
         {posts.map((post) => (
