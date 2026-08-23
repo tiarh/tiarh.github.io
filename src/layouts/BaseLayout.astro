@@ -22,6 +22,26 @@ const {
 const site = "https://tiarh.github.io";
 const ogURL = new URL(ogImage, site).href;
 const canonicalURL = canonical ? new URL(canonical, site).href : undefined;
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Ikhtiar Hidayatullah",
+  jobTitle: "Network Engineer & NOC Specialist",
+  url: site,
+  email: "mailto:ihidayatullah57@gmail.com",
+  sameAs: [
+    "https://github.com/tiarh",
+    "https://www.linkedin.com/in/ikhtiarh",
+    "https://t.me/lumayancuk",
+  ],
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Pamekasan",
+    addressRegion: "Jawa Timur",
+    addressCountry: "ID",
+  },
+};
 ---
 
 <!doctype html>
@@ -36,6 +56,7 @@ const canonicalURL = canonical ? new URL(canonical, site).href : undefined;
     <meta property="og:image" content={ogURL} />
     <meta property="og:type" content="website" />
     {canonicalURL && <link rel="canonical" href={canonicalURL} />}
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
     <title>{title}</title>
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

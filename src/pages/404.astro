@@ -1,0 +1,27 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+---
+
+<BaseLayout title="404 — Page not found" ogImage="/og/home.png">
+  <SiteHeader />
+
+  <main class="wrap flex min-h-[100dvh] flex-col justify-center pb-16">
+    <p class="font-mono text-sm tracking-widest text-accent">ERROR 404</p>
+    <h1 class="display mt-6 text-6xl md:text-7xl">Halaman tidak<br />ditemukan.</h1>
+    <p class="mt-6 max-w-[48ch] leading-relaxed text-muted">
+      Seperti paket yang hilang di rute — alamat ini tidak
+      tersedia. Mari kembali ke jalur yang benar.
+    </p>
+    <div class="mt-10 flex flex-wrap gap-3">
+      <a href="/" class="btn btn-primary">
+        <i class="ph ph-house text-base" aria-hidden="true"></i>
+        Back home
+      </a>
+      <a href="/projects" class="btn btn-secondary">
+        Browse projects
+        <i class="ph ph-arrow-right text-base" aria-hidden="true"></i>
+      </a>
+    </div>
+  </main>
+</BaseLayout>
