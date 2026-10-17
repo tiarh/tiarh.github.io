@@ -497,6 +497,7 @@ section[id] {
 }
 
 @media print {
+  /* Formal print: Times New Roman, everything pure black. */
   :root {
     color-scheme: light;
   }
@@ -504,8 +505,8 @@ section[id] {
   html,
   body {
     background: #fff !important;
-    color: #111 !important;
-    font-size: 10pt;
+    color: #000 !important;
+    font-size: 11pt;
   }
 
   .no-print {
@@ -517,31 +518,28 @@ section[id] {
     padding: 0 !important;
   }
 
-  .cv h1,
-  .cv h3,
-  .cv dt,
-  .cv strong,
-  .cv .text-ink {
-    color: #111 !important;
+  .cv,
+  .cv * {
+    font-family: "Times New Roman", Times, serif !important;
+    color: #000 !important;
+    letter-spacing: normal !important;
+  }
+
+  .cv h1 {
+    font-size: 22pt;
+    font-weight: 700;
   }
 
   .cv h2 {
-    color: #0f7a55 !important;
-    border-color: #d5d8dc !important;
-    margin-top: 1.1rem;
+    font-size: 11pt;
+    font-weight: 700;
+    border-color: #000 !important;
+    margin-top: 1rem;
     break-after: avoid;
   }
 
-  .cv .text-muted,
-  .cv .text-faint,
-  .cv p,
-  .cv li {
-    color: #333 !important;
-  }
-
-  .cv .text-accent,
   .cv a {
-    color: #0f7a55 !important;
+    text-decoration: none;
   }
 
   .cv .cv-entry {
