@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import CvDocument from '../../components/CvDocument.astro';
+---
+
+<BaseLayout
+  title="CV — Ikhtiar Hidayatullah"
+  description="CV of Ikhtiar Hidayatullah, NOC Engineer — Network & Automation at Skynet (FTTH ISP)."
+  canonical="https://tiarh.github.io/cv"
+  ogImage="/og/cv.png"
+>
+  <div class="no-print"><SiteHeader /></div>
+  <CvDocument lang="en" />
+</BaseLayout>

@@ -1,0 +1,81 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import FlowDiagram from '../components/FlowDiagram.astro';
+import { DEVICE_GROUPS, INFRA_COUNTS, TOPOLOGY } from '../data/infrastructure';
+
+const related = [
+  { href: '/projects/dual-wan-failover-pcc', label: 'Dual-upstream PCC + failover' },
+  { href: '/projects/pppoe-platform-mikrotik', label: 'PPPoE platform, queues & forced DNS' },
+  { href: '/projects/outage-detection-rca', label: 'Outage detection from OLT / ACS / PPPoE' },
+];
+---
+
+<BaseLayout
+  title="Infrastructure — Ikhtiar Hidayatullah"
+  description="The FTTH network I work on: MikroTik edge and POP routers, metro / VLAN / tunnel links, ZTE / Huawei / HiOSO OLTs, GenieACS and the server platform."
+  canonical="https://tiarh.github.io/infrastructure"
+  ogImage="/og/infrastructure.png"
+>
+  <SiteHeader />
+
+  <main class="wrap min-h-screen pb-24 pt-28 md:pt-32">
+    <h1 class="display text-4xl md:text-5xl">Infrastructure</h1>
+    <p class="mt-4 max-w-[60ch] leading-relaxed text-muted">
+      What I work on day to day at Skynet. Device identities, addresses and site names are left out on purpose.
+    </p>
+
+    <dl class="mt-12 grid grid-cols-2 gap-y-8 border-y border-line py-8 md:grid-cols-4">
+      {INFRA_COUNTS.map((c) => (
+        <div>
+          <dd class="font-mono text-2xl font-medium text-ink">{c.value}</dd>
+          <dt class="mt-1 text-sm text-faint">{c.label}</dt>
+        </div>
+      ))}
+    </dl>
+
+    <section class="mt-16">
+      <h2 class="display mb-6 text-2xl md:text-3xl">Topology (generic)</h2>
+      <div class="panel bg-surface-2 p-6 md:p-8">
+        <FlowDiagram flow={TOPOLOGY} label="Generic network topology from upstreams to customer ONUs" />
+      </div>
+    </section>
+
+    <section class="mt-16">
+      <h2 class="display mb-8 text-2xl md:text-3xl">Devices and what I did on them</h2>
+      <div class="grid gap-6 lg:grid-cols-2">
+        {DEVICE_GROUPS.map((g) => (
+          <div class="panel p-6 md:p-8">
+            <h3 class="flex items-center gap-2.5 font-semibold tracking-tight">
+              <i class={`ph ${g.icon} text-lg text-accent`} aria-hidden="true"></i>
+              {g.title}
+            </h3>
+            <ul class="mt-5 divide-y divide-line">
+              {g.items.map((it) => (
+                <li class="py-4 first:pt-0 last:pb-0">
+                  <p class="text-sm font-medium text-ink">{it.name}</p>
+                  <p class="mt-1 text-sm leading-relaxed text-muted">{it.note}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="mt-16">
+      <h2 class="display mb-6 text-2xl">Related case studies</h2>
+      <div class="flex flex-wrap gap-3">
+        {related.map((r) => (
+          <a href={r.href} class="btn btn-secondary max-w-full whitespace-normal">
+            <span class="min-w-0">{r.label}</span>
+            <i class="ph ph-arrow-right text-base" aria-hidden="true"></i>
+          </a>
+        ))}
+      </div>
+    </section>
+  </main>
+
+  <SiteFooter back={{ href: '/', label: 'Home' }} />
+</BaseLayout>

@@ -1,9 +1,9 @@
 ---
 const navItems = [
   { label: "Work", href: "/#work" },
+  { label: "Infrastructure", href: "/infrastructure" },
   { label: "Experience", href: "/#experience" },
   { label: "Skills", href: "/#skills" },
-  { label: "Education", href: "/#education" },
   { label: "Contact", href: "/#contact" },
 ];
 ---
@@ -20,7 +20,7 @@ const navItems = [
         {navItems.map((item) => (
           <a
             href={item.href}
-            data-section={item.href.replace("/#", "")}
+            data-section={item.href.startsWith("/#") ? item.href.slice(2) : undefined}
             class="nav-link text-sm text-muted transition-colors hover:text-ink"
           >
             {item.label}
@@ -29,12 +29,8 @@ const navItems = [
       </div>
 
       <div class="flex items-center gap-2">
-        <a
-          href="/files/Ikhtiar_Hidayatullah_CV.pdf"
-          download
-          class="btn btn-primary hidden sm:inline-flex"
-        >
-          <i class="ph ph-download-simple text-base" aria-hidden="true"></i>
+        <a href="/cv" class="btn btn-primary hidden sm:inline-flex">
+          <i class="ph ph-file-text text-base" aria-hidden="true"></i>
           CV
         </a>
 
@@ -60,9 +56,9 @@ const navItems = [
           {item.label}
         </a>
       ))}
-      <a href="/files/Ikhtiar_Hidayatullah_CV.pdf" download class="btn btn-primary mt-4 justify-center">
-        <i class="ph ph-download-simple text-base" aria-hidden="true"></i>
-        Download CV
+      <a href="/cv" class="btn btn-primary mt-4 justify-center">
+        <i class="ph ph-file-text text-base" aria-hidden="true"></i>
+        CV
       </a>
     </div>
   </div>

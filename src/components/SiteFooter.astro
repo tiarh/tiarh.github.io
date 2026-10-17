@@ -1,0 +1,25 @@
+---
+interface Props {
+  back?: { href: string; label: string };
+}
+
+const { back } = Astro.props;
+---
+
+<footer class="border-t border-line">
+  <div class="wrap flex flex-wrap items-center justify-between gap-4 py-8 text-sm text-faint">
+    {back ? (
+      <a href={back.href} class="transition-colors hover:text-accent">
+        <i class="ph ph-arrow-left mr-1.5" aria-hidden="true"></i>{back.label}
+      </a>
+    ) : (
+      <p>© 2026 Ikhtiar Hidayatullah</p>
+    )}
+    <div class="flex items-center gap-5">
+      <a href="/infrastructure" class="transition-colors hover:text-accent">Infrastructure</a>
+      <a href="/cv" class="transition-colors hover:text-accent">CV</a>
+      <a href="/uses" class="transition-colors hover:text-accent">Uses</a>
+      {back && <p class="font-mono text-xs">© 2026 Ikhtiar Hidayatullah</p>}
+    </div>
+  </div>
+</footer>

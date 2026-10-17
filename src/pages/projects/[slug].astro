@@ -1,6 +1,9 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import FlowDiagram from '../../components/FlowDiagram.astro';
+import Gallery from '../../components/Gallery.astro';
 import { PROJECTS } from '../../data/projects';
 
 export const prerender = true;
@@ -10,13 +13,15 @@ export function getStaticPaths() {
 }
 
 const { slug } = Astro.params;
-const project = PROJECTS.find((p) => p.slug === slug);
+const index = PROJECTS.findIndex((p) => p.slug === slug);
+const project = PROJECTS[index];
 if (!project) throw new Error('Project not found');
+const next = PROJECTS[(index + 1) % PROJECTS.length];
 ---
 
 <BaseLayout
   title={`${project.title} — Projects`}
-  description={project.description}
+  description={project.summary}
   canonical={`https://tiarh.github.io/projects/${project.slug}`}
   ogImage={`/og/project-${project.slug}.png`}
 >
@@ -28,49 +33,39 @@ if (!project) throw new Error('Project not found');
         <i class="ph ph-arrow-left" aria-hidden="true"></i>Projects
       </a>
 
-      <h1 class="display mt-6 max-w-[26ch] text-4xl md:text-5xl">{project.title}</h1>
+      <h1 class="display mt-6 max-w-[26ch] text-3xl sm:text-4xl md:text-5xl">{project.title}</h1>
 
       <div class="mt-6 flex flex-wrap items-center gap-2">
         <span class="tag border-accent/30 text-accent">{project.status}</span>
         {project.tags.map((t) => <span class="tag">{t}</span>)}
       </div>
 
-      <p class="mt-8 max-w-[62ch] text-lg leading-relaxed text-muted">{project.description}</p>
+      <p class="mt-8 max-w-[62ch] text-lg leading-relaxed text-muted">{project.summary}</p>
 
-      <div class="mt-14 grid gap-6">
-        <section class="panel p-8">
+      <div class="mt-12 grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+        <section class="panel p-6 md:p-8">
           <h2 class="mono-label">Problem</h2>
-          <p class="mt-4 leading-relaxed text-muted">{project.caseStudy.problem}</p>
+          <p class="mt-4 leading-relaxed text-muted">{project.problem}</p>
         </section>
-        <section class="panel p-8">
-          <h2 class="mono-label">Solution</h2>
-          <p class="mt-4 leading-relaxed text-muted">{project.caseStudy.solution}</p>
-        </section>
-        <section class="panel border-accent/20 p-8">
-          <h2 class="mono-label text-accent">Outcome</h2>
-          <p class="mt-4 leading-relaxed text-muted">{project.caseStudy.outcome}</p>
-        </section>
-      </div>
-
-      {project.metrics && project.metrics.length > 0 && (
-        <section class="mt-14">
-          <h2 class="display mb-6 text-2xl">Impact</h2>
-          <ul class="divide-y divide-line border-y border-line">
-            {project.metrics.map((m) => (
-              <li class="flex items-start gap-3 py-4 text-muted">
-                <i class="ph ph-trend-up mt-1 shrink-0 text-accent" aria-hidden="true"></i>
-                {m}
+        <section class="panel p-6 md:p-8">
+          <h2 class="mono-label">My role</h2>
+          <p class="mt-4 leading-relaxed text-muted">{project.role}</p>
+          <h2 class="mono-label mt-8">Scale</h2>
+          <ul class="mt-4 space-y-2">
+            {project.scale.map((s) => (
+              <li class="flex items-start gap-2.5 font-mono text-sm text-ink">
+                <i class="ph ph-gauge mt-0.5 shrink-0 text-accent" aria-hidden="true"></i>{s}
               </li>
             ))}
           </ul>
         </section>
-      )}
+      </div>
 
       <section class="mt-14">
-        <h2 class="display mb-6 text-2xl">Highlights</h2>
+        <h2 class="display mb-6 text-2xl">What I built</h2>
         <ul class="space-y-3">
-          {project.highlights.map((h) => (
-            <li class="flex items-start gap-3 text-muted">
+          {project.solution.map((h) => (
+            <li class="flex max-w-[78ch] items-start gap-3 leading-relaxed text-muted">
               <i class="ph ph-check mt-1 shrink-0 text-accent" aria-hidden="true"></i>
               {h}
             </li>
@@ -79,35 +74,60 @@ if (!project) throw new Error('Project not found');
       </section>
 
       <section class="mt-14">
-        <h2 class="display mb-6 text-2xl">Stack</h2>
-        <div class="flex flex-wrap gap-2">
-          {project.caseStudy.stack.map((s) => (
-            <span class="tag">{s}</span>
-          ))}
+        <h2 class="display mb-6 text-2xl">Architecture</h2>
+        <div class="panel bg-surface-2 p-6 md:p-8">
+          <FlowDiagram flow={project.flow} label={`${project.title} architecture`} />
         </div>
       </section>
 
+      {project.shipping && (
+        <section class="mt-14">
+          <h2 class="display mb-6 text-2xl">How it ships</h2>
+          <ul class="space-y-3">
+            {project.shipping.map((h) => (
+              <li class="flex max-w-[78ch] items-start gap-3 leading-relaxed text-muted">
+                <i class="ph ph-git-merge mt-1 shrink-0 text-accent" aria-hidden="true"></i>
+                {h}
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      <section class="panel mt-14 border-accent/20 p-6 md:p-8">
+        <h2 class="mono-label text-accent">Outcome</h2>
+        <ul class="mt-5 space-y-3">
+          {project.outcome.map((o) => (
+            <li class="flex items-start gap-3 leading-relaxed text-muted">
+              <i class="ph ph-trend-up mt-1 shrink-0 text-accent" aria-hidden="true"></i>
+              {o}
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {project.gallery && project.gallery.length > 0 && (
+        <section class="mt-14">
+          <h2 class="display mb-2 text-2xl">Screenshots</h2>
+          <p class="mb-6 text-sm text-faint">Demo / test data only. Real customer data never leaves production.</p>
+          <Gallery shots={project.gallery} />
+        </section>
+      )}
+
       <section class="mt-14">
-        <h2 class="display mb-6 text-2xl">Diagram</h2>
-        <div class="panel bg-surface-2 p-8">
-          <img
-            src={`/projects/${project.slug}/diagram.svg`}
-            alt={`${project.title} diagram`}
-            class="h-auto w-full"
-            loading="lazy"
-            decoding="async"
-          />
+        <h2 class="display mb-6 text-2xl">Stack</h2>
+        <div class="flex flex-wrap gap-2">
+          {project.stack.map((s) => <span class="tag">{s}</span>)}
         </div>
       </section>
 
       {(project.links?.repo || project.links?.demo) && (
         <section class="mt-14">
-          <h2 class="display mb-6 text-2xl">Links</h2>
           <div class="flex flex-wrap gap-3">
             {project.links?.repo && (
               <a class="btn btn-secondary" href={project.links.repo} target="_blank" rel="noopener noreferrer">
                 <i class="ph ph-github-logo text-base" aria-hidden="true"></i>
-                Source / Repo
+                GitHub
               </a>
             )}
             {project.links?.demo && (
@@ -119,13 +139,16 @@ if (!project) throw new Error('Project not found');
           </div>
         </section>
       )}
+
+      <a href={`/projects/${next.slug}`} class="panel panel-raised group mt-16 flex items-center justify-between gap-4 p-6 md:p-8">
+        <div class="min-w-0">
+          <p class="mono-label">Next project</p>
+          <p class="mt-2 font-semibold tracking-tight transition-colors group-hover:text-accent">{next.title}</p>
+        </div>
+        <i class="ph ph-arrow-right shrink-0 text-xl text-accent" aria-hidden="true"></i>
+      </a>
     </article>
   </main>
 
-  <footer class="border-t border-line">
-    <div class="wrap flex items-center justify-between py-8 text-sm text-faint">
-      <a href="/" class="transition-colors hover:text-accent"><i class="ph ph-arrow-left mr-1.5" aria-hidden="true"></i>Home</a>
-      <p class="font-mono text-xs">© 2026 Ikhtiar Hidayatullah</p>
-    </div>
-  </footer>
+  <SiteFooter back={{ href: '/', label: 'Home' }} />
 </BaseLayout>
