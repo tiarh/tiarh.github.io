@@ -42,7 +42,7 @@ function ogSvg({ title, subtitle }) {
   <circle cx="112" cy="112" r="7" fill="${C.accent}"/>
 
   <text x="168" y="106" font-family="${MONO}" font-size="17" letter-spacing="4" fill="${C.faint}">IKHTIAR HIDAYATULLAH</text>
-  <text x="168" y="132" font-family="${MONO}" font-size="14" letter-spacing="3" fill="${C.accent}">NETWORK ENGINEER &#183; NOC</text>
+  <text x="168" y="132" font-family="${MONO}" font-size="14" letter-spacing="3" fill="${C.accent}">NOC ENGINEER &#183; NETWORK &amp; AUTOMATION</text>
 
   <text x="96" y="340" font-family="${SANS}" font-weight="700" font-size="72" letter-spacing="-2" fill="${C.ink}">${t}</text>
   <rect x="98" y="372" width="128" height="5" rx="2.5" fill="${C.accent}"/>
@@ -62,14 +62,22 @@ function writePng(file, svg) {
 
 // minimal dataset (keep in sync with site content)
 const pages = [
-  { slug: 'home', title: 'Ikhtiar Hidayatullah', subtitle: 'MikroTik routing, PPPoE, Linux, dan monitoring automation.' },
-  { slug: 'projects', title: 'Projects', subtitle: 'Case study & automation untuk NOC/ISP.' },
-  { slug: 'blog', title: 'Notes', subtitle: 'Catatan teknis: PPPoE, routing, automation.' },
-  { slug: 'project-monitoring-automation-skynet', title: 'Monitoring Automation', subtitle: 'Report otomatis via Playwright ke WA/Telegram.' },
-  { slug: 'project-whatsapp-ops-bot', title: 'WhatsApp Ops Bot', subtitle: 'Scoped ops command dengan guardrails.' },
-  { slug: 'blog-pppoe-pcq-mikrotik', title: 'PPPoE + PCQ (MikroTik)', subtitle: 'Bandwidth fairness untuk pelanggan ISP.' },
-  { slug: 'blog-dual-wan-recursive', title: 'Dual-WAN Recursive Failover', subtitle: 'Failover stabil dengan health-check.' },
-  { slug: 'blog-monitoring-automation-playwright', title: 'Monitoring Automation', subtitle: 'Generate report PNG dari dashboard.' },
+  { slug: 'home', title: 'Ikhtiar Hidayatullah', subtitle: 'NOC Engineer: MikroTik, GPON, TR-069 and the tools around them.' },
+  { slug: 'projects', title: 'Projects', subtitle: 'Network and software work from running an FTTH ISP.' },
+  { slug: 'infrastructure', title: 'Infrastructure', subtitle: 'Edge, POP links, OLTs, ACS and the server platform.' },
+  { slug: 'cv', title: 'CV', subtitle: 'NOC Engineer — Network & Automation, Skynet.' },
+  { slug: 'blog', title: 'Notes', subtitle: 'Technical notes: PPPoE, routing, automation.' },
+  { slug: 'project-skynet-ebilling', title: 'Skynet eBilling', subtitle: 'Billing, payments and auto isolate on MikroTik.' },
+  { slug: 'project-whatsapp-psb-migration', title: 'Installs over WhatsApp', subtitle: 'OCR, ONU provisioning and GenieACS in one flow.' },
+  { slug: 'project-outage-detection-rca', title: 'Outage Detection', subtitle: 'Likely cause from OLT, ACS and PPPoE events.' },
+  { slug: 'project-monitoring-automation-skynet', title: 'Network Monitoring', subtitle: 'Prometheus, Grafana and chat reports.' },
+  { slug: 'project-whatsapp-ops-bot', title: 'WhatsApp Ops Bot', subtitle: 'Scoped ops commands with guardrails.' },
+  { slug: 'project-pppoe-platform-mikrotik', title: 'PPPoE Platform', subtitle: 'Profiles, fq_codel queues and forced DNS.' },
+  { slug: 'project-dual-wan-failover-pcc', title: 'PCC + Failover', subtitle: 'Two upstreams, one path per customer.' },
+  { slug: 'project-skynet-infra-dashboard', title: 'ODP/ODC Tracker', subtitle: 'Daily deployment progress with Excel export.' },
+  { slug: 'blog-pppoe-pcq-mikrotik', title: 'PPPoE + PCQ (MikroTik)', subtitle: 'Bandwidth fairness for ISP subscribers.' },
+  { slug: 'blog-dual-wan-recursive', title: 'Dual-WAN Recursive Failover', subtitle: 'Stable failover with health checks.' },
+  { slug: 'blog-monitoring-automation-playwright', title: 'Monitoring Automation', subtitle: 'PNG reports generated from a dashboard.' },
 ];
 
 for (const p of pages) {

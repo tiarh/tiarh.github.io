@@ -1,6 +1,6 @@
 export const STATS = [
-  { value: '2+', label: 'Years Experience' },
-  { value: '20+', label: 'Devices Managed' },
-  { value: '28', label: 'Monitoring Areas' },
-  { value: '99.9%', label: 'Uptime Target' },
+  { value: '10+', label: 'MikroTik routers operated' },
+  { value: '1,000+', label: 'ONUs managed via TR-069' },
+  { value: '1,500+', label: 'PPPoE subscribers billed' },
+  { value: '500+', label: 'Automated test files in CI' },
 ] as const;

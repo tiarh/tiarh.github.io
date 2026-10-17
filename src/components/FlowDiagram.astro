@@ -1,0 +1,31 @@
+---
+// Layered architecture diagram in plain HTML/CSS: columns on desktop, rows on phones.
+// Stays readable at 360px, where a scaled-down SVG would not.
+import type { Flow } from '../data/projects';
+
+interface Props {
+  flow: Flow;
+  label: string;
+}
+
+const { flow, label } = Astro.props;
+---
+
+<figure class="flow" aria-label={label}>
+  <ol class="flow-layers">
+    {flow.layers.map((layer, i) => (
+      <li class="flow-layer">
+        <p class="mono-label">{layer.label}</p>
+        <ul class="flow-nodes">
+          {layer.nodes.map((n) => <li class="flow-node">{n}</li>)}
+        </ul>
+        {i < flow.layers.length - 1 && (
+          <span class="flow-arrow" aria-hidden="true">
+            <i class="ph ph-arrow-right"></i>
+          </span>
+        )}
+      </li>
+    ))}
+  </ol>
+  {flow.note && <figcaption class="mt-6 max-w-[70ch] text-sm leading-relaxed text-faint">{flow.note}</figcaption>}
+</figure>

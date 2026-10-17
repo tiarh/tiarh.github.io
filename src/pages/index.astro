@@ -1,68 +1,29 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
 import { PROJECTS } from "../data/projects";
 import { STATS } from "../data/stats";
 import { SERVICES } from "../data/services";
+import { PROFILE } from "../data/profile";
+import { SKILLS } from "../data/cv";
+import { CERTIFICATES } from "../data/certificates";
+import { DEVICE_GROUPS } from "../data/infrastructure";
 import experience from "../data/experience";
 
-const featuredSlugs = ["monitoring-automation-skynet", "dual-wan-failover-pcc"];
-const featured = PROJECTS.filter((p) => featuredSlugs.includes(p.slug));
-const [mainProject, secondProject] = featured;
+const featured = PROJECTS.filter((p) => p.featured);
+const [mainProject, ...otherFeatured] = featured;
+const moreProjects = PROJECTS.filter((p) => !p.featured);
 
 const stack = [
   { name: "MikroTik", slug: "mikrotik" },
   { name: "Linux", slug: "linux" },
-  { name: "Python", slug: "python" },
-  { name: "Nginx", slug: "nginx" },
+  { name: "Laravel", slug: "laravel" },
+  { name: "React", slug: "react" },
   { name: "Docker", slug: "docker" },
   { name: "Grafana", slug: "grafana" },
-  { name: "PostgreSQL", slug: "postgresql" },
-  { name: "Git", slug: "git" },
-];
-
-const skillGroups = [
-  {
-    title: "Networking & Routing",
-    items: [
-      "MikroTik RouterOS",
-      "PPPoE",
-      "VLAN",
-      "Routing RIP / OSPF / BGP",
-      "Recursive failover",
-      "PCC load balancing",
-      "QoS / PCQ",
-    ],
-  },
-  {
-    title: "Systems & Automation",
-    items: [
-      "Linux server admin",
-      "Nginx",
-      "Docker",
-      "systemd & cron",
-      "Python",
-      "Bash scripting",
-      "Playwright automation",
-    ],
-  },
-  {
-    title: "Monitoring & Tooling",
-    items: [
-      "Prometheus",
-      "Grafana",
-      "MySQL / PostgreSQL",
-      "Git",
-      "SSH hardening",
-      "Incident triage",
-    ],
-  },
-];
-
-const certs = [
-  { name: "Computer Network Installation", org: "UPT BLK Surabaya", date: "Oct 2025" },
-  { name: "Network Penetration Testing", org: "Cyber Academy Indonesia", date: "Aug 2024" },
-  { name: "Fundamentals of DevOps", org: "Dicoding Indonesia", date: "Sep 2023" },
+  { name: "Prometheus", slug: "prometheus" },
+  { name: "GitHub Actions", slug: "githubactions" },
 ];
 
 const contacts = [
@@ -73,7 +34,7 @@ const contacts = [
 ];
 ---
 
-<BaseLayout title="Ikhtiar Hidayatullah — Network Engineer & NOC Specialist">
+<BaseLayout title="Ikhtiar Hidayatullah — NOC Engineer, Network & Automation">
   <SiteHeader />
 
   <main>
@@ -86,19 +47,26 @@ const contacts = [
             Available for opportunities
           </p>
 
-          <h1 class="display text-6xl md:text-7xl xl:text-[5.5rem]">
+          <h1 class="display text-5xl sm:text-6xl md:text-7xl xl:text-[5.5rem]">
             Ikhtiar<br />Hidayatullah
           </h1>
 
-          <p class="mt-6 max-w-[46ch] text-lg leading-relaxed text-muted">
-            NOC engineer keeping ISP networks stable — MikroTik routing,
-            PPPoE, Linux, and monitoring automation.
+          <p class="mt-4 font-mono text-sm text-accent">{experience[0].title.en} · Skynet</p>
+
+          <p class="mt-6 max-w-[46ch] text-xl leading-snug text-ink">
+            {PROFILE.headline}
+          </p>
+          <p class="mt-4 max-w-[58ch] leading-relaxed text-muted">
+            {PROFILE.intro}
           </p>
 
           <div class="mt-10 flex flex-wrap gap-3">
-            <a href="/files/Ikhtiar_Hidayatullah_CV.pdf" download class="btn btn-primary">
+            <a href={PROFILE.cv.en} download class="btn btn-primary">
               <i class="ph ph-download-simple text-base" aria-hidden="true"></i>
               Download CV
+            </a>
+            <a href="/cv" class="btn btn-secondary">
+              CV page (EN / ID)
             </a>
             <a href="#work" class="btn btn-secondary">
               View work
@@ -109,12 +77,13 @@ const contacts = [
 
         <figure class="panel mx-auto w-full max-w-[260px] overflow-hidden md:max-w-[300px]">
           <img
-            src="/images/profile.jpg"
+            src="/images/profile.webp"
             alt="Portrait of Ikhtiar Hidayatullah"
             class="aspect-[4/5] w-full object-cover grayscale-[15%]"
             width="640"
-            height="800"
+            height="962"
             loading="eager"
+            fetchpriority="high"
           />
         </figure>
       </div>
@@ -154,20 +123,18 @@ const contacts = [
 
       {mainProject && (
         <article class="reveal panel panel-raised overflow-hidden">
-          <div class="grid md:grid-cols-[1.1fr_0.9fr]">
-            <div class="p-8 md:p-10">
+          <div class="grid lg:grid-cols-[0.9fr_1.1fr]">
+            <div class="p-6 md:p-10">
               <div class="flex flex-wrap items-center gap-3">
                 <h3 class="text-xl font-semibold tracking-tight">{mainProject.title}</h3>
                 <span class="tag border-accent/30 text-accent">{mainProject.status}</span>
               </div>
-              <p class="mt-4 max-w-[52ch] leading-relaxed text-muted">
-                {mainProject.description}
-              </p>
+              <p class="mt-4 max-w-[52ch] leading-relaxed text-muted">{mainProject.summary}</p>
               <ul class="mt-6 space-y-2">
-                {mainProject.highlights.map((h) => (
-                  <li class="flex items-start gap-2.5 text-sm text-muted">
-                    <i class="ph ph-check mt-0.5 text-accent" aria-hidden="true"></i>
-                    {h}
+                {mainProject.scale.map((s) => (
+                  <li class="flex items-start gap-2.5 font-mono text-sm text-muted">
+                    <i class="ph ph-gauge mt-0.5 text-accent" aria-hidden="true"></i>
+                    {s}
                   </li>
                 ))}
               </ul>
@@ -182,73 +149,82 @@ const contacts = [
                 <i class="ph ph-arrow-right text-base" aria-hidden="true"></i>
               </a>
             </div>
-            <div class="hidden items-center border-l border-line bg-surface-2 p-8 md:flex">
-              <img
-                src="/projects/monitoring-automation-skynet/diagram.svg"
-                alt={`${mainProject.title} architecture diagram`}
-                class="w-full"
-                loading="lazy"
-              />
-            </div>
+            {mainProject.gallery?.[0] && (
+              <div class="border-t border-line bg-surface-2 lg:border-l lg:border-t-0">
+                <img
+                  src={mainProject.gallery[0].src}
+                  alt={mainProject.gallery[0].alt}
+                  width={mainProject.gallery[0].width}
+                  height={mainProject.gallery[0].height}
+                  class="h-full w-full object-cover object-left-top"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            )}
           </div>
         </article>
       )}
 
       <div class="mt-6 grid gap-6 md:grid-cols-2">
-        {secondProject && (
-          <article class="reveal panel panel-raised flex flex-col p-8">
-            <div class="flex flex-wrap items-center gap-3">
-              <h3 class="text-xl font-semibold tracking-tight">{secondProject.title}</h3>
-              <span class="tag border-accent/30 text-accent">{secondProject.status}</span>
-            </div>
-            <p class="mt-4 leading-relaxed text-muted">{secondProject.description}</p>
-            <div class="mt-auto pt-6">
-              <a
-                href={`/projects/${secondProject.slug}`}
-                class="inline-flex items-center gap-1.5 text-sm font-medium text-accent transition-colors hover:text-ink"
-              >
+        {otherFeatured.map((p) => (
+          <a href={`/projects/${p.slug}`} class="reveal panel panel-raised group flex flex-col overflow-hidden">
+            {p.gallery?.[0] && (
+              <img
+                src={p.gallery[0].src}
+                alt=""
+                width={p.gallery[0].width}
+                height={p.gallery[0].height}
+                class="aspect-[16/9] w-full border-b border-line object-cover object-left-top"
+                loading="lazy"
+                decoding="async"
+              />
+            )}
+            <div class="flex flex-1 flex-col p-6 md:p-8">
+              <div class="flex flex-wrap items-center gap-3">
+                <h3 class="text-xl font-semibold tracking-tight transition-colors group-hover:text-accent">{p.title}</h3>
+                <span class="tag border-accent/30 text-accent">{p.status}</span>
+              </div>
+              <p class="mt-4 leading-relaxed text-muted">{p.summary}</p>
+              <span class="mt-auto inline-flex items-center gap-1.5 pt-6 text-sm font-medium text-accent">
                 Read case study
                 <i class="ph ph-arrow-right text-base" aria-hidden="true"></i>
-              </a>
+              </span>
             </div>
-          </article>
-        )}
-
-        <a href="/projects" class="reveal panel panel-raised group flex flex-col justify-between p-8">
-          <div>
-            <h3 class="text-xl font-semibold tracking-tight">All projects</h3>
-            <p class="mt-3 max-w-[40ch] leading-relaxed text-muted">
-              PPPoE baseline design, failover scenarios, and more automation — each with problem, solution, outcome.
-            </p>
-          </div>
-          <span class="mt-8 inline-flex items-center gap-1.5 text-sm font-medium text-accent transition-colors group-hover:text-ink">
-            Browse projects
-            <i class="ph ph-arrow-right text-base" aria-hidden="true"></i>
-          </span>
-        </a>
+          </a>
+        ))}
       </div>
 
-      <!-- NOW BUILDING -->
-      <article class="reveal panel mt-6 border-accent/20 p-8 md:p-10">
-        <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
-          <p class="mono-label text-accent">Now building</p>
-          <span class="tag border-accent/30 text-accent">Private · In development</span>
-        </div>
-        <h3 class="display mt-4 text-2xl">Skynet e-Billing — ISP operations platform</h3>
+      <div class="reveal mt-6 panel divide-y divide-line">
+        {moreProjects.map((p) => (
+          <a href={`/projects/${p.slug}`} class="group flex items-center justify-between gap-4 px-6 py-5 md:px-8">
+            <div class="min-w-0">
+              <p class="font-medium tracking-tight transition-colors group-hover:text-accent">{p.title}</p>
+              <p class="mt-1 text-sm text-faint">{p.tags.join(" · ")}</p>
+            </div>
+            <i class="ph ph-arrow-right shrink-0 text-accent" aria-hidden="true"></i>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- INFRASTRUCTURE TEASER -->
+    <section class="wrap pb-24 md:pb-32">
+      <a href="/infrastructure" class="reveal panel panel-raised group block p-6 md:p-10">
+        <p class="mono-label text-accent">Infrastructure</p>
+        <h2 class="display mt-4 text-2xl md:text-3xl">The network behind it</h2>
         <p class="mt-4 max-w-[62ch] leading-relaxed text-muted">
-          An internal platform I'm building to cut manual NOC work — from provisioning
-          through billing, run from one place. Technical details stay closed while
-          it's under active development.
+          MikroTik edge and POP routers on metro, VLAN + OSPF and tunnel links, OLTs from three vendors,
+          1,000+ ONUs on GenieACS, and the Proxmox / Docker platform that runs the tools.
         </p>
         <div class="mt-6 flex flex-wrap gap-2">
-          <span class="tag">OLT provisioning</span>
-          <span class="tag">MikroTik</span>
-          <span class="tag">RADIUS</span>
-          <span class="tag">Invoice & payment gateway</span>
-          <span class="tag">WA-gateway ticketing</span>
-          <span class="tag">Automated subscriber activation & migration via WhatsApp</span>
+          {DEVICE_GROUPS.map((g) => <span class="tag">{g.title}</span>)}
         </div>
-      </article>
+        <span class="mt-8 inline-flex items-center gap-1.5 text-sm font-medium text-accent">
+          See devices and topology
+          <i class="ph ph-arrow-right text-base transition-transform group-hover:translate-x-0.5" aria-hidden="true"></i>
+        </span>
+      </a>
     </section>
 
     <!-- EXPERIENCE -->
@@ -259,16 +235,16 @@ const contacts = [
         {experience.map((exp) => (
           <article class="reveal grid gap-4 py-8 md:grid-cols-[auto_1fr_auto] md:gap-10">
             <p class="w-44 shrink-0 pt-1 font-mono text-xs leading-relaxed text-faint">
-              {exp.period}
+              {exp.period.en}
             </p>
             <div>
-              <h3 class="font-semibold tracking-tight">{exp.title}</h3>
-              <p class="mt-0.5 text-sm text-accent">{exp.company}</p>
+              <h3 class="font-semibold tracking-tight">{exp.title.en}</h3>
+              <p class="mt-0.5 text-sm text-accent">{exp.company.en}</p>
               <p class="mt-3 max-w-[60ch] text-sm leading-relaxed text-muted">
-                {exp.description}
+                {exp.description.en}
               </p>
               <ul class="mt-4 space-y-1.5">
-                {exp.highlights.map((h) => (
+                {exp.highlights.en.map((h) => (
                   <li class="flex items-start gap-2.5 text-sm text-muted">
                     <i class="ph ph-minus mt-0.5 text-[10px] text-faint" aria-hidden="true"></i>
                     {h}
@@ -289,11 +265,11 @@ const contacts = [
       <h2 class="display mb-12 text-3xl md:text-4xl">Capabilities</h2>
 
       <div class="grid gap-10 md:grid-cols-3">
-        {skillGroups.map((group) => (
+        {SKILLS.map((group) => (
           <div class="reveal border-t border-line-strong pt-6">
-            <h3 class="font-semibold tracking-tight">{group.title}</h3>
+            <h3 class="font-semibold tracking-tight">{group.title.en}</h3>
             <p class="mt-4 text-sm leading-loose text-muted">
-              {group.items.join(" · ")}
+              {group.items.en.split(", ").join(" · ")}
             </p>
           </div>
         ))}
@@ -337,9 +313,10 @@ const contacts = [
             installation training at BLK Surabaya.
           </p>
           <p class="mt-5 max-w-[54ch] leading-relaxed text-muted">
-            Today I run NOC operations at Skynet ISP — and what I enjoy most
-            is the seam between networks and code: if an ops task repeats,
-            there is usually a script that should be doing it.
+            Today I run NOC operations at Skynet, an FTTH ISP — and what I enjoy
+            most is the seam between networks and code: if an ops task repeats,
+            there is usually a tool that should be doing it, with tests and a
+            rollback.
           </p>
           <a href="/uses" class="mt-8 inline-flex items-center gap-1.5 text-sm font-medium text-accent transition-colors hover:text-ink">
             See my daily toolkit
@@ -391,11 +368,11 @@ const contacts = [
         </div>
 
         <div class="reveal panel divide-y divide-line p-2">
-          {certs.map((cert) => (
+          {CERTIFICATES.map((cert) => (
             <div class="flex items-center justify-between gap-4 rounded-xl px-6 py-5">
               <div>
-                <h4 class="text-sm font-medium">{cert.name}</h4>
-                <p class="mt-0.5 text-sm text-faint">{cert.org}</p>
+                <h4 class="text-sm font-medium">{cert.title}</h4>
+                <p class="mt-0.5 text-sm text-faint">{cert.issuer}</p>
               </div>
               <span class="shrink-0 font-mono text-xs text-faint">{cert.date}</span>
             </div>
@@ -436,15 +413,7 @@ const contacts = [
     </section>
   </main>
 
-  <footer class="border-t border-line">
-    <div class="wrap flex flex-wrap items-center justify-between gap-4 py-8 text-sm text-faint">
-      <p>© 2026 Ikhtiar Hidayatullah</p>
-      <div class="flex items-center gap-5">
-        <a href="/uses" class="transition-colors hover:text-accent">Uses</a>
-        <p class="font-mono text-xs">Built with Astro + Tailwind CSS</p>
-      </div>
-    </div>
-  </footer>
+  <SiteFooter />
 
   <script>
     const observer = new IntersectionObserver(

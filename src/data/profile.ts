@@ -1,10 +1,12 @@
 export const PROFILE = {
   name: 'Ikhtiar Hidayatullah',
-  role: 'Network Engineer',
-  tagline: 'ISP NOC • MikroTik • Routing • Monitoring Automation',
-  location: 'Indonesia',
-  headline:
-    'I focus on ISP/NOC operations: routing, PPPoE, bandwidth management, monitoring, and automation. My goal: stable networks, fast troubleshooting, and tooling the whole team can use.',
+  role: 'Network Engineer · ISP NOC & Automation',
+  tagline: 'NOC Engineer — MikroTik · GPON · TR-069 · Laravel/React automation',
+  location: 'Pamekasan, East Java · Indonesia',
+  headline: 'I keep an FTTH network running and build the tools that run it.',
+  intro:
+    'I work at Skynet, an FTTH ISP in East Java. Half of my work is the network: routers, OLTs, upstreams and incidents. The other half is the software around it: billing, installs over WhatsApp, monitoring and outage detection, shipped with tests and guarded deploys.',
+  cv: { en: '/files/Ikhtiar_Hidayatullah_CV.pdf', id: '/files/Ikhtiar_Hidayatullah_CV_ID.pdf' },
   availability: 'Available for freelance',
   initials: 'IH',
   contacts: {

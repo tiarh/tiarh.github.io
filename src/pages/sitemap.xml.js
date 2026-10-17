@@ -1,13 +1,16 @@
+import { PROJECTS } from '../data/projects';
+
 export async function GET({ site }) {
   const base = (site?.toString() || 'https://tiarh.github.io').replace(/\/$/, '');
   const urls = [
     '/',
-    '/uses',
     '/projects',
-    '/projects/pppoe-platform-mikrotik',
-    '/projects/dual-wan-failover-pcc',
-    '/projects/monitoring-automation-skynet',
-    '/projects/whatsapp-ops-bot',
+    ...PROJECTS.map((p) => `/projects/${p.slug}`),
+    '/infrastructure',
+    '/cv',
+    '/cv/id',
+    '/certificates',
+    '/uses',
     '/blog',
     '/blog/pppoe-pcq-mikrotik',
     '/blog/dual-wan-recursive',

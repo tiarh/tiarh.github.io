@@ -10,13 +10,15 @@ interface Props {
   description?: string;
   canonical?: string;
   ogImage?: string;
+  lang?: string;
 }
 
 const {
   title,
-  description = "Network Engineer & NOC Specialist. Spesialisasi MikroTik, monitoring automation, dan Linux server administration.",
+  description = "NOC Engineer at an FTTH ISP: MikroTik, GPON OLTs, TR-069 and the billing, WhatsApp and monitoring tools that run the network.",
   canonical,
   ogImage = "/og/home.png",
+  lang = "en",
 } = Astro.props;
 
 const site = "https://tiarh.github.io";
@@ -27,8 +29,9 @@ const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Ikhtiar Hidayatullah",
-  jobTitle: "Network Engineer & NOC Specialist",
+  jobTitle: "NOC Engineer — Network & Automation",
   url: site,
+  worksFor: { "@type": "Organization", name: "Skynet" },
   email: "mailto:ihidayatullah57@gmail.com",
   sameAs: [
     "https://github.com/tiarh",
@@ -45,7 +48,7 @@ const personSchema = {
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />

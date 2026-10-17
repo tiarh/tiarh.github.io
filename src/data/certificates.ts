@@ -19,4 +19,9 @@ export const CERTIFICATES: Certificate[] = [
     date: 'Agu 2024',
     credentialId: 'NTPT0109243207',
   },
+  {
+    title: 'Fundamentals of DevOps',
+    issuer: 'Dicoding Indonesia',
+    date: 'Sep 2023',
+  },
 ] as const;
