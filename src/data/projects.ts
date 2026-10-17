@@ -223,6 +223,8 @@ export const PROJECTS: Project[] = [
     stack: ['Laravel', 'MySQL', 'Redis', 'ZTE / Huawei OLT CLI', 'GenieACS NBI + provisions', 'MikroTik syslog', 'WhatsApp gateway'],
     tags: ['NOC', 'GPON', 'TR-069', 'RCA'],
     gallery: [
+      desktop('outage-detection-rca', 'monitoring-deteksi-desktop-light', 'Outage detection tab in test mode with likely cause, status, what would happen if live and affected customers', 'Deteksi Gangguan in shadow mode: likely cause, history, affected customers (demo data)', 1280),
+      desktop('outage-detection-rca', 'ticket-diagnosis-desktop-light', 'Ticket with the automatic diagnosis card: likely cause drop cable cut, high confidence, suggested action and evidence', 'Automatic diagnosis on a ticket: cause, confidence, evidence (phone blurred)', 840),
       desktop('outage-detection-rca', 'monitoring-gangguan-desktop-light', 'Active outages grouped by ODP and PON with affected customer counts', 'Active outages grouped by ODP / PON'),
       desktop('outage-detection-rca', 'monitoring-noc-desktop-light', 'NOC view with active incidents, affected customers, P1/P2 counts and coverage', 'NOC view: incidents, coverage, mapping gaps'),
       desktop('outage-detection-rca', 'genieacs-desktop-light', 'GenieACS device list with PPPoE state, Wi-Fi clients and status', 'Wi-Fi layer from GenieACS (addresses blurred)'),
