@@ -223,6 +223,8 @@ export const PROJECTS: Project[] = [
     stack: ['Laravel', 'MySQL', 'Redis', 'ZTE / Huawei OLT CLI', 'GenieACS NBI + provisions', 'MikroTik syslog', 'WhatsApp gateway'],
     tags: ['NOC', 'GPON', 'TR-069', 'RCA'],
     gallery: [
+      desktop('outage-detection-rca', 'monitoring-deteksi-desktop-light', 'Outage detection tab in test mode with likely cause, status, what would happen if live and affected customers', 'Deteksi Gangguan in shadow mode: likely cause, history, affected customers (demo data)', 1280),
+      desktop('outage-detection-rca', 'ticket-diagnosis-desktop-light', 'Ticket with the automatic diagnosis card: likely cause drop cable cut, high confidence, suggested action and evidence', 'Automatic diagnosis on a ticket: cause, confidence, evidence (phone blurred)', 840),
       desktop('outage-detection-rca', 'monitoring-gangguan-desktop-light', 'Active outages grouped by ODP and PON with affected customer counts', 'Active outages grouped by ODP / PON'),
       desktop('outage-detection-rca', 'monitoring-noc-desktop-light', 'NOC view with active incidents, affected customers, P1/P2 counts and coverage', 'NOC view: incidents, coverage, mapping gaps'),
       desktop('outage-detection-rca', 'genieacs-desktop-light', 'GenieACS device list with PPPoE state, Wi-Fi clients and status', 'Wi-Fi layer from GenieACS (addresses blurred)'),
@@ -431,6 +433,12 @@ export const PROJECTS: Project[] = [
     ],
     stack: ['Vue 3', 'Vite', 'Tailwind CSS', 'Chart.js', 'SheetJS', 'Node.js', 'Express', 'SQLite', 'MariaDB', 'Docker'],
     tags: ['Vue', 'Express', 'Dashboard', 'FTTH'],
+    gallery: [
+      desktop('skynet-infra-dashboard', 'kpi-charts-desktop', 'Project KPIs with target, installed, homepass and remaining work, per-team recap and cumulative ODP / ODC charts', 'KPIs, per-team recap and cumulative charts (demo data)', 1220),
+      desktop('skynet-infra-dashboard', 'daily-entry-desktop', 'Daily entry form with ODP and ODC counts per team and the daily history table', 'Daily entry per team with history table', 1398),
+      desktop('skynet-infra-dashboard', 'asset-list-desktop', 'Network asset list of ODC and ODP with area, status and port usage', 'Asset list: ODC / ODP, status, port usage'),
+      mobile('skynet-infra-dashboard', 'dashboard-mobile', 'Dashboard on a phone with active area, target and installed count', 'Same dashboard on a phone', 1130),
+    ],
     cv: {
       en: 'ODP/ODC deployment tracker (Vue + Express) replacing a shared spreadsheet, with charts and Excel export.',
       id: 'Pelacak progres pemasangan ODP/ODC (Vue + Express) pengganti spreadsheet bersama, dengan grafik dan export Excel.',
