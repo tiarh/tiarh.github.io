@@ -431,6 +431,12 @@ export const PROJECTS: Project[] = [
     ],
     stack: ['Vue 3', 'Vite', 'Tailwind CSS', 'Chart.js', 'SheetJS', 'Node.js', 'Express', 'SQLite', 'MariaDB', 'Docker'],
     tags: ['Vue', 'Express', 'Dashboard', 'FTTH'],
+    gallery: [
+      desktop('skynet-infra-dashboard', 'kpi-charts-desktop', 'Project KPIs with target, installed, homepass and remaining work, per-team recap and cumulative ODP / ODC charts', 'KPIs, per-team recap and cumulative charts (demo data)', 1220),
+      desktop('skynet-infra-dashboard', 'daily-entry-desktop', 'Daily entry form with ODP and ODC counts per team and the daily history table', 'Daily entry per team with history table', 1398),
+      desktop('skynet-infra-dashboard', 'asset-list-desktop', 'Network asset list of ODC and ODP with area, status and port usage', 'Asset list: ODC / ODP, status, port usage'),
+      mobile('skynet-infra-dashboard', 'dashboard-mobile', 'Dashboard on a phone with active area, target and installed count', 'Same dashboard on a phone', 1130),
+    ],
     cv: {
       en: 'ODP/ODC deployment tracker (Vue + Express) replacing a shared spreadsheet, with charts and Excel export.',
       id: 'Pelacak progres pemasangan ODP/ODC (Vue + Express) pengganti spreadsheet bersama, dengan grafik dan export Excel.',
