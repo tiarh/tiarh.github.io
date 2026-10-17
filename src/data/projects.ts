@@ -7,6 +7,8 @@ export type Shot = {
   caption: string;
   width: number;
   height: number;
+  /** 720px-wide copy for cards and grid thumbnails (desktop shots only). */
+  thumb?: string;
 };
 
 /** Layered flow diagram: each layer is a column (desktop) / row (mobile) of boxes. */
@@ -38,6 +40,7 @@ export type Project = {
 
 const desktop = (slug: string, file: string, alt: string, caption: string, height = 1100): Shot => ({
   src: `/projects/${slug}/${file}.webp`,
+  thumb: `/projects/${slug}/${file}-720.webp`,
   alt,
   caption,
   width: 1440,
@@ -51,6 +54,9 @@ const mobile = (slug: string, file: string, alt: string, caption: string, height
   width: 390,
   height,
 });
+
+/** srcset for a shot: the 720px copy when there is one. */
+export const shotSrcset = (s: Shot) => (s.thumb ? `${s.thumb} 720w, ${s.src} ${s.width}w` : undefined);
 
 export const PROJECTS: Project[] = [
   {

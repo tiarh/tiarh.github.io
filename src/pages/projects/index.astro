@@ -2,7 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SiteHeader from '../../components/SiteHeader.astro';
 import SiteFooter from '../../components/SiteFooter.astro';
-import { PROJECTS } from '../../data/projects';
+import { PROJECTS, shotSrcset } from '../../data/projects';
 ---
 
 <BaseLayout title="Projects — Ikhtiar Hidayatullah" description="Network and software projects from running an FTTH ISP: billing, WhatsApp installs, outage detection, monitoring, MikroTik." canonical="https://tiarh.github.io/projects" ogImage="/og/projects.png">
@@ -20,6 +20,8 @@ import { PROJECTS } from '../../data/projects';
           {p.gallery?.[0] && (
             <img
               src={p.gallery[0].src}
+              srcset={shotSrcset(p.gallery[0])}
+              sizes="(min-width: 768px) 600px, 92vw"
               alt=""
               width={p.gallery[0].width}
               height={p.gallery[0].height}

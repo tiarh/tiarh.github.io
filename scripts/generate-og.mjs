@@ -14,7 +14,7 @@ const C = {
   lineStrong: 'rgba(255,255,255,0.14)',
   ink: '#eceef0',
   muted: '#a4aab1',
-  faint: '#6f757c',
+  faint: '#878d94',
   accent: '#34d399',
 };
 
