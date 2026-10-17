@@ -67,7 +67,7 @@ export const PROJECTS: Project[] = [
     summary:
       'Billing and operations platform for an FTTH ISP: customers, invoices, online payments, automatic isolate/reconnect on MikroTik, and the tools NOC uses every day.',
     role:
-      'Product owner, ops lead and reviewer. I designed the features and wrote the plans, directed and reviewed the AI coding agents that wrote most of the code, and ran every deploy and network-side rollout myself.',
+      'Product owner, ops lead and reviewer. I designed the features, wrote the plans, reviewed every change, and ran every deploy and network-side rollout myself.',
     problem:
       'Billing, payments and network access lived in different places. Admins marked payments by hand, then someone logged into the router to isolate or reconnect the customer. Unpaid customers stayed online, paid customers stayed isolated, and nobody had one view of who owes what and who is actually online. App changes were deployed by hand and sometimes broke things that used to work.',
     solution: [
@@ -98,7 +98,7 @@ export const PROJECTS: Project[] = [
       note: 'Workers isolate / reconnect over the RouterOS API; isolated users are redirected to the pay page; the gateway confirms payments with a signed callback.',
     },
     scale: [
-      '1,500+ PPPoE subscribers billed monthly',
+      '2,000+ PPPoE subscribers billed monthly',
       '10+ MikroTik routers kept in sync',
       '500+ automated test files, 300+ in blocking CI groups',
       '20+ Playwright end-to-end specs',

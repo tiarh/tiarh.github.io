@@ -3,8 +3,8 @@ import type { Lang } from './experience';
 // CV-only copy. Experience, projects and certificates come from their own data files.
 
 export const CV_SUMMARY: Record<Lang, string> = {
-  en: 'NOC engineer at an FTTH ISP in East Java, working on both the network and the software that runs it. Day to day I operate MikroTik routers, GPON OLTs from three vendors and 1,000+ TR-069-managed ONUs, and handle routing, PPPoE, load balancing and incident triage. I also own the company\'s billing and operations platform: I design the features, direct and review AI coding agents, and ship through CI with blocking tests and guarded deploys. I care about changes that can be measured, explained and rolled back.',
-  id: 'NOC engineer di ISP FTTH di Jawa Timur, mengurus jaringan sekaligus software yang menjalankannya. Sehari-hari saya mengelola router MikroTik, OLT GPON dari tiga vendor, dan 1.000+ ONU lewat TR-069, serta menangani routing, PPPoE, load balancing, dan triage gangguan. Saya juga memegang platform billing dan operasional perusahaan: merancang fitur, mengarahkan dan mereview AI coding agent, dan merilis lewat CI dengan tes wajib dan deploy berpengaman. Saya mengutamakan perubahan yang bisa diukur, dijelaskan, dan di-rollback.',
+  en: 'NOC engineer at an FTTH ISP in East Java, working on both the network and the software that runs it. Day to day I operate MikroTik routers, GPON OLTs from three vendors and 1,000+ TR-069-managed ONUs, and handle routing, PPPoE, load balancing and incident triage. I also own the company\'s billing and operations platform: I design the features, review every change, and ship through CI with blocking tests and guarded deploys. I care about changes that can be measured, explained and rolled back.',
+  id: 'NOC engineer di ISP FTTH di Jawa Timur, mengurus jaringan sekaligus software yang menjalankannya. Sehari-hari saya mengelola router MikroTik, OLT GPON dari tiga vendor, dan 1.000+ ONU lewat TR-069, serta menangani routing, PPPoE, load balancing, dan triage gangguan. Saya juga memegang platform billing dan operasional perusahaan: merancang fitur, mereview setiap perubahan, dan merilis lewat CI dengan tes wajib dan deploy berpengaman. Saya mengutamakan perubahan yang bisa diukur, dijelaskan, dan di-rollback.',
 };
 
 export type SkillGroup = { title: Record<Lang, string>; items: Record<Lang, string> };
@@ -69,8 +69,8 @@ export const SKILLS: SkillGroup[] = [
   {
     title: { en: 'Ways of working', id: 'Cara kerja' },
     items: {
-      en: 'Written plans before changes, dry-run → backup → apply → revert for data fixes, runbooks, directing and reviewing AI coding agents',
-      id: 'Rencana tertulis sebelum perubahan, dry-run → backup → apply → revert untuk perbaikan data, runbook, mengarahkan dan mereview AI coding agent',
+      en: 'Written plans before changes, dry-run → backup → apply → revert for data fixes, runbooks, code review before every merge',
+      id: 'Rencana tertulis sebelum perubahan, dry-run → backup → apply → revert untuk perbaikan data, runbook, review kode sebelum setiap merge',
     },
   },
 ];

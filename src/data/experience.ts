@@ -24,19 +24,19 @@ const experience: Experience[] = [
     },
     highlights: {
       en: [
-        'Operate 10+ MikroTik routers and 4+ OLTs (ZTE, Huawei, HiOSO) serving 1,500+ PPPoE subscribers.',
+        'Operate 10+ MikroTik routers and 4+ OLTs (ZTE, Huawei, HiOSO) serving 2,000+ PPPoE subscribers.',
         'Fixed broken WhatsApp calls by changing PCC to per-source balancing and tuning UDP timeouts; tuned queues (multi-queue, fq_codel) and router time sync.',
         'Rolled out forced DNS with failover, PPPoE syslog to the server, and a captive pay page for isolated customers.',
-        'Own the billing and operations platform (Laravel + React): designed features, directed and reviewed AI coding agents, and shipped through CI with blocking tests and guarded deploys.',
+        'Own the billing and operations platform (Laravel + React): designed features, reviewed every change, and shipped through CI with blocking tests and guarded deploys.',
         'Turned new installs and migrations into a WhatsApp flow with OCR, automatic ONU provisioning (ZTE/Huawei) and GenieACS tagging.',
         'Built outage detection with cause hints from OLT, ACS and PPPoE data, run in shadow mode with an accuracy report before going live.',
         'Security and performance hardening on routers and servers, with written rollback steps for every change.',
       ],
       id: [
-        'Mengelola 10+ router MikroTik dan 4+ OLT (ZTE, Huawei, HiOSO) untuk 1.500+ pelanggan PPPoE.',
+        'Mengelola 10+ router MikroTik dan 4+ OLT (ZTE, Huawei, HiOSO) untuk 2.000+ pelanggan PPPoE.',
         'Memperbaiki panggilan WhatsApp yang macet dengan mengubah PCC ke per-alamat sumber dan menyetel UDP timeout; menyetel antrean (multi-queue, fq_codel) dan sinkron jam router.',
         'Menerapkan force-DNS dengan failover, syslog PPPoE ke server, dan halaman bayar untuk pelanggan terisolir.',
-        'Memegang platform billing dan operasional (Laravel + React): merancang fitur, mengarahkan dan mereview AI coding agent, rilis lewat CI dengan tes wajib dan deploy berpengaman.',
+        'Memegang platform billing dan operasional (Laravel + React): merancang fitur, mereview setiap perubahan, rilis lewat CI dengan tes wajib dan deploy berpengaman.',
         'Mengubah PSB dan migrasi pelanggan menjadi alur WhatsApp dengan OCR, provisioning ONU otomatis (ZTE/Huawei), dan tag GenieACS.',
         'Membangun deteksi gangguan dengan dugaan sebab dari data OLT, ACS, dan PPPoE; dijalankan mode bayangan dengan laporan akurasi sebelum live.',
         'Pengerasan keamanan dan performa di router dan server, dengan langkah rollback tertulis untuk setiap perubahan.',
