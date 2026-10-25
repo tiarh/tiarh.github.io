@@ -14,7 +14,16 @@ const { lang } = Astro.props;
 const L = CV_LABELS[lang];
 const otherHref = lang === 'en' ? '/cv/id' : '/cv';
 const pdf = PROFILE.cv[lang];
-const cvProjects = PROJECTS.filter((p) => p.slug !== 'whatsapp-ops-bot');
+// NOC-first order; web-only projects stay on the site but not on the CV.
+const CV_PROJECT_ORDER = [
+  'dual-wan-failover-pcc',
+  'pppoe-platform-mikrotik',
+  'outage-detection-rca',
+  'monitoring-automation-skynet',
+  'whatsapp-psb-migration',
+  'skynet-ebilling',
+];
+const cvProjects = CV_PROJECT_ORDER.map((slug) => PROJECTS.find((p) => p.slug === slug)).filter((p) => p !== undefined);
 const c = PROFILE.contacts;
 ---
 

@@ -121,8 +121,8 @@ export const PROJECTS: Project[] = [
       mobile('skynet-ebilling', 'isolir-portal-mobile-light', 'Mobile isolation portal explaining the service is paused and how to reactivate', 'Isolation portal shown to unpaid customers', 1700),
     ],
     cv: {
-      en: 'Billing & operations platform (Laravel + React): invoices, online payments, credit, automatic isolate/reconnect on MikroTik, isolation portal; shipped through CI with guarded deploys.',
-      id: 'Platform billing & operasional (Laravel + React): tagihan, pembayaran online, saldo, isolir/buka isolir otomatis di MikroTik, portal isolir; rilis lewat CI dengan deploy berpengaman.',
+      en: 'Billing and operations platform (Laravel + React) integrated with MikroTik: invoicing, online payments, automatic isolate and reconnect, and a captive payment page; released through CI with guarded deploys.',
+      id: 'Platform billing dan operasional (Laravel + React) yang terintegrasi dengan MikroTik: penagihan, pembayaran online, isolir dan buka isolir otomatis, serta halaman pembayaran pelanggan terisolir; dirilis melalui CI dengan deploy berpengaman.',
     },
   },
   {
@@ -279,8 +279,8 @@ export const PROJECTS: Project[] = [
       mobile('monitoring-automation-skynet', 'monitoring-mobile-light', 'Network tab on a phone', 'Same view on a phone', 844),
     ],
     cv: {
-      en: 'Monitoring: Playwright PNG reports to WhatsApp/Telegram, then Prometheus/Grafana with an in-app Network tab, OLT optical levels and a CPU-steal-aware job gate.',
-      id: 'Monitoring: laporan PNG via Playwright ke WhatsApp/Telegram, lalu Prometheus/Grafana dengan tab Jaringan di aplikasi, redaman OLT dan gate beban CPU.',
+      en: 'Network monitoring: Prometheus and Grafana dashboards, OLT optical-level tracking, and automated status reports to the NOC over WhatsApp and Telegram.',
+      id: 'Monitoring jaringan: dashboard Prometheus dan Grafana, pemantauan redaman optik OLT, serta laporan status otomatis ke tim NOC melalui WhatsApp dan Telegram.',
     },
   },
   {
@@ -397,7 +397,7 @@ export const PROJECTS: Project[] = [
     tags: ['Routing', 'Failover', 'PCC', 'MikroTik'],
     cv: {
       en: 'Dual-upstream PCC + recursive failover; fixed broken WhatsApp calls (PCC src-address, UDP timeout).',
-      id: 'Load balancing PCC dua upstream + failover rekursif; memperbaiki panggilan WhatsApp macet (PCC src-address, UDP timeout).',
+      id: 'Load balancing PCC dua upstream + failover rekursif; mengatasi gangguan panggilan WhatsApp (PCC src-address, UDP timeout).',
     },
   },
   {
