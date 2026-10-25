@@ -3,18 +3,25 @@ import type { Lang } from './experience';
 // CV-only copy. Experience, projects and certificates come from their own data files.
 
 export const CV_SUMMARY: Record<Lang, string> = {
-  en: 'NOC engineer at an FTTH ISP in East Java, working on both the network and the software that runs it. Day to day I operate MikroTik routers, GPON OLTs from three vendors and 1,000+ TR-069-managed ONUs, and handle routing, PPPoE, load balancing and incident triage. I also own the company\'s billing and operations platform: I design the features, review every change, and ship through CI with blocking tests and guarded deploys. I care about changes that can be measured, explained and rolled back.',
-  id: 'NOC engineer di ISP FTTH di Jawa Timur, mengurus jaringan sekaligus software yang menjalankannya. Sehari-hari saya mengelola router MikroTik, OLT GPON dari tiga vendor, dan 1.000+ ONU lewat TR-069, serta menangani routing, PPPoE, load balancing, dan triage gangguan. Saya juga memegang platform billing dan operasional perusahaan: merancang fitur, mereview setiap perubahan, dan merilis lewat CI dengan tes wajib dan deploy berpengaman. Saya mengutamakan perubahan yang bisa diukur, dijelaskan, dan di-rollback.',
+  en: 'NOC engineer at an FTTH ISP in East Java, responsible for a network serving 2,000+ PPPoE subscribers: MikroTik routing and PPPoE, GPON OLTs from three vendors, and 1,000+ ONUs managed over TR-069. I monitor the network, lead incident triage and service restoration, and harden routers and servers. I also build the automation the NOC depends on, including monitoring, outage detection and subscriber provisioning. Every production change I make is planned, backed up and reversible.',
+  id: 'NOC engineer di ISP FTTH di Jawa Timur, bertanggung jawab atas jaringan yang melayani 2.000+ pelanggan PPPoE: routing dan PPPoE MikroTik, OLT GPON dari tiga vendor, serta 1.000+ ONU yang dikelola melalui TR-069. Saya memantau jaringan, memimpin penanganan dan pemulihan gangguan, serta mengamankan router dan server. Saya juga membangun otomasi yang menjadi andalan tim NOC, meliputi monitoring, deteksi gangguan, dan provisioning pelanggan. Setiap perubahan di lingkungan produksi saya lakukan dengan perencanaan, backup, dan langkah rollback.',
 };
 
 export type SkillGroup = { title: Record<Lang, string>; items: Record<Lang, string> };
 
 export const SKILLS: SkillGroup[] = [
   {
+    title: { en: 'Routing & switching', id: 'Routing & switching' },
+    items: {
+      en: 'OSPF, static and recursive routing, BGP fundamentals, PCC load balancing, dual-upstream failover, VLAN, subnetting / VLSM',
+      id: 'OSPF, routing statis dan rekursif, dasar BGP, load balancing PCC, failover dua upstream, VLAN, subnetting / VLSM',
+    },
+  },
+  {
     title: { en: 'MikroTik / RouterOS', id: 'MikroTik / RouterOS' },
     items: {
-      en: 'PPPoE server and profiles, simple queues, fq_codel, PCC load balancing, recursive failover, OSPF, VLAN, OpenVPN/L2TP tunnels, firewall/NAT, netwatch, syslog, RouterOS API',
-      id: 'Server dan profil PPPoE, simple queue, fq_codel, load balancing PCC, failover rekursif, OSPF, VLAN, tunnel OpenVPN/L2TP, firewall/NAT, netwatch, syslog, RouterOS API',
+      en: 'PPPoE server and profiles, simple queues, fq_codel, firewall / NAT, OpenVPN and L2TP tunnels, netwatch, syslog, RouterOS API',
+      id: 'Server dan profil PPPoE, simple queue, fq_codel, firewall / NAT, tunnel OpenVPN dan L2TP, netwatch, syslog, RouterOS API',
     },
   },
   {
@@ -32,45 +39,38 @@ export const SKILLS: SkillGroup[] = [
     },
   },
   {
+    title: { en: 'Monitoring & incidents', id: 'Monitoring & gangguan' },
+    items: {
+      en: 'Prometheus, Grafana, blackbox and MikroTik exporters, alerting, syslog analysis, outage triage and root-cause write-ups',
+      id: 'Prometheus, Grafana, exporter blackbox dan MikroTik, alerting, analisis syslog, triage gangguan dan laporan akar masalah',
+    },
+  },
+  {
+    title: { en: 'Network security', id: 'Keamanan jaringan' },
+    items: {
+      en: 'Management-plane lockdown, firewall policy, DNS control, closing exposed services, off-site backups and recovery drills',
+      id: 'Pembatasan akses manajemen, kebijakan firewall, kontrol DNS, penutupan layanan yang terbuka, backup off-site dan uji pemulihan',
+    },
+  },
+  {
     title: { en: 'Linux / servers', id: 'Linux / server' },
     items: {
-      en: 'Ubuntu, Proxmox, Docker, Docker Compose, Coolify, Traefik, systemd, MySQL, Redis',
-      id: 'Ubuntu, Proxmox, Docker, Docker Compose, Coolify, Traefik, systemd, MySQL, Redis',
-    },
-  },
-  {
-    title: { en: 'Monitoring', id: 'Monitoring' },
-    items: {
-      en: 'Prometheus, Grafana, blackbox and MikroTik exporters, alert digests',
-      id: 'Prometheus, Grafana, exporter blackbox dan MikroTik, ringkasan alert',
-    },
-  },
-  {
-    title: { en: 'Web development', id: 'Pengembangan web' },
-    items: {
-      en: 'Laravel, PHP, Inertia.js, React, TypeScript, Tailwind CSS, Vue 3, Node.js / Express, Astro',
-      id: 'Laravel, PHP, Inertia.js, React, TypeScript, Tailwind CSS, Vue 3, Node.js / Express, Astro',
-    },
-  },
-  {
-    title: { en: 'CI/CD & testing', id: 'CI/CD & testing' },
-    items: {
-      en: 'GitHub Actions (self-hosted runners), PHPUnit test groups, Playwright e2e, pre-push checks, scripted deploys with guards and rollback, secret scanning',
-      id: 'GitHub Actions (self-hosted runner), grup tes PHPUnit, Playwright e2e, cek sebelum push, deploy terskrip dengan pengaman dan rollback, secret scanning',
+      en: 'Ubuntu, Proxmox, Docker, Docker Compose, Traefik, systemd, MySQL, Redis',
+      id: 'Ubuntu, Proxmox, Docker, Docker Compose, Traefik, systemd, MySQL, Redis',
     },
   },
   {
     title: { en: 'Automation', id: 'Otomasi' },
     items: {
-      en: 'WhatsApp gateway (Evolution API), group-scoped bots, OCR (PaddleOCR, Tesseract), Python + Playwright reports, Midtrans / Duitku payment callbacks',
-      id: 'Gateway WhatsApp (Evolution API), bot khusus grup, OCR (PaddleOCR, Tesseract), laporan Python + Playwright, callback pembayaran Midtrans / Duitku',
+      en: 'Python, Bash, Playwright, Laravel / PHP, React / TypeScript, GitHub Actions CI, WhatsApp gateway (Evolution API), OCR',
+      id: 'Python, Bash, Playwright, Laravel / PHP, React / TypeScript, GitHub Actions CI, gateway WhatsApp (Evolution API), OCR',
     },
   },
   {
-    title: { en: 'Ways of working', id: 'Cara kerja' },
+    title: { en: 'Change management', id: 'Manajemen perubahan' },
     items: {
-      en: 'Written plans before changes, dry-run → backup → apply → revert for data fixes, runbooks, code review before every merge',
-      id: 'Rencana tertulis sebelum perubahan, dry-run → backup → apply → revert untuk perbaikan data, runbook, review kode sebelum setiap merge',
+      en: 'Written plans, dry-run → backup → apply → rollback, runbooks, peer review before production changes',
+      id: 'Rencana tertulis, dry-run → backup → apply → rollback, runbook, review sebelum perubahan produksi',
     },
   },
 ];
