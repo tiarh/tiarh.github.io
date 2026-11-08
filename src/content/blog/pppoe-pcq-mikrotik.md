@@ -16,7 +16,7 @@ PCQ (Per Connection Queue) is one of the safest ways for small/mid-size ISPs to 
 
 ## The short version
 
-- **PCQ downloader** splits bandwidth per connection / per client.
+- A **PCQ queue type** splits bandwidth evenly per client (classifier: dst-address for download, src-address for upload).
 - Usually attached to a **queue tree** or **simple queue** (depends on the design).
 
 ## Implementation checklist

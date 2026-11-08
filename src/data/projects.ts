@@ -65,24 +65,24 @@ export const PROJECTS: Project[] = [
     status: 'Production',
     featured: true,
     summary:
-      'Billing and operations platform for an FTTH ISP: customers, invoices, online payments, automatic isolate/reconnect on MikroTik, and the tools NOC uses every day.',
+      'Billing and operations platform for an FTTH ISP: customers, invoices, online payments, automatic isolate/reconnect on MikroTik, and the tools the NOC uses every day.',
     role:
       'Product owner, ops lead and reviewer. I designed the features, wrote the plans, reviewed every change, and ran every deploy and network-side rollout myself.',
     problem:
       'Billing, payments and network access lived in different places. Admins marked payments by hand, then someone logged into the router to isolate or reconnect the customer. Unpaid customers stayed online, paid customers stayed isolated, and nobody had one view of who owes what and who is actually online. App changes were deployed by hand and sometimes broke things that used to work.',
     solution: [
       'Laravel + Inertia (React/TypeScript) app for customers, packages, areas, monthly invoices (PDF), receipts and a passwordless customer pay page.',
-      'Online payment through a gateway (Midtrans Snap, Duitku being onboarded) with signed callbacks, idempotent payment recording, a kill switch and a manual bank-transfer fallback.',
+      'Online payment through a gateway (Midtrans Snap) with signed callbacks, idempotent payment recording, a kill switch and a manual bank-transfer fallback.',
       'Overpayments are kept as customer credit and applied automatically to the next invoice.',
       'Automatic isolate / reconnect: overdue customers move to an isolation PPPoE profile over the RouterOS API; a full payment reconnects them without an admin.',
       'Isolation portal: isolated customers land on a "please pay" page (reverse-proxy catch-all + MikroTik dst-nat and address-list; only DNS and the billing site are reachable).',
       'Router sync: PPPoE secrets are read from MikroTik as the source of truth; router-only accounts are staged for review instead of imported silently.',
-      'Guard rails for destructive actions: terminate or ONU delete is refused while the session or ONU is still active; an override needs a superadmin and a written reason. Data fixes run dry-run → backup → apply → revert.',
+      'Guardrails for destructive actions: terminate or ONU delete is refused while the session or ONU is still active; an override needs a superadmin and a written reason. Data fixes run dry-run → backup → apply → revert.',
       'Full UI redesign: light/dark tokens, new shell, dashboard KPIs, mobile pages for technicians, plain Indonesian status labels, global Ctrl-K search and an in-app FAQ with generated screenshots.',
       'Reports: revenue, collection rate, outstanding aging, revenue per area, plus WhatsApp recap commands for installs and migrations.',
     ],
     shipping: [
-      'Every change goes plan → code → strict review → CI → merge → deploy → post-deploy check. Behaviour changes need an explicit "yes" before any code is written.',
+      'Every change goes plan → code → strict review → CI → merge → deploy → post-deploy check. Behavior changes need an explicit "yes" before any code is written.',
       'GitHub Actions on self-hosted runners: blocking PHPUnit groups, frontend contract tests, TypeScript check, build, Playwright end-to-end tests, secret scan and screenshot workflows for visual QA.',
       'A local pre-push script runs lint, formatting, the touched tests and the build before anything reaches CI.',
       'One scripted deploy: only from a clean main, database backup first, previous image kept for rollback, and post-deploy guards that must print OK for the WhatsApp install and migration paths.',
@@ -186,7 +186,7 @@ export const PROJECTS: Project[] = [
     status: 'Shadow mode',
     featured: true,
     summary:
-      'Collects ONU, CPE and PPPoE events, works out the likely cause (fiber cut, power off, Wi-Fi, PPPoE) and sends NOC a WhatsApp digest. Runs in shadow mode first.',
+      'Collects ONU, CPE and PPPoE events, works out the likely cause (fiber cut, power off, Wi-Fi, PPPoE) and sends the NOC a WhatsApp digest. Runs in shadow mode first.',
     role:
       'Defined the cause list and thresholds, planned the rollout in stages, reviewed the code, and checked the results against real tickets.',
     problem:
@@ -217,13 +217,13 @@ export const PROJECTS: Project[] = [
     outcome: [
       'NOC sees a likely cause next to each offline customer instead of a bare "down".',
       'Wi-Fi complaints can be told apart from fiber problems before a technician is sent.',
-      'Polling gaps are labelled "data not readable" instead of raising false outages.',
+      'Polling gaps are labeled "data not readable" instead of raising false outages.',
       'Accuracy is measured from closed tickets, so thresholds are tuned from data.',
     ],
     stack: ['Laravel', 'MySQL', 'Redis', 'ZTE / Huawei OLT CLI', 'GenieACS NBI + provisions', 'MikroTik syslog', 'WhatsApp gateway'],
     tags: ['NOC', 'GPON', 'TR-069', 'RCA'],
     gallery: [
-      desktop('outage-detection-rca', 'monitoring-deteksi-desktop-light', 'Outage detection tab in test mode with likely cause, status, what would happen if live and affected customers', 'Deteksi Gangguan in shadow mode: likely cause, history, affected customers (demo data)', 1280),
+      desktop('outage-detection-rca', 'monitoring-deteksi-desktop-light', 'Outage detection tab in test mode with likely cause, status, what would happen if live and affected customers', 'Outage detection in shadow mode: likely cause, history, affected customers (demo data)', 1280),
       desktop('outage-detection-rca', 'ticket-diagnosis-desktop-light', 'Ticket with the automatic diagnosis card: likely cause drop cable cut, high confidence, suggested action and evidence', 'Automatic diagnosis on a ticket: cause, confidence, evidence (phone blurred)', 840),
       desktop('outage-detection-rca', 'monitoring-gangguan-desktop-light', 'Active outages grouped by ODP and PON with affected customer counts', 'Active outages grouped by ODP / PON'),
       desktop('outage-detection-rca', 'monitoring-noc-desktop-light', 'NOC view with active incidents, affected customers, P1/P2 counts and coverage', 'NOC view: incidents, coverage, mapping gaps'),
@@ -265,7 +265,7 @@ export const PROJECTS: Project[] = [
     scale: ['About 30 monitoring areas', '10+ routers and several upstream links graphed', '1,000+ ONUs with optical levels tracked'],
     outcome: [
       'A per-area report went from about 10 minutes of manual work to one chat command.',
-      'Network status lives in the app NOC already uses, with history from Prometheus.',
+      'Network status lives in the app the NOC already uses, with history from Prometheus.',
       'Monitoring no longer competes with installs and payments when the host is under load.',
       'One source of truth for targets instead of two.',
     ],
@@ -289,7 +289,7 @@ export const PROJECTS: Project[] = [
     status: 'Production',
     summary:
       'WhatsApp bot locked to one NOC group: per-area monitoring reports on command, with an allowlist, cooldowns and timeouts so it never spams.',
-    role: 'Built and run it: command design, guardrails and the link to the monitoring report pipeline.',
+    role: 'Built and ran it: command design, guardrails and the link to the monitoring report pipeline.',
     problem:
       'NOC coordination over chat got noisy: the same monitoring requests again and again, in different formats. A bot that answers in every group is a risk, so the automation had to be tightly scoped.',
     solution: [
