@@ -13,64 +13,64 @@ export const SKILLS: SkillGroup[] = [
   {
     title: { en: 'Routing & switching', id: 'Routing & switching' },
     items: {
-      en: 'OSPF, static and recursive routing, BGP fundamentals, PCC load balancing, dual-upstream failover, VLAN, subnetting / VLSM',
-      id: 'OSPF, routing statis dan rekursif, dasar BGP, load balancing PCC, failover dua upstream, VLAN, subnetting / VLSM',
+      en: 'OSPF, BGP, static & recursive routing, PCC load balancing, failover, VLAN, VLSM',
+      id: 'OSPF, BGP, routing statis & rekursif, load balancing PCC, failover, VLAN, VLSM',
     },
   },
   {
     title: { en: 'MikroTik / RouterOS', id: 'MikroTik / RouterOS' },
     items: {
-      en: 'PPPoE server and profiles, simple queues, fq_codel, firewall / NAT, OpenVPN and L2TP tunnels, netwatch, syslog, RouterOS API',
-      id: 'Server dan profil PPPoE, simple queue, fq_codel, firewall / NAT, tunnel OpenVPN dan L2TP, netwatch, syslog, RouterOS API',
+      en: 'PPPoE, queues, fq_codel, firewall / NAT, OpenVPN, L2TP, netwatch, RouterOS API',
+      id: 'PPPoE, queue, fq_codel, firewall / NAT, OpenVPN, L2TP, netwatch, RouterOS API',
     },
   },
   {
     title: { en: 'GPON / OLT', id: 'GPON / OLT' },
     items: {
-      en: 'ZTE C300, Huawei MA5608T, HiOSO; ONU provisioning over CLI, optical levels, LOS / dying gasp, service ports, migrations between OLTs',
-      id: 'ZTE C300, Huawei MA5608T, HiOSO; provisioning ONU lewat CLI, redaman optik, LOS / dying gasp, service port, migrasi antar-OLT',
+      en: 'ZTE C300, Huawei MA5608T, HiOSO, ONU provisioning, optical levels, OLT migration',
+      id: 'ZTE C300, Huawei MA5608T, HiOSO, provisioning ONU, redaman optik, migrasi OLT',
     },
   },
   {
     title: { en: 'TR-069 / ACS', id: 'TR-069 / ACS' },
     items: {
-      en: 'GenieACS (NBI, provisions, virtual parameters, presets), DHCP option 43, connection requests over tunnels, FiberHome CPEs',
-      id: 'GenieACS (NBI, provision, virtual parameter, preset), DHCP option 43, connection request lewat tunnel, CPE FiberHome',
+      en: 'GenieACS, provisions & presets, DHCP option 43, FiberHome CPE',
+      id: 'GenieACS, provision & preset, DHCP option 43, CPE FiberHome',
     },
   },
   {
     title: { en: 'Monitoring & incidents', id: 'Monitoring & gangguan' },
     items: {
-      en: 'Prometheus, Grafana, blackbox and MikroTik exporters, alerting, syslog analysis, outage triage and root-cause write-ups',
-      id: 'Prometheus, Grafana, exporter blackbox dan MikroTik, alerting, analisis syslog, triage gangguan dan laporan akar masalah',
+      en: 'Prometheus, Grafana, alerting, syslog, incident triage, root-cause analysis',
+      id: 'Prometheus, Grafana, alerting, syslog, triage gangguan, analisis akar masalah',
     },
   },
   {
     title: { en: 'Network security', id: 'Keamanan jaringan' },
     items: {
-      en: 'Management-plane lockdown, firewall policy, DNS control, closing exposed services, off-site backups and recovery drills',
-      id: 'Pembatasan akses manajemen, kebijakan firewall, kontrol DNS, penutupan layanan yang terbuka, backup off-site dan uji pemulihan',
+      en: 'Firewall hardening, management access control, DNS control, off-site backups, DR drills',
+      id: 'Hardening firewall, pembatasan akses manajemen, kontrol DNS, backup off-site, uji DR',
     },
   },
   {
     title: { en: 'Linux / servers', id: 'Linux / server' },
     items: {
-      en: 'Ubuntu, Proxmox, Docker, Docker Compose, Traefik, systemd, MySQL, Redis',
-      id: 'Ubuntu, Proxmox, Docker, Docker Compose, Traefik, systemd, MySQL, Redis',
+      en: 'Ubuntu, Proxmox, Docker, Traefik, systemd, MySQL, Redis',
+      id: 'Ubuntu, Proxmox, Docker, Traefik, systemd, MySQL, Redis',
     },
   },
   {
     title: { en: 'Automation', id: 'Otomasi' },
     items: {
-      en: 'Python, Bash, Playwright, Laravel / PHP, React / TypeScript, GitHub Actions CI, WhatsApp gateway (Evolution API), OCR',
-      id: 'Python, Bash, Playwright, Laravel / PHP, React / TypeScript, GitHub Actions CI, gateway WhatsApp (Evolution API), OCR',
+      en: 'Python, Bash, Playwright, Laravel, React / TypeScript, GitHub Actions',
+      id: 'Python, Bash, Playwright, Laravel, React / TypeScript, GitHub Actions',
     },
   },
   {
     title: { en: 'Change management', id: 'Manajemen perubahan' },
     items: {
-      en: 'Written plans, dry-run → backup → apply → rollback, runbooks, peer review before production changes',
-      id: 'Rencana tertulis, dry-run → backup → apply → rollback, runbook, review sebelum perubahan produksi',
+      en: 'Runbooks, dry-run, backup & rollback, peer review',
+      id: 'Runbook, dry-run, backup & rollback, peer review',
     },
   },
 ];

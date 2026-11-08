@@ -84,11 +84,11 @@ const c = PROFILE.contacts;
 
   <section>
     <h2>{L.skills}</h2>
-    <dl class="mt-3 grid gap-x-6 gap-y-2 text-sm sm:grid-cols-[11rem_1fr]">
+    <dl class="mt-3 grid gap-x-6 gap-y-1 text-sm sm:grid-cols-[11rem_1fr]">
       {SKILLS.map((s) => (
         <>
           <dt class="font-semibold text-ink">{s.title[lang]}</dt>
-          <dd class="leading-relaxed text-muted">{s.items[lang]}</dd>
+          <dd class="text-muted">{s.items[lang]}</dd>
         </>
       ))}
     </dl>
@@ -107,7 +107,7 @@ const c = PROFILE.contacts;
     <ul class="mt-3 space-y-1 text-sm text-muted">
       {CERTIFICATES.map((cert) => (
         <li>
-          <strong class="font-semibold text-ink">{cert.title}</strong> — {cert.issuer}{cert.date && ` · ${cert.date[lang]}`}{cert.credentialId && ` · ID ${cert.credentialId}`}
+          <strong class="font-semibold text-ink">{cert.title[lang]}</strong> — {cert.issuer}{cert.date && ` · ${cert.date[lang]}`}{cert.credentialId && ` · ID ${cert.credentialId}`}
         </li>
       ))}
     </ul>

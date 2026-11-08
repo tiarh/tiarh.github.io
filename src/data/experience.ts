@@ -16,7 +16,7 @@ const experience: Experience[] = [
   {
     title: { en: 'NOC Engineer — Network & Automation', id: 'NOC Engineer — Network & Automation' },
     company: { en: 'Skynet (FTTH ISP)', id: 'Skynet (ISP FTTH)' },
-    period: { en: '2025 — Present', id: '2025 — Sekarang' },
+    period: { en: 'Dec 2025 — Nov 2026', id: 'Des 2025 — Nov 2026' },
     location: { en: 'East Java, Indonesia', id: 'Jawa Timur, Indonesia' },
     description: {
       en: 'Responsible for day-to-day operation of an FTTH network, from core routing to subscriber CPEs, and for the tools the NOC uses for monitoring, provisioning and billing.',
@@ -45,7 +45,7 @@ const experience: Experience[] = [
     tags: ['MikroTik', 'GPON', 'GenieACS', 'Laravel', 'CI/CD', 'NOC'],
   },
   {
-    title: { en: 'Computer Network Installation Training', id: 'Pelatihan Instalasi Jaringan Komputer' },
+    title: { en: 'Computer Network Installation Training', id: 'Pelatihan Pemasangan Jaringan Komputer' },
     company: { en: 'UPT BLK Surabaya', id: 'UPT BLK Surabaya' },
     period: { en: 'Oct 2025 — Nov 2025', id: 'Okt 2025 — Nov 2025' },
     location: { en: 'Surabaya, East Java', id: 'Surabaya, Jawa Timur' },

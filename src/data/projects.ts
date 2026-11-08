@@ -396,8 +396,8 @@ export const PROJECTS: Project[] = [
     stack: ['MikroTik RouterOS', 'PCC', 'Mangle', 'Recursive routing', 'Connection tracking', 'Netwatch'],
     tags: ['Routing', 'Failover', 'PCC', 'MikroTik'],
     cv: {
-      en: 'Dual-upstream PCC + recursive failover; fixed broken WhatsApp calls (PCC src-address, UDP timeout).',
-      id: 'Load balancing PCC dua upstream + failover rekursif; mengatasi gangguan panggilan WhatsApp (PCC src-address, UDP timeout).',
+      en: 'Automatic failover between two metro-Ethernet upstreams; fixed broken WhatsApp calls by pinning each customer to one upstream (PCC src-address, UDP timeout).',
+      id: 'Failover otomatis antara dua upstream metro-Ethernet; mengatasi gangguan panggilan WhatsApp dengan mengunci tiap pelanggan ke satu upstream (PCC src-address, UDP timeout).',
     },
   },
   {
