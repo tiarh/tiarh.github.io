@@ -78,7 +78,7 @@ export const SKILLS: SkillGroup[] = [
 export const EDUCATION = {
   degree: { en: 'Informatics Engineering (S.Kom.) — GPA 3.70 / 4.00', id: 'S1 Teknik Informatika (S.Kom.) — IPK 3,70 / 4,00' },
   school: 'Universitas Trunojoyo Madura',
-  period: { en: 'Jul 2020 — Oct 2025', id: 'Jul 2020 — Okt 2025' },
+  period: { en: 'Jul 2020 - Oct 2025', id: 'Jul 2020 - Okt 2025' },
 };
 
 export const CV_LABELS: Record<Lang, Record<string, string>> = {

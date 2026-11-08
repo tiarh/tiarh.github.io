@@ -14,9 +14,9 @@ export type Experience = {
 
 const experience: Experience[] = [
   {
-    title: { en: 'NOC Engineer — Network & Automation', id: 'NOC Engineer — Network & Automation' },
+    title: { en: 'NOC Engineer, Network & Automation', id: 'NOC Engineer, Network & Automation' },
     company: { en: 'Skynet (FTTH ISP)', id: 'Skynet (ISP FTTH)' },
-    period: { en: 'Dec 2025 — Nov 2026', id: 'Des 2025 — Nov 2026' },
+    period: { en: 'Dec 2025 - Nov 2026', id: 'Des 2025 - Nov 2026' },
     location: { en: 'East Java, Indonesia', id: 'Jawa Timur, Indonesia' },
     description: {
       en: 'Responsible for day-to-day operation of an FTTH network, from core routing to subscriber CPEs, and for the tools the NOC used for monitoring, provisioning and billing.',
@@ -47,7 +47,7 @@ const experience: Experience[] = [
   {
     title: { en: 'Computer Network Installation Training', id: 'Pelatihan Pemasangan Jaringan Komputer' },
     company: { en: 'UPT BLK Surabaya', id: 'UPT BLK Surabaya' },
-    period: { en: 'Oct 2025 — Nov 2025', id: 'Okt 2025 — Nov 2025' },
+    period: { en: 'Oct 2025 - Nov 2025', id: 'Okt 2025 - Nov 2025' },
     location: { en: 'Surabaya, East Java', id: 'Surabaya, Jawa Timur' },
     description: {
       en: 'Formal training in network installation and configuration.',
@@ -70,7 +70,7 @@ const experience: Experience[] = [
   {
     title: { en: 'Tech Team Academy (Internship)', id: 'Tech Team Academy (Magang)' },
     company: { en: 'PT ARAI Rubber Seal Indonesia', id: 'PT ARAI Rubber Seal Indonesia' },
-    period: { en: 'Feb 2024 — Jun 2024', id: 'Feb 2024 — Jun 2024' },
+    period: { en: 'Feb 2024 - Jun 2024', id: 'Feb 2024 - Jun 2024' },
     location: { en: 'Tangerang, Banten', id: 'Tangerang, Banten' },
     description: {
       en: 'IT support and network installation in a manufacturing plant.',
