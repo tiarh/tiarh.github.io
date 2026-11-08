@@ -3,9 +3,9 @@ export const PROFILE = {
   role: 'Network Engineer · ISP NOC & Automation',
   tagline: 'NOC Engineer — MikroTik · GPON · TR-069 · Laravel/React automation',
   location: 'Pamekasan, East Java · Indonesia',
-  headline: 'I keep an FTTH network running and build the tools that run it.',
+  headline: 'I keep FTTH networks running and build the tools that run them.',
   intro:
-    'I work at Skynet, an FTTH ISP in East Java. Half of my work is the network: routers, OLTs, upstreams and incidents. The other half is the software around it: billing, installs over WhatsApp, monitoring and outage detection, shipped with tests and guarded deploys.',
+    'Most recently I was a NOC engineer at Skynet, an FTTH ISP in East Java (Dec 2025 – Nov 2026). Half of my work was the network: routers, OLTs, upstreams and incidents. The other half was the software around it: billing, installs over WhatsApp, monitoring and outage detection, shipped with tests and guarded deploys.',
   cv: { en: '/files/Ikhtiar_Hidayatullah_CV.pdf', id: '/files/Ikhtiar_Hidayatullah_CV_ID.pdf' },
   availability: 'Available for freelance',
   initials: 'IH',

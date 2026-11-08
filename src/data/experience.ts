@@ -19,13 +19,13 @@ const experience: Experience[] = [
     period: { en: 'Dec 2025 — Nov 2026', id: 'Des 2025 — Nov 2026' },
     location: { en: 'East Java, Indonesia', id: 'Jawa Timur, Indonesia' },
     description: {
-      en: 'Responsible for day-to-day operation of an FTTH network, from core routing to subscriber CPEs, and for the tools the NOC uses for monitoring, provisioning and billing.',
+      en: 'Responsible for day-to-day operation of an FTTH network, from core routing to subscriber CPEs, and for the tools the NOC used for monitoring, provisioning and billing.',
       id: 'Bertanggung jawab atas operasional harian jaringan FTTH, dari routing inti hingga perangkat pelanggan, serta tools yang digunakan tim NOC untuk monitoring, provisioning, dan billing.',
     },
     highlights: {
       en: [
-        'Operate a network of 10+ MikroTik routers, 4+ GPON OLTs (ZTE, Huawei, HiOSO) and 1,000+ TR-069-managed ONUs serving 2,000+ PPPoE subscribers.',
-        'Lead incident response end to end: triage, fault isolation (upstream, router, OLT/ODP, CPE), service restoration and root-cause follow-up.',
+        'Operated a network of 10+ MikroTik routers, 4+ GPON OLTs (ZTE, Huawei, HiOSO) and 1,000+ TR-069-managed ONUs serving 2,000+ PPPoE subscribers.',
+        'Led incident response end to end: triage, fault isolation (upstream, router, OLT/ODP, CPE), service restoration and root-cause follow-up.',
         'Resolved network-wide WhatsApp call drops by moving PCC load balancing to per-source classification and tuning UDP timeouts; reduced latency under load with multi-queue and fq_codel.',
         'Hardened edge routers: restricted Winbox, API and SNMP to the management network, added WAN-side drop rules, closed an exposed open proxy, and enforced DNS with failover.',
         'Built network monitoring on Prometheus and Grafana, plus outage detection that suggests the likely cause from OLT alarms, ACS data and PPPoE logs, validated in shadow mode before going live.',

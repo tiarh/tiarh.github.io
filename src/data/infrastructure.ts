@@ -77,7 +77,7 @@ export const DEVICE_GROUPS: DeviceGroup[] = [
     icon: 'ph-hard-drives',
     items: [
       { name: 'Proxmox host with several VMs', note: 'Billing app, ACS, WhatsApp gateway, monitoring and a demo instance.' },
-      { name: 'Docker + Coolify + Traefik', note: 'App, workers, scheduler, syslog listener and reverse proxy; I run deploys and post-deploy checks.' },
+      { name: 'Docker + Coolify + Traefik', note: 'App, workers, scheduler, syslog listener and reverse proxy; I ran deploys and post-deploy checks.' },
       { name: 'MySQL + Redis', note: 'App database and queues; backup before every deploy and every data fix.' },
       { name: 'Prometheus + Grafana', note: 'Router, upstream and PPPoE metrics.' },
       { name: 'WhatsApp gateway (Evolution API)', note: 'Install, migration, report and NOC groups.' },
