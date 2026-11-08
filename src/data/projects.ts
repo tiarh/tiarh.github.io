@@ -122,7 +122,7 @@ export const PROJECTS: Project[] = [
     ],
     cv: {
       en: 'Billing and operations platform (Laravel + React) integrated with MikroTik: invoicing, online payments, automatic isolate and reconnect, and a captive payment page; released through CI with guarded deploys.',
-      id: 'Platform billing dan operasional (Laravel + React) yang terintegrasi dengan MikroTik: penagihan, pembayaran online, isolir dan buka isolir otomatis, serta halaman pembayaran pelanggan terisolir; dirilis melalui CI dengan deploy berpengaman.',
+      id: 'Platform billing dan operasional (Laravel + React) yang terintegrasi dengan MikroTik: penagihan, pembayaran online, isolir dan buka isolir otomatis, serta halaman pembayaran pelanggan terisolir; dirilis melalui CI dengan deploy yang dilengkapi pengaman.',
     },
   },
   {
@@ -232,7 +232,7 @@ export const PROJECTS: Project[] = [
     ],
     cv: {
       en: 'Outage detection with cause hints from OLT (LOS/dying gasp), GenieACS Wi-Fi data and PPPoE syslog; shadow mode with an accuracy report before going live.',
-      id: 'Deteksi gangguan dengan dugaan sebab dari OLT (LOS/dying gasp), data WiFi GenieACS dan syslog PPPoE; mode bayangan dengan laporan akurasi sebelum live.',
+      id: 'Deteksi gangguan dengan dugaan penyebab dari OLT (LOS/dying gasp), data Wi-Fi GenieACS dan syslog PPPoE; mode bayangan dengan laporan akurasi sebelum live.',
     },
   },
   {

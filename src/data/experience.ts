@@ -35,7 +35,7 @@ const experience: Experience[] = [
       id: [
         'Mengoperasikan jaringan dengan 10+ router MikroTik, 4+ OLT GPON (ZTE, Huawei, HiOSO), dan 1.000+ ONU berbasis TR-069 untuk 2.000+ pelanggan PPPoE.',
         'Memimpin penanganan gangguan dari awal hingga selesai: triage, isolasi sumber masalah (upstream, router, OLT/ODP, CPE), pemulihan layanan, dan tindak lanjut akar masalah.',
-        'Mengatasi gangguan panggilan WhatsApp di seluruh jaringan dengan mengubah klasifikasi load balancing PCC ke per-alamat sumber dan menyetel UDP timeout; menurunkan latensi saat beban tinggi dengan multi-queue dan fq_codel.',
+        'Mengatasi gangguan panggilan WhatsApp di seluruh jaringan dengan mengubah klasifikasi load balancing PCC ke per alamat sumber dan menyetel UDP timeout; menurunkan latensi saat beban tinggi dengan multi-queue dan fq_codel.',
         'Mengamankan router edge: membatasi akses Winbox, API, dan SNMP hanya dari jaringan manajemen, menambah aturan drop di sisi WAN, menutup open proxy yang terekspos, dan menerapkan force-DNS dengan failover.',
         'Membangun monitoring jaringan dengan Prometheus dan Grafana, serta deteksi gangguan yang memperkirakan penyebab dari alarm OLT, data ACS, dan log PPPoE; divalidasi dalam mode bayangan sebelum digunakan.',
         'Menyiapkan backup database harian ke lokasi terpisah dan menjalankan uji pemulihan bencana penuh; layanan berhasil dipulihkan dari backup dalam sekitar 14 menit.',
@@ -69,7 +69,7 @@ const experience: Experience[] = [
   },
   {
     title: { en: 'Tech Team Academy (Internship)', id: 'Tech Team Academy (Magang)' },
-    company: { en: 'PT. ARAI Rubber Seal Indonesia', id: 'PT. ARAI Rubber Seal Indonesia' },
+    company: { en: 'PT ARAI Rubber Seal Indonesia', id: 'PT ARAI Rubber Seal Indonesia' },
     period: { en: 'Feb 2024 — Jun 2024', id: 'Feb 2024 — Jun 2024' },
     location: { en: 'Tangerang, Banten', id: 'Tangerang, Banten' },
     description: {
