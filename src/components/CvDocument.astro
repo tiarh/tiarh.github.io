@@ -107,7 +107,7 @@ const c = PROFILE.contacts;
     <ul class="mt-3 space-y-1 text-sm text-muted">
       {CERTIFICATES.map((cert) => (
         <li>
-          <strong class="font-semibold text-ink">{cert.title}</strong> — {cert.issuer}{cert.date && ` · ${cert.date}`}{cert.credentialId && ` · ID ${cert.credentialId}`}
+          <strong class="font-semibold text-ink">{cert.title}</strong> — {cert.issuer}{cert.date && ` · ${cert.date[lang]}`}{cert.credentialId && ` · ID ${cert.credentialId}`}
         </li>
       ))}
     </ul>
