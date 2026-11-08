@@ -71,7 +71,7 @@ const experience: Experience[] = [
     title: { en: 'Tech Team Academy (Internship)', id: 'Tech Team Academy (Magang)' },
     company: { en: 'PT. ARAI Rubber Seal Indonesia', id: 'PT. ARAI Rubber Seal Indonesia' },
     period: { en: 'Feb 2024 — Jun 2024', id: 'Feb 2024 — Jun 2024' },
-    location: { en: 'Gresik, East Java', id: 'Gresik, Jawa Timur' },
+    location: { en: 'Tangerang, Banten', id: 'Tangerang, Banten' },
     description: {
       en: 'IT support and network installation in a manufacturing plant.',
       id: 'IT support dan instalasi jaringan di lingkungan pabrik.',
